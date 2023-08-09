@@ -14,7 +14,7 @@
     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.07);
     justify-content: space-evenly;
     align-items: center;
-    width: 400px;
+    min-width: 400px;
 }
 
 .vertical_line {
@@ -55,6 +55,9 @@
     transition: all 0.3s ease-in-out;
     border-radius: 10px;
 }
+.primary_color {
+    color: #ff385c;
+}
 
 .navbar-brand img {
     width: 150px;
@@ -94,6 +97,9 @@
     margin-bottom: 20px;
 }
 
+.mega_menu_items p {
+    cursor: pointer;
+}
 .pl_0 {
     padding-left: 0;
     padding-right: 0;

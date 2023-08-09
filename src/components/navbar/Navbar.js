@@ -1,10 +1,36 @@
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import RequestCallBtn from "../request-call-button/RequestCallBtn";
 import logo from "../media/logo.png";
 import searchIcon from "../media/search-icon.png";
+import { useState, useEffect } from "react";
 
 function Navbar() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const [builder, setBuilder] = useState(() => {
+    const storedBuilder = localStorage.getItem("builder");
+    return storedBuilder || "Builder";
+  });
+
+  useEffect(() => {
+    setBuilder("Builder");
+  }, [location]);
+
+  const searchBuilderHandler = (e) => {
+    const linkText = e.target.textContent;
+    setBuilder(linkText);
+    localStorage.setItem("builder", linkText);
+  };
+
+  let builderSlug = builder.toLowerCase().split(" ").join("-");
+  // console.log(builderSlug);
+
+  const globalSearchHandler = () => {
+    navigate(`/${builderSlug}`);
+  };
+
   return (
     <>
       <div className="nav-main">
@@ -45,18 +71,25 @@ function Navbar() {
                 </li>
                 <div className="vertical_line"></div>
                 <li className="nav-item dropdown has-megamenu">
-                  <a
+                  <NavLink
                     className="nav-link dropdown-toggle"
-                    href="#"
                     data-bs-toggle="dropdown"
                   >
-                    Builder
-                  </a>
+                    {builder}
+                  </NavLink>
                   <div className="dropdown-menu megamenu" role="menu">
                     <div className="container">
                       <div className="row megamenu-row">
                         <div className="col-md-4 mega_menu_items">
-                          <Link>M3M India</Link>
+                          <p onClick={searchBuilderHandler}>M3M India</p>
+                        </div>
+                        <div className="col-md-4 mega_menu_items">
+                          <p onClick={searchBuilderHandler}>DLF India</p>
+                        </div>
+                        <div className="col-md-4 mega_menu_items">
+                          <p onClick={searchBuilderHandler}>
+                            Godrej properties
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -103,9 +136,13 @@ function Navbar() {
                     </div>
                   </div>
                 </li>
-                <form class="d-flex search_form">
+                <form className="d-flex search_form">
                   <div className="search_box" type="submit">
-                    <img src={searchIcon} alt="search" />
+                    <img
+                      src={searchIcon}
+                      alt="search"
+                      onClick={globalSearchHandler}
+                    />
                   </div>
                 </form>
               </ul>
