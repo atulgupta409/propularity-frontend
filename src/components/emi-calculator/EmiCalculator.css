@@ -1,0 +1,39 @@
+.emi_container {
+  border-radius: 20px;
+  background: #fffafb;
+  padding: 60px 80px;
+}
+.my_input {
+  border: none;
+  border-bottom: 1px solid rgba(34, 34, 34, 0.1);
+  outline: none;
+  background: transparent;
+  border-radius: 0;
+  padding: 2px 0;
+}
+.form-control:focus {
+  box-shadow: none;
+  border-color: #ff385c;
+  background: transparent;
+}
+.form-label {
+  color: #222;
+  font-weight: 500;
+  font-size: 15px;
+}
+.emi_amount {
+  color: #ff385c;
+  font-size: 30px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+.divider_line2 {
+    color: rgba(34, 34, 34, 0.4);
+}
+.right_tick_box {
+    display: inline-block;
+}
+.emi_p {
+    display: inline-block;
+    margin-left: 8px;
+}

@@ -1,8 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Builder from "./components/builder/Builder";
-import Home from "./components/home/Home";
 import "./App.css";
+import Project from "./components/project/Project";
+import Home from "./components/homepage/home/Home";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/:builder" element={<Builder />} />
+        <Route path="/:builder/:city/:project" element={<Project />} />
       </Routes>
     </>
   );

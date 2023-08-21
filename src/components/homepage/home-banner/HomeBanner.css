@@ -1,0 +1,180 @@
+.home_banner_main {
+    background: rgba(255, 245, 246, 0.50);
+    padding-top: 42px;
+    margin-top: 87px;
+}
+.brand_logo {
+    text-align: center;
+}
+.brand_logo img {
+    width: 279px;
+}
+.mob_box {
+    width: 338px;
+    margin: 60px auto 0;
+}
+.my_container {
+    position: relative;
+}
+.circle_box {
+    position: absolute;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.circle_box1 {
+    width: 154px;
+    height: 154px;
+    top: 22px;
+    left: 289px;
+}
+.circle_box img {
+    height: 100% !important;
+}
+.circle_box2 {
+    width: 106px;
+    height: 106px;
+    top: 71px;
+    left: 100px;
+}
+.circle_box3 {
+    width: 80px;
+    height: 80px;
+    top: 215px;
+    left: 0px;
+}
+.circle_box4 {
+    width: 50px;
+    height: 50px;
+    top: 208px;
+    left: 138px;
+}
+.circle_box5 {
+    width: 70px;
+    height: 70px;
+    left: 173px;
+    bottom: 69px;
+}
+.circle_box6 {
+    width: 134px;
+    height: 134px;
+    bottom: 30px;
+    left: 305px;
+}
+.circle_box7 {
+    width: 30px;
+    height: 30px;
+    top: 62px;
+    left: 232px;
+    background-color: #FFF0F1;
+}
+.circle_box8 {
+    width: 30px;
+    height: 30px;
+    top: 176px;
+    left: 67px;
+    background-color: #FFF0F1;
+}
+.circle_box9 {
+    width: 80px;
+    height: 80px;
+    top: 192px;
+    left: 224px;
+    background-color: #FFF0F1;
+}
+.circle_box10 {
+    width: 50px;
+    height: 50px;
+    left: 83px;
+    background-color: #FFF0F1;
+    bottom: 82px;
+}
+.circle_box11 {
+    width: 30px;
+    height: 30px;
+    left: 439px;
+    background-color: #FFF0F1;
+    bottom: 12px;
+}
+.circle_box12 {
+    width: 50px;
+    height: 50px;
+    left: 382px;
+    background-color: #FFF0F1;
+    bottom: 177px;
+}
+.circle_box13 {
+    width: 90px;
+    height: 90px;
+    left: 458px;
+    background-color: #FFF0F1;
+    bottom: 108px;
+    z-index: -1;
+}
+.circle_box14 {
+    width: 120px;
+    height: 120px;
+    top: 47px;
+    right: 338px;
+}
+.circle_box15 {
+    width: 50px;
+    height: 50px;
+    right: 237px;
+    top: 76px;
+}
+.circle_box16 {
+    width: 135px;
+    height: 135px;
+    right: 20px;
+    top: 81px;
+}
+.circle_box17 {
+    width: 100px;
+    height: 100px;
+    right: 233px;
+    bottom: 178px;
+}
+.circle_box18 {
+    width: 150px;
+    height: 150px;
+    right: 234px;
+    bottom: 0px;
+}
+.circle_box19 {
+    width: 70px;
+    height: 70px;
+    right: 99px;
+    bottom: 71px;
+}
+.circle_box20 {
+    width: 33px;
+    height: 33px;
+    background: #FFF0F1;
+    right: 191px;
+    top: 116px;
+}
+.circle_box21 {
+    width: 70px;
+    height: 70px;
+    background: #fff0f1;
+    right: 365px;
+    top: 200px;
+}
+.circle_box22 {
+    width: 100px;
+    height: 100px;
+    background: #fff0f1;
+    right: 457px;
+    z-index: -1;
+    bottom: 30px;
+}
+.circle_box23 {
+    width: 50px;
+    height: 50px;
+    background: #fff0f1;
+    bottom: 152px;
+    right: 163px;
+}
+.react-tooltip {
+    z-index: 99;
+}
