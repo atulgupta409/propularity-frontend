@@ -1,0 +1,13 @@
+.accordion-button::after {
+    background-image: url("../../media//down-arrow.png") !important;
+}
+.accordion-button:not(.collapsed) {
+    background-color: initial !important;
+}
+.accordion-button:focus {
+    border-color: transparent !important;
+    box-shadow: none;
+}
+.accordion-button {
+    font-weight: 600;
+}

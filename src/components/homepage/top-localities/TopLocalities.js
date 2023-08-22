@@ -7,9 +7,9 @@ function TopLocalities() {
     <div className="mt100 localities_main">
       <div className="container">
         <div className="row section_row">
-          <h1 className="heading">
+          <h2 className="heading">
             Top Localities in <span className="primary_color">Gurugram</span>
-          </h1>
+          </h2>
           <p className="heading_text">
             Explore prime locations based on your city
           </p>

@@ -1,0 +1,20 @@
+.builders_row {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+}
+.builder_logo_box {
+    width: 162px;
+}
+.builder_logo_box {
+    width: 162px;
+}
+.builder_logo_box:not(:last-child) {
+    margin-right: 62px;
+}
+.builders_row::-webkit-scrollbar {
+    display: none;
+}
+.builder_slider_container {
+    padding: 100px 0;
+}

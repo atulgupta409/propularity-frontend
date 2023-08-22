@@ -10,7 +10,7 @@ function HomeBanner() {
     <div className="home_banner_main">
       <div className="brand_logo">
         <img src={logo} alt="propularity logo" />
-        <h1>Where Property Come To Life</h1>
+        <h1>Where Property Comes To Life</h1>
       </div>
       <div className="container my_container">
         <div className="mob_box">

@@ -1,0 +1,33 @@
+.filter_nav_main {
+    padding: 18px 0;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+}
+.filter_nav_main::-webkit-scrollbar {
+    display: none;
+}
+.project_type_main {
+    position: fixed;
+    width: 100%;
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    z-index: 999999;
+    top: 87px;
+}
+.filter_nav_item {
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+.filter_nav_item img {
+    width: 30px;
+    height: 30px;
+}
+.filter_nav_item p {
+    font-size: 12px;
+    color: #222;
+    margin-bottom: 0;
+}
