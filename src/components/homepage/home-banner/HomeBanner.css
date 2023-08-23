@@ -10,7 +10,7 @@
     width: 279px;
 }
 .mob_box {
-    width: 338px;
+    width: 288px;
     margin: 60px auto 0;
 }
 .my_container {
@@ -22,29 +22,29 @@
     border-radius: 50%;
 }
 .circle_box1 {
-    width: 154px;
-    height: 154px;
+    width: 144px;
+    height: 144px;
     top: 22px;
-    left: 289px;
+    left: 344px;
 }
 .circle_box img {
     height: 100% !important;
 }
 .circle_box2 {
-    width: 106px;
-    height: 106px;
-    top: 71px;
-    left: 100px;
+    width: 100px;
+    height: 100px;
+    top: 59px;
+    left: 141px;
 }
 .circle_box3 {
     width: 80px;
     height: 80px;
-    top: 215px;
+    top: 204px;
     left: 0px;
 }
 .circle_box4 {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     top: 208px;
     left: 138px;
 }
@@ -52,41 +52,41 @@
     width: 70px;
     height: 70px;
     left: 173px;
-    bottom: 69px;
+    bottom: 21px;
 }
 .circle_box6 {
-    width: 134px;
-    height: 134px;
-    bottom: 30px;
+    width: 124px;
+    height: 124px;
+    bottom: 15px;
     left: 305px;
 }
 .circle_box7 {
     width: 30px;
     height: 30px;
-    top: 62px;
-    left: 232px;
+    top: 44px;
+    left: 275px;
     background-color: #FFF0F1;
 }
 .circle_box8 {
     width: 30px;
     height: 30px;
-    top: 176px;
-    left: 67px;
+    top: 159px;
+    left: 85px;
     background-color: #FFF0F1;
 }
 .circle_box9 {
-    width: 80px;
-    height: 80px;
-    top: 192px;
-    left: 224px;
+    width: 70px;
+    height: 70px;
+    top: 171px;
+    left: 236px;
     background-color: #FFF0F1;
 }
 .circle_box10 {
-    width: 50px;
-    height: 50px;
-    left: 83px;
+    width: 40px;
+    height: 40px;
+    left: 99px;
     background-color: #FFF0F1;
-    bottom: 82px;
+    bottom: 59px;
 }
 .circle_box11 {
     width: 30px;
@@ -96,47 +96,47 @@
     bottom: 12px;
 }
 .circle_box12 {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     left: 382px;
     background-color: #FFF0F1;
-    bottom: 177px;
+    bottom: 151px;
 }
 .circle_box13 {
-    width: 90px;
-    height: 90px;
-    left: 458px;
+    width: 60px;
+    height: 60px;
+    left: 499px;
     background-color: #FFF0F1;
     bottom: 108px;
     z-index: -1;
 }
 .circle_box14 {
-    width: 120px;
-    height: 120px;
-    top: 47px;
-    right: 338px;
+    width: 110px;
+    height: 110px;
+    top: 35px;
+    right: 367px;
 }
 .circle_box15 {
-    width: 50px;
-    height: 50px;
-    right: 237px;
-    top: 76px;
+    width: 40px;
+    height: 40px;
+    right: 240px;
+    top: 59px;
 }
 .circle_box16 {
-    width: 135px;
-    height: 135px;
+    width: 125px;
+    height: 125px;
     right: 20px;
     top: 81px;
 }
 .circle_box17 {
-    width: 100px;
-    height: 100px;
+    width: 85px;
+    height: 85px;
     right: 233px;
     bottom: 178px;
 }
 .circle_box18 {
-    width: 150px;
-    height: 150px;
+    width: 143px;
+    height: 143px;
     right: 234px;
     bottom: 0px;
 }
@@ -154,17 +154,17 @@
     top: 116px;
 }
 .circle_box21 {
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     background: #fff0f1;
-    right: 365px;
+    right: 402px;
     top: 200px;
 }
 .circle_box22 {
     width: 100px;
     height: 100px;
     background: #fff0f1;
-    right: 457px;
+    right: 486px;
     z-index: -1;
     bottom: 30px;
 }
