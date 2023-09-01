@@ -1,0 +1,32 @@
+.footer_main_box {
+  background-color: rgba(255, 245, 246, 0.5);
+  padding: 50px 0;
+  margin-top: 60px;
+}
+.footer_text {
+  font-size: 15px;
+  margin: 8px 0;
+  color: rgba(34, 34, 34, 0.5);
+}
+.footer_link {
+  color: #222;
+  font-size: 15px;
+  font-weight: 500;
+}
+.footer_heading {
+  border-bottom: 1px solid rgba(34, 34, 34, 0.1);
+  width: 79%;
+  padding-bottom: 6px;
+}
+.footer_heading h6 {
+  font-size: 16px;
+}
+.bottom_footer p {
+  margin-bottom: 0;
+  font-size: 12px;
+  color: #222;
+  font-weight: 500;
+}
+.bottom_footer {
+  padding: 10px 0;
+}

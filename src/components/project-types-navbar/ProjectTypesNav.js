@@ -1,6 +1,7 @@
 import React from "react";
 import buildingImg from "../media/building-icon.png";
 import "./ProjectTypesNav.css";
+import { Link } from "react-router-dom";
 
 function ProjectTypesNav() {
   return (
@@ -8,8 +9,10 @@ function ProjectTypesNav() {
       <div className="container">
         <div className="filter_nav_main">
           <div className="filter_nav_item">
-            <img src={buildingImg} alt="filter type" />
-            <p>Apartment</p>
+            <Link to="/gurugram/apartment">
+              <img src={buildingImg} alt="filter type" />
+              <p>Apartment</p>
+            </Link>
           </div>
           <div className="filter_nav_item">
             <img src={buildingImg} alt="filter type" />
