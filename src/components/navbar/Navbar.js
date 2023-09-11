@@ -2,12 +2,26 @@ import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import RequestCallBtn from "../request-call-button/RequestCallBtn";
 import logo from "../media/logo.png";
-import searchIcon from "../media/search-icon.png";
 import { useState, useEffect } from "react";
+import { useQuery } from "@apollo/client";
+import { GET_MICROLOCATIONS } from "../../service/MicrolocationService";
 
 function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
+  const cities = ["Gurugram", "Mumbai"];
+  const city = "Gurugram";
+  const { loading, error, data } = useQuery(GET_MICROLOCATIONS, {
+    variables: { city },
+  });
+
+  const [microlocations, setMicrolocations] = useState([]);
+  useEffect(() => {
+    if (data) {
+      setMicrolocations(data.microlocations);
+    }
+  }, [data]);
+  console.log(microlocations);
 
   const [builder, setBuilder] = useState(() => {
     const storedBuilder = localStorage.getItem("builder");
@@ -26,10 +40,6 @@ function Navbar() {
 
   let builderSlug = builder.toLowerCase().split(" ").join("-");
   // console.log(builderSlug);
-
-  const globalSearchHandler = () => {
-    navigate(`/${builderSlug}`);
-  };
 
   return (
     <>
@@ -52,44 +62,75 @@ function Navbar() {
             <div className="collapse navbar-collapse" id="main_nav">
               <ul className="navbar-nav mx-auto custom_ul">
                 <li className="nav-item dropdown has-megamenu">
-                  <a
+                  <p
                     className="nav-link dropdown-toggle"
-                    href="#"
                     data-bs-toggle="dropdown"
                   >
                     Location
-                  </a>
+                  </p>
                   <div className="dropdown-menu megamenu" role="menu">
                     <div className="container">
                       <div className="row megamenu-row">
-                        <div className="col-md-4 mega_menu_items">
-                          <Link>Gurugram</Link>
-                        </div>
+                        {cities?.map((myCity, i) => {
+                          return (
+                            <div className="col-6 mega_menu_items" key={i}>
+                              <div className="row megamenu_locations">
+                                <div className="col-12">
+                                  <p>{myCity}</p>
+                                  <div className="row">
+                                    <div className="col-md-6 location_name">
+                                      Dwarka Expressway
+                                    </div>
+                                    <div className="col-md-6 location_name">
+                                      Udyog Vihar
+                                    </div>
+                                    <div className="col-md-6 location_name">
+                                      Golf Course Road
+                                    </div>
+                                    <div className="col-md-6 location_name">
+                                      Golf Course Ext. Road
+                                    </div>
+                                    <div className="col-md-6 location_name">
+                                      NH-8
+                                    </div>
+                                    <div className="col-md-6 location_name">
+                                      New Gurugram
+                                    </div>
+                                    <div className="col-md-6 location_name">
+                                      Sohna Gurugram
+                                    </div>
+                                    <div className="col-md-6 location_name">
+                                      DLF City
+                                    </div>
+                                  </div>
+                                  <Link
+                                    to={`/${myCity.toLowerCase()}`}
+                                    className="m-0"
+                                  >
+                                    <button>View All</button>
+                                  </Link>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>
                 </li>
                 <div className="vertical_line"></div>
                 <li className="nav-item dropdown has-megamenu">
-                  <NavLink
+                  <p
                     className="nav-link dropdown-toggle"
                     data-bs-toggle="dropdown"
                   >
-                    {builder}
-                  </NavLink>
+                    Builder
+                  </p>
                   <div className="dropdown-menu megamenu" role="menu">
                     <div className="container">
                       <div className="row megamenu-row">
                         <div className="col-md-4 mega_menu_items">
-                          <p onClick={searchBuilderHandler}>M3M India</p>
-                        </div>
-                        <div className="col-md-4 mega_menu_items">
-                          <p onClick={searchBuilderHandler}>DLF India</p>
-                        </div>
-                        <div className="col-md-4 mega_menu_items">
-                          <p onClick={searchBuilderHandler}>
-                            Godrej properties
-                          </p>
+                          <Link to="/m3m-india">M3M India</Link>
                         </div>
                       </div>
                     </div>
@@ -97,13 +138,12 @@ function Navbar() {
                 </li>
                 <div className="vertical_line"></div>
                 <li className="nav-item dropdown has-megamenu">
-                  <a
+                  <p
                     className="nav-link dropdown-toggle"
-                    href="#"
                     data-bs-toggle="dropdown"
                   >
                     Budget
-                  </a>
+                  </p>
                   <div className="dropdown-menu megamenu" role="menu">
                     <div className="container">
                       <div className="row megamenu-row">
@@ -116,13 +156,12 @@ function Navbar() {
                 </li>
                 <div className="vertical_line"></div>
                 <li className="nav-item dropdown has-megamenu">
-                  <a
+                  <p
                     className="nav-link dropdown-toggle"
-                    href="#"
                     data-bs-toggle="dropdown"
                   >
                     Status
-                  </a>
+                  </p>
                   <div className="dropdown-menu megamenu" role="menu">
                     <div className="container">
                       <div className="row megamenu-row">
@@ -136,7 +175,7 @@ function Navbar() {
                     </div>
                   </div>
                 </li>
-                <form className="d-flex search_form">
+                {/* <form className="d-flex search_form">
                   <div className="search_box" type="submit">
                     <img
                       src={searchIcon}
@@ -144,7 +183,7 @@ function Navbar() {
                       onClick={globalSearchHandler}
                     />
                   </div>
-                </form>
+                </form> */}
               </ul>
               <ul className="navbar-nav">
                 <li className="nav-item dropdown mob_hide">
