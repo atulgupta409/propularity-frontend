@@ -6,6 +6,7 @@ import PriceRangeSlider from "../price-range-slider/PriceRangeSlider";
 import FeaturedCollection from "../featured-collection/FeaturedCollection";
 import BuildersSlider from "../builders-slider/BuildersSlider";
 import Faq from "../faq/Faq";
+import TopProjectCity from "../top-projects-city/TopProjectCity";
 
 function Home() {
   return (
@@ -13,9 +14,10 @@ function Home() {
       <HomeBanner />
       <TopProperties />
       <TopLocalities />
-      <PriceRangeSlider />
-      <FeaturedCollection />
+      <TopProjectCity />
       <BuildersSlider />
+      {/* <PriceRangeSlider /> */}
+      {/* <FeaturedCollection /> */}
       <Faq />
     </div>
   );

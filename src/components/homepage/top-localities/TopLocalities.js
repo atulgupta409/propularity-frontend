@@ -1,6 +1,7 @@
 import React from "react";
 import "./TopLocalities.css";
 import locationImg from "../../media/sample-image.png";
+import { Link } from "react-router-dom";
 
 function TopLocalities() {
   return (
@@ -8,12 +9,52 @@ function TopLocalities() {
       <div className="container">
         <div className="row section_row">
           <h2 className="heading">
-            Top Localities in <span className="primary_color">Gurugram</span>
+            Featured <span className="primary_color">Cities</span>
           </h2>
           <p className="heading_text">
-            Explore prime locations based on your city
+            Find Your Home In The City Of Your Choice
           </p>
           <div className="col-12 col-sm-6 col-md-3 mt30">
+            <Link to="/gurugram">
+              <div className="localities_card">
+                <div className="img">
+                  <img
+                    src={locationImg}
+                    alt="location name"
+                    className="img-fluid"
+                  />
+                </div>
+                <div className="localities_card_overlay">
+                  <div className="overlay_text">
+                    <h3>Gurugram</h3>
+                    <p>12000+ Properties</p>
+                  </div>
+                </div>
+                <div className="overlay2"></div>
+              </div>
+            </Link>
+          </div>
+          <div className="col-12 col-sm-6 col-md-3 mt30">
+            <Link to="/mumbai">
+              <div className="localities_card">
+                <div className="img">
+                  <img
+                    src={locationImg}
+                    alt="location name"
+                    className="img-fluid"
+                  />
+                </div>
+                <div className="localities_card_overlay">
+                  <div className="overlay_text">
+                    <h3>Mumbai</h3>
+                    <p>10000+ Properties</p>
+                  </div>
+                </div>
+                <div className="overlay2"></div>
+              </div>
+            </Link>
+          </div>
+          <div className="col-12 col-sm-6 col-md-3 mt30">
             <div className="localities_card">
               <div className="img">
                 <img
@@ -24,8 +65,8 @@ function TopLocalities() {
               </div>
               <div className="localities_card_overlay">
                 <div className="overlay_text">
-                  <h3>Dwarka Expressway</h3>
-                  <p>100+ Properties</p>
+                  <h3>Delhi</h3>
+                  <p>Coming Soon</p>
                 </div>
               </div>
               <div className="overlay2"></div>
@@ -42,116 +83,8 @@ function TopLocalities() {
               </div>
               <div className="localities_card_overlay">
                 <div className="overlay_text">
-                  <h3>Dwarka Expressway</h3>
-                  <p>100+ Properties</p>
-                </div>
-              </div>
-              <div className="overlay2"></div>
-            </div>
-          </div>
-          <div className="col-12 col-sm-6 col-md-3 mt30">
-            <div className="localities_card">
-              <div className="img">
-                <img
-                  src={locationImg}
-                  alt="location name"
-                  className="img-fluid"
-                />
-              </div>
-              <div className="localities_card_overlay">
-                <div className="overlay_text">
-                  <h3>Dwarka Expressway</h3>
-                  <p>100+ Properties</p>
-                </div>
-              </div>
-              <div className="overlay2"></div>
-            </div>
-          </div>
-          <div className="col-12 col-sm-6 col-md-3 mt30">
-            <div className="localities_card">
-              <div className="img">
-                <img
-                  src={locationImg}
-                  alt="location name"
-                  className="img-fluid"
-                />
-              </div>
-              <div className="localities_card_overlay">
-                <div className="overlay_text">
-                  <h3>Dwarka Expressway</h3>
-                  <p>100+ Properties</p>
-                </div>
-              </div>
-              <div className="overlay2"></div>
-            </div>
-          </div>
-          <div className="col-12 col-sm-6 col-md-3 mt30">
-            <div className="localities_card">
-              <div className="img">
-                <img
-                  src={locationImg}
-                  alt="location name"
-                  className="img-fluid"
-                />
-              </div>
-              <div className="localities_card_overlay">
-                <div className="overlay_text">
-                  <h3>Dwarka Expressway</h3>
-                  <p>100+ Properties</p>
-                </div>
-              </div>
-              <div className="overlay2"></div>
-            </div>
-          </div>
-          <div className="col-12 col-sm-6 col-md-3 mt30">
-            <div className="localities_card">
-              <div className="img">
-                <img
-                  src={locationImg}
-                  alt="location name"
-                  className="img-fluid"
-                />
-              </div>
-              <div className="localities_card_overlay">
-                <div className="overlay_text">
-                  <h3>Dwarka Expressway</h3>
-                  <p>100+ Properties</p>
-                </div>
-              </div>
-              <div className="overlay2"></div>
-            </div>
-          </div>
-          <div className="col-12 col-sm-6 col-md-3 mt30">
-            <div className="localities_card">
-              <div className="img">
-                <img
-                  src={locationImg}
-                  alt="location name"
-                  className="img-fluid"
-                />
-              </div>
-              <div className="localities_card_overlay">
-                <div className="overlay_text">
-                  <h3>Dwarka Expressway</h3>
-                  <p>100+ Properties</p>
-                </div>
-              </div>
-              <div className="overlay2"></div>
-            </div>
-          </div>
-          <div className="col-12 col-sm-6 col-md-3 mt30">
-            <div className="localities_card">
-              <div className="img">
-                <img
-                  src={locationImg}
-                  alt="location name"
-                  className="img-fluid"
-                />
-              </div>
-              <div className="localities_card_overlay">
-                <div className="overlay_text">
-                  <h3>Dwarka Expressway</h3>
-                  <p>100+ Properties</p>
+                  <h3>Noida</h3>
+                  <p>Coming Soon</p>
                 </div>
               </div>
               <div className="overlay2"></div>

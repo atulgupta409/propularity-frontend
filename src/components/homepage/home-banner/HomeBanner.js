@@ -4,6 +4,7 @@ import logo from "../../media/logo.png";
 import mobileImg from "../../media/home-mobile.png";
 import buildingImg from "../../media/sample-image.png";
 import { Tooltip as ReactTooltip } from "react-tooltip";
+import searchIcon from "../../media/search-icon.png";
 
 function HomeBanner() {
   return (
@@ -12,6 +13,17 @@ function HomeBanner() {
         <img src={logo} alt="propularity logo" />
         <h1>Where Property Comes To Life</h1>
       </div>
+      <form class="d-flex searchForm" role="search">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
+        <div className="search_img_box">
+          <img src={searchIcon} alt="search icon" width={16} height={16} />
+        </div>
+      </form>
       <div className="container my_container">
         <div className="mob_box">
           <img src={mobileImg} alt="mobile image" className="img-fluid" />

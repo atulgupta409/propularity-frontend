@@ -7,3 +7,14 @@ export const GET_MICROLOCATIONS = gql`
     }
   }
 `;
+
+export const GET_ALL_MICROLOCATIONS = gql`
+  {
+    allmicrolocations {
+      name
+      city {
+        name
+      }
+    }
+  }
+`;

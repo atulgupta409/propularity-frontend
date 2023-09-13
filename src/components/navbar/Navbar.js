@@ -1,27 +1,22 @@
-import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import RequestCallBtn from "../request-call-button/RequestCallBtn";
 import logo from "../media/logo.png";
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { GET_MICROLOCATIONS } from "../../service/MicrolocationService";
+import { GET_ALL_MICROLOCATIONS } from "../../service/MicrolocationService";
 
 function Navbar() {
   const location = useLocation();
-  const navigate = useNavigate();
   const cities = ["Gurugram", "Mumbai"];
-  const city = "Gurugram";
-  const { loading, error, data } = useQuery(GET_MICROLOCATIONS, {
-    variables: { city },
-  });
+  const { loading, error, data } = useQuery(GET_ALL_MICROLOCATIONS);
 
   const [microlocations, setMicrolocations] = useState([]);
   useEffect(() => {
     if (data) {
-      setMicrolocations(data.microlocations);
+      setMicrolocations(data.allmicrolocations);
     }
   }, [data]);
-  console.log(microlocations);
 
   const [builder, setBuilder] = useState(() => {
     const storedBuilder = localStorage.getItem("builder");
@@ -62,6 +57,12 @@ function Navbar() {
             <div className="collapse navbar-collapse" id="main_nav">
               <ul className="navbar-nav mx-auto custom_ul">
                 <li className="nav-item dropdown has-megamenu">
+                  <img
+                    src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1694599024516.png"
+                    alt="location icon"
+                    className="nav_icon"
+                  />
+
                   <p
                     className="nav-link dropdown-toggle"
                     data-bs-toggle="dropdown"
@@ -73,35 +74,37 @@ function Navbar() {
                       <div className="row megamenu-row">
                         {cities?.map((myCity, i) => {
                           return (
-                            <div className="col-6 mega_menu_items" key={i}>
+                            <div
+                              className="col-6 mega_menu_items mega_menu_location"
+                              key={i}
+                            >
                               <div className="row megamenu_locations">
                                 <div className="col-12">
                                   <p>{myCity}</p>
                                   <div className="row">
-                                    <div className="col-md-6 location_name">
-                                      Dwarka Expressway
-                                    </div>
-                                    <div className="col-md-6 location_name">
-                                      Udyog Vihar
-                                    </div>
-                                    <div className="col-md-6 location_name">
-                                      Golf Course Road
-                                    </div>
-                                    <div className="col-md-6 location_name">
-                                      Golf Course Ext. Road
-                                    </div>
-                                    <div className="col-md-6 location_name">
-                                      NH-8
-                                    </div>
-                                    <div className="col-md-6 location_name">
-                                      New Gurugram
-                                    </div>
-                                    <div className="col-md-6 location_name">
-                                      Sohna Gurugram
-                                    </div>
-                                    <div className="col-md-6 location_name">
-                                      DLF City
-                                    </div>
+                                    {microlocations
+                                      ?.filter((microlocation) => {
+                                        return (
+                                          microlocation.city.name === myCity
+                                        );
+                                      })
+                                      ?.map((filteredMicrolocation, i) => {
+                                        return (
+                                          <div
+                                            className="col-md-6 location_name"
+                                            key={i}
+                                          >
+                                            <Link
+                                              to={`/${myCity.toLowerCase()}/${filteredMicrolocation.name
+                                                .split(" ")
+                                                .join("-")
+                                                .toLowerCase()}`}
+                                            >
+                                              {filteredMicrolocation.name}
+                                            </Link>
+                                          </div>
+                                        );
+                                      })}
                                   </div>
                                   <Link
                                     to={`/${myCity.toLowerCase()}`}
@@ -120,70 +123,36 @@ function Navbar() {
                 </li>
                 <div className="vertical_line"></div>
                 <li className="nav-item dropdown has-megamenu">
+                  <img
+                    src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1694599042041.png"
+                    alt="location icon"
+                    className="nav_icon"
+                  />
                   <p
                     className="nav-link dropdown-toggle"
                     data-bs-toggle="dropdown"
                   >
                     Builder
                   </p>
-                  <div className="dropdown-menu megamenu" role="menu">
-                    <div className="container">
-                      <div className="row megamenu-row">
-                        <div className="col-md-4 mega_menu_items">
-                          <Link to="/m3m-india">M3M India</Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <div className="vertical_line"></div>
-                <li className="nav-item dropdown has-megamenu">
-                  <p
-                    className="nav-link dropdown-toggle"
-                    data-bs-toggle="dropdown"
+                  <div
+                    className="dropdown-menu megamenu megamenu_builder"
+                    role="menu"
                   >
-                    Budget
-                  </p>
-                  <div className="dropdown-menu megamenu" role="menu">
                     <div className="container">
-                      <div className="row megamenu-row">
-                        <div className="col-md-4 mega_menu_items">
-                          <Link>Gurugram</Link>
+                      <div className="row megamenu-row megamenu_locations">
+                        <div className="col-12">
+                          <p className="builder_dropdown">Top Builders</p>
+                          <hr />
+                          <div className="row">
+                            <div className="col-md-4 location_name">
+                              <Link to="/builder/m3m-india">M3M India</Link>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </li>
-                <div className="vertical_line"></div>
-                <li className="nav-item dropdown has-megamenu">
-                  <p
-                    className="nav-link dropdown-toggle"
-                    data-bs-toggle="dropdown"
-                  >
-                    Status
-                  </p>
-                  <div className="dropdown-menu megamenu" role="menu">
-                    <div className="container">
-                      <div className="row megamenu-row">
-                        <div className="col-md-4 mega_menu_items">
-                          <Link>Ready to move</Link>
-                        </div>
-                        <div className="col-md-4 mega_menu_items">
-                          <Link>Under Construction</Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                {/* <form className="d-flex search_form">
-                  <div className="search_box" type="submit">
-                    <img
-                      src={searchIcon}
-                      alt="search"
-                      onClick={globalSearchHandler}
-                    />
-                  </div>
-                </form> */}
               </ul>
               <ul className="navbar-nav">
                 <li className="nav-item dropdown mob_hide">

@@ -20,6 +20,10 @@ h1 {
   font-weight: 600;
   color: #222;
 }
+a {
+  color: #222;
+  text-decoration: none;
+}
 
 h3 {
   color: #222;

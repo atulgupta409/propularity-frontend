@@ -7,7 +7,7 @@ function TopProperties() {
     <div className="container mt100">
       <div className="row">
         <h2 className="heading">
-          Top Projects in <span className="primary_color">Gurugram</span>
+          Top Projects in <span className="primary_color">India</span>
         </h2>
         <p className="heading_text">
           Explore prime properties based on your preference

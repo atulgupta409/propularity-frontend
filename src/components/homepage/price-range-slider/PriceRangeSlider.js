@@ -4,7 +4,7 @@ import "./PriceRangeSlider.css";
 import { AiFillStar } from "react-icons/ai";
 import { BiSolidStarHalf } from "react-icons/bi";
 
-function PriceRangeSlider() {
+function PriceRangeSlider({ cityName }) {
   const [value, setValue] = useState("1000000");
   const priceValue = value / 100000;
   const handleChangePrice = (e) => {
@@ -33,7 +33,7 @@ function PriceRangeSlider() {
         <div className="col-12 col-md-6">
           <p className="price_range_p">
             <span>Budget Friendly</span>
-            <br /> Projects in Gurugram
+            <br /> Projects in {cityName}
           </p>
           <p className="price_range_value">
             ₹{" "}

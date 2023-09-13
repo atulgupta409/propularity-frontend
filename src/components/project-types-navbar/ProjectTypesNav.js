@@ -2,14 +2,16 @@ import React from "react";
 import buildingImg from "../media/building-icon.png";
 import "./ProjectTypesNav.css";
 import { Link } from "react-router-dom";
+import FilterModal from "./FilterModal";
 
-function ProjectTypesNav() {
+function ProjectTypesNav({ city }) {
+  const filteredValue = "apartments";
   return (
     <div className="project_type_main">
       <div className="container">
         <div className="filter_nav_main">
           <div className="filter_nav_item">
-            <Link to="/gurugram/apartment">
+            <Link to={`/${city}/filter/${filteredValue}`}>
               <img src={buildingImg} alt="filter type" />
               <p>Apartment</p>
             </Link>
@@ -47,8 +49,7 @@ function ProjectTypesNav() {
             <p>Office</p>
           </div>
           <div className="filter_nav_item">
-            <img src={buildingImg} alt="filter type" />
-            <p>Mall</p>
+            <FilterModal />
           </div>
         </div>
       </div>

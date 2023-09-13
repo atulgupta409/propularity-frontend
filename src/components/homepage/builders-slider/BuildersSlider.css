@@ -18,3 +18,34 @@
 .builder_slider_container {
     padding: 100px 0;
 }
+.builder_container .rec-arrow-left {
+    z-index: 99;
+    left: -41px;
+}
+.builder_container .rec-arrow-right {
+    right: -7px;
+}
+.builder_container {
+    padding: 100px 0;
+}
+.builder_card {
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.07) !important;
+    border: none;
+    border-radius: 20px;
+    width: 18rem;
+}
+.builder_img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 100%;
+    border-bottom: 1px solid rgba(34,34,34,0.20);
+}
+.builder_img img {
+    width: 130px;
+}
+.builder_card_text {
+    font-weight: 800;
+    color: #222;
+}

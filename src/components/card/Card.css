@@ -73,7 +73,7 @@
 /* homecard css */
 .property_homecard {
   border-radius: 20px;
-  width: 18rem;
+  width: 100%;
   margin-bottom: 30px;
 }
 .homecard_p {

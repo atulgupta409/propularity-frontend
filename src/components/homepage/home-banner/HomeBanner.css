@@ -1,7 +1,30 @@
 .home_banner_main {
     background: rgba(255, 245, 246, 0.50);
     padding-top: 42px;
-    margin-top: 171px;
+    margin-top: 87px;
+}
+.searchForm {
+    width: 566px;
+    margin: 30px auto 0;
+    position: relative;
+}
+.search_img_box {
+    position: absolute;
+    right: 22px;
+    width: 38px;
+    height: 38px;
+    background-color: #fff5f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 8px;
+}
+.searchForm input {
+    border-radius: 60px;
+    background: #FFF;
+    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.07);
+    padding: 14px 16px;
 }
 .brand_logo {
     text-align: center;
