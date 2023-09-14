@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { RxCross2 } from "react-icons/rx";
 import "./ContactFormModal.css";
 import ContactForm from "../form/ContactForm";
@@ -18,6 +18,3 @@ function ContactFormModal({ closeModal }) {
 }
 
 export default ContactFormModal;
-
-
-

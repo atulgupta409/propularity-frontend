@@ -18,7 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="builder/:builder" element={<Builder />} />
-        <Route path="/:builder/:city/:project" element={<Project />} />
+        <Route path="/:builder/:city/:slug" element={<Project />} />
         <Route
           path="/:city/filter/:filteredvalue"
           element={<FilteredItems />}

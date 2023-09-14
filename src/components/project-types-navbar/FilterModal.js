@@ -1,47 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from "react-modal";
+import FilterModalPopup from "./FilterModalPopup";
 
 function FilterModal() {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
   return (
-    <div>
-      <button
-        type="button"
-        className="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
+    <>
+      <button className="btn filter_button" onClick={openModal}>
+        <img
+          src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1694669032405.png"
+          alt="filter icon"
+          className="filter_icon"
+        />
         Filter
       </button>
-      <div class="modal" tabindex="-1" id="exampleModal">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Modal title</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div class="modal-body">
-              <p>Modal body text goes here.</p>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">
-                Save changes
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+        contentLabel="Example Modal"
+        ariaHideApp={false}
+      >
+        <FilterModalPopup closeModal={closeModal} />
+      </Modal>
+    </>
   );
 }
 

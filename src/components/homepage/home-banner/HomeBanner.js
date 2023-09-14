@@ -13,9 +13,9 @@ function HomeBanner() {
         <img src={logo} alt="propularity logo" />
         <h1>Where Property Comes To Life</h1>
       </div>
-      <form class="d-flex searchForm" role="search">
+      <form className="d-flex searchForm" role="search">
         <input
-          class="form-control me-2"
+          className="form-control me-2"
           type="search"
           placeholder="Search"
           aria-label="Search"
