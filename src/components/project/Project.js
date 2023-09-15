@@ -82,7 +82,7 @@ function Project() {
         <div className="container mt-5">
           <div className="row">
             <div className="col-6 m60">
-              <h1 className="builder_h1">{data?.projectDetails[0].name}</h1>
+              <h1 className="builder_h1">{data?.projectDetails[0]?.name}</h1>
               <img src={star} alt="star" className="star" />
               <p className="detail_p d-inline-block">
                 <span className="me-2">{data?.projectDetails[0]?.ratings}</span>{" "}

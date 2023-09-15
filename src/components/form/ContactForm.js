@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-
+import axios from "axios"
+import { baseUrl } from "../../environment/apiconfig";
+import { useNavigate } from "react-router-dom";
 function ContactForm() {
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [phoneError, setPhoneError] = useState("");
   const [user, setUser] = useState({ name: "", email: "", phone: "" });
   const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate()
   const inputChangeHandler = (e) => {
     let { name, value } = e.target;
     setUser({ ...user, [name]: value });
@@ -36,50 +38,45 @@ function ContactForm() {
     }
   };
 
-  //   const sendEmail = async (e) => {
-  //     e.preventDefault();
-  //     if (
-  //       user.name.trim() !== "" &&
-  //       emailPattern.test(user.email) &&
-  //       phonePattern.test(user.phone)
-  //     ) {
-  //       setUser({ name: "", email: "", phone: "" });
-  //       validationName();
-  //       validationEmail();
-  //       validationPhone();
-  //       setLoading(true);
-  //       try {
-  //         await axios.post(
-  //           `${baseUrl}/sendmail`,
-  //           {
-  //             name: user.name,
-  //             email: user.email,
-  //             phone: user.phone,
-  //             office_type: officeType,
-  //             no_of_seats: noSeats,
-  //             move_in: moveIn,
-  //             location: location,
-  //             city: cityName,
-  //             microlocation: microlocation,
-  //           },
-  //           {
-  //             headers: {
-  //               "Content-Type": "application/json",
-  //             },
-  //           }
-  //         );
-  //         setLoading(false);
-  //         handleSheet();
-  //         navigate("/thank-you");
-  //       } catch (error) {
-  //         console.error(error);
-  //       }
-  //     } else {
-  //       validationName();
-  //       validationEmail();
-  //       validationPhone();
-  //     }
-  //   };
+    const sendEmail = async (e) => {
+      e.preventDefault();
+      if (
+        user.name.trim() !== "" &&
+        emailPattern.test(user.email) &&
+        phonePattern.test(user.phone)
+      ) {
+        setUser({ name: "", email: "", phone: "" });
+        validationName();
+        validationEmail();
+        validationPhone();
+        setLoading(true);
+        try {
+          await axios.post(
+            `${baseUrl}/sendmail`,
+            {
+              name: user.name,
+              email: user.email,
+              phone: user.phone,
+            },
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          setLoading(false);
+          alert("thank you")
+          // handleSheet();
+          // navigate("/thank-you");
+        } catch (error) {
+          console.error(error);
+        }
+      } else {
+        validationName();
+        validationEmail();
+        validationPhone();
+      }
+    };
 
   //   const handleSheet = async () => {
   //     try {
@@ -112,7 +109,7 @@ function ContactForm() {
       <div className="form_heading">
         <h3 className="req_box">Yes, I'm Interested</h3>
       </div>
-      <form>
+      <form onSubmit={sendEmail}>
         <div className="row">
           <div className="col-md-12 mb-4">
             <input

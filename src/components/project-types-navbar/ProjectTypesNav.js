@@ -49,7 +49,7 @@ function ProjectTypesNav({ city }) {
             <p>Office</p>
           </div>
           <div className="filter_nav_item">
-            <FilterModal />
+            <FilterModal city = {city} />
           </div>
         </div>
       </div>
