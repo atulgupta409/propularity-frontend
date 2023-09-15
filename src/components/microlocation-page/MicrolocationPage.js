@@ -33,7 +33,7 @@ function MicrolocationPage() {
   console.log(projects);
 
   const options = [
-    { value: "Ready to Move", label: "Ready to Move" },
+    { value: "Ready To Move", label: "Ready To Move" },
     { value: "Under Construction", label: "Under Construction" },
     { value: "New Launch", label: "New Launch" },
   ];
