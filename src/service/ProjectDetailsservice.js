@@ -43,4 +43,13 @@ export const GET_PROJECT_DETAILS = gql`
   }
 `;
 
+export const GET_ALL_BUILDERS = gql`
+  {
+    builders {
+      _id
+      name
+    }
+  }
+`;
+
 // short_descrip
