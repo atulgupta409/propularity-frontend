@@ -33,9 +33,9 @@ function MicrolocationPage() {
   console.log(projects);
 
   const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
+    { value: "Ready To Move", label: "Ready To Move" },
+    { value: "Under Construction", label: "Under Construction" },
+    { value: "New Launch", label: "New Launch" },
   ];
 
   return (
