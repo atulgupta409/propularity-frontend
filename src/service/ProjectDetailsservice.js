@@ -24,6 +24,8 @@ export const GET_PROJECT_DETAILS = gql`
       master_plan
       short_descrip
       highlights
+      for_sale
+      for_rent
       amenties {
         name
         icon

@@ -24,7 +24,6 @@ function Project() {
     },
   });
 
-  // const { projectDetails } = data;
   console.log(data?.projectDetails);
 
   function removeHtmlTags(html) {
@@ -33,41 +32,46 @@ function Project() {
     return tempDiv.textContent || tempDiv.innerText || "";
   }
 
-  // State to store the plain text
   const [aboutText, setAboutText] = useState("");
 
   useEffect(() => {
     if (data?.projectDetails && data?.projectDetails?.length > 0) {
-      // Assuming projectDetails is an array; adjust as needed
       const description = data?.projectDetails[0]?.description;
       const plainText = removeHtmlTags(description);
       setAboutText(plainText);
     }
   }, [data]);
 
-  // const [shortAboutText, setShortAboutText] = useState(
-  //   aboutText.substring(0, 350)
-  // );
-
   const [mapSrc, setMapSrc] = useState("");
   const latitude = data?.projectDetails[0]?.location?.latitude;
   const longitude = data?.projectDetails[0]?.location?.longitude;
+  const encodedLatitude = encodeURIComponent(latitude);
+  const encodedLongitude = encodeURIComponent(longitude);
 
   useEffect(() => {
-    const dynamicMapSrc = `https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14039.739422316317!2d${longitude}!3d${latitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1692360225546!5m2!1sen!2sin`;
+    const dynamicMapSrc = `https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14039.739422316317!2d${longitude}!3d${latitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1692360225546!5m2!1sen!2sin&q=${encodedLongitude},${encodedLatitude}`;
     setMapSrc(dynamicMapSrc);
   }, [latitude, longitude]);
 
   const amenities = data?.projectDetails[0]?.amenties;
-
+  const [readMoretext, setReadMoreText] = useState(false);
   const readMore = () => {
-    // setShortAboutText(aboutText);
+    setReadMoreText(!readMoretext);
   };
+  console.log(readMoretext);
   const readLess = () => {
     // setShortAboutText(aboutText.substring(0, 350));
   };
+  const [floorPlan, setFloorPlan] = useState("");
+
+  useEffect(() => {
+    setFloorPlan(data?.projectDetails[0]?.plans[0]?.category[0]?.name);
+  }, [data]);
+
   const floorPlanChange = (e) => {
-    console.log(e.target.innerText);
+    const innerValue = e.target.innerText;
+    const planType = innerValue.match(/\d+\sBHK/);
+    setFloorPlan(planType[0]);
   };
 
   return (
@@ -81,7 +85,7 @@ function Project() {
               <h1 className="builder_h1">{data?.projectDetails[0].name}</h1>
               <img src={star} alt="star" className="star" />
               <p className="detail_p d-inline-block">
-                <span className="me-2">4.0</span>{" "}
+                <span className="me-2">{data?.projectDetails[0]?.ratings}</span>{" "}
                 {data?.projectDetails[0]?.location?.address}
               </p>
             </div>
@@ -196,58 +200,29 @@ function Project() {
                   {data?.projectDetails[0]?.name} Configuration
                 </h3>
                 <div className="project_configuration mt30">
-                  <div className="configuration_box mb30">
-                    <div className="config_size">
-                      <h6>3BHK Apartment</h6>
-                      <p>2042 sq.ft - 2408 sq.ft</p>
-                    </div>
-                    <div className="config_price">
-                      <div>
-                        <p>Price</p>
-                        <p>₹ 1.78 Cr Onwards</p>
+                  {data?.projectDetails[0]?.plans?.map((plan, i) => {
+                    return (
+                      <div className="configuration_box mb30" key={i}>
+                        <div className="config_size">
+                          <h6>{plan.category[0].name} Apartment</h6>
+                          <p>{plan.size + plan.size_sq}</p>
+                        </div>
+                        <div className="config_price">
+                          <div>
+                            <p>Price</p>
+                            <p>
+                              {plan.price === "coming soon" ||
+                              "Coming soon" ||
+                              "Coming Soon"
+                                ? "Coming Soon"
+                                : "₹" + " " + plan.price + " Onwards"}
+                            </p>
+                          </div>
+                          <img src={buildingIcon} alt="building" />
+                        </div>
                       </div>
-                      <img src={buildingIcon} alt="building" />
-                    </div>
-                  </div>
-                  <div className="configuration_box mb30">
-                    <div className="config_size">
-                      <h6>4BHK Apartment</h6>
-                      <p>2402 sq.ft - 2808 sq.ft</p>
-                    </div>
-                    <div className="config_price">
-                      <div>
-                        <p>Price</p>
-                        <p>₹ 1.78 Cr Onwards</p>
-                      </div>
-                      <img src={buildingIcon} alt="building" />
-                    </div>
-                  </div>
-                  <div className="configuration_box mb30">
-                    <div className="config_size">
-                      <h6>5BHK Apartment</h6>
-                      <p>3042 sq.ft - 3408 sq.ft</p>
-                    </div>
-                    <div className="config_price">
-                      <div>
-                        <p>Price</p>
-                        <p>₹ 1.78 Cr Onwards</p>
-                      </div>
-                      <img src={buildingIcon} alt="building" />
-                    </div>
-                  </div>
-                  <div className="configuration_box mb30">
-                    <div className="config_size">
-                      <h6>5BHK Apartment</h6>
-                      <p>4042 sq.ft - 4408 sq.ft</p>
-                    </div>
-                    <div className="config_price">
-                      <div>
-                        <p>Price</p>
-                        <p>₹ 1.78 Cr Onwards</p>
-                      </div>
-                      <img src={buildingIcon} alt="building" />
-                    </div>
-                  </div>
+                    );
+                  })}
                 </div>
               </div>
               <hr className="divider_line" />
@@ -255,107 +230,69 @@ function Project() {
                 <h3 className="mt30">
                   {data?.projectDetails[0]?.name} Floor Plans
                 </h3>
-                <button
-                  className="floor_plan_btn mt20"
-                  onClick={floorPlanChange}
-                >
-                  3 BHK Floor Plans
-                </button>
-                <button
-                  className="floor_plan_btn mt20"
-                  onClick={floorPlanChange}
-                >
-                  4 BHK Floor Plans
-                </button>
+                {data?.projectDetails[0]?.plans?.map((plan, i) => {
+                  return (
+                    <>
+                      <button
+                        className="floor_plan_btn mt20"
+                        onClick={floorPlanChange}
+                        key={i}
+                      >
+                        {plan.category[0].name} Floor Plans
+                      </button>
+                    </>
+                  );
+                })}
                 <div className="floor_configuration mt30">
-                  <div className="floor_plan_card">
-                    <div className="floor_img">
-                      <img
-                        src={floorImg}
-                        alt="floor plan"
-                        className="img-fluid"
-                      />
-                    </div>
-                    <div className="card_body">
-                      <h5 className="card_title">3 BHK Apartment 1224 Sq.ft</h5>
-                      <div className="row d-flex justify-content-between">
-                        <div className="col-6">
-                          <p>Rent Price</p>
-                          <p>₹ 15,000/month</p>
+                  {data?.projectDetails[0]?.plans
+                    ?.filter((plan) => plan.category[0].name === floorPlan)
+                    .map((myPlan, j) => (
+                      <div className="floor_plan_card" key={j}>
+                        <div className="floor_img">
+                          <img
+                            src={myPlan.image.length > 0 ? myPlan.image[0] : ""}
+                            alt={`${data?.projectDetails[0]?.name} floor plan`}
+                            className="img-fluid"
+                          />
                         </div>
-                        <div className="col-4">
-                          <p>Sale Price</p>
-                          <p>₹ 1.85 Cr</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="floor_plan_card">
-                    <div className="floor_img">
-                      <img
-                        src={floorImg}
-                        alt="floor plan"
-                        className="img-fluid"
-                      />
-                    </div>
-                    <div className="card_body">
-                      <h5 className="card_title">3 BHK Apartment 1224 Sq.ft</h5>
-                      <div className="row d-flex justify-content-between">
-                        <div className="col-6">
-                          <p>Rent Price</p>
-                          <p>₹ 15,000/month</p>
-                        </div>
-                        <div className="col-4">
-                          <p>Sale Price</p>
-                          <p>₹ 1.85 Cr</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="floor_plan_card">
-                    <div className="floor_img">
-                      <img
-                        src={floorImg}
-                        alt="floor plan"
-                        className="img-fluid"
-                      />
-                    </div>
-                    <div className="card_body">
-                      <h5 className="card_title">3 BHK Apartment 1224 Sq.ft</h5>
-                      <div className="row d-flex justify-content-between">
-                        <div className="col-6">
-                          <p>Rent Price</p>
-                          <p>₹ 15,000/month</p>
-                        </div>
-                        <div className="col-4">
-                          <p>Sale Price</p>
-                          <p>₹ 1.85 Cr</p>
+                        <div className="card_body">
+                          <h5 className="card_title">
+                            {myPlan.category[0]?.name +
+                              " Apartment" +
+                              " " +
+                              myPlan.size +
+                              " " +
+                              myPlan.size_sq}
+                          </h5>
+                          <div className="row d-flex justify-content-between">
+                            {data?.projectDetails[0]?.for_sale && (
+                              <div className="col-6">
+                                <p>Sale Price</p>
+                                <p>
+                                  {myPlan.price === "coming soon" ||
+                                  "Coming soon" ||
+                                  "Coming Soon"
+                                    ? "Coming Soon"
+                                    : "₹ " + myPlan.price}
+                                </p>
+                              </div>
+                            )}
+                            {data?.projectDetails[0]?.for_rent && (
+                              <div className="col-6">
+                                <p>Rent Price</p>
+                                <p>
+                                  {myPlan.price === "coming soon" ||
+                                  "Coming soon" ||
+                                  "Coming Soon"
+                                    ? "Coming Soon"
+                                    : "₹ " + myPlan.price}
+                                </p>
+                              </div>
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                  <div className="floor_plan_card">
-                    <div className="floor_img">
-                      <img
-                        src={floorImg}
-                        alt="floor plan"
-                        className="img-fluid"
-                      />
-                    </div>
-                    <div className="card_body">
-                      <h5 className="card_title">3 BHK Apartment 1224 Sq.ft</h5>
-                      <div className="row d-flex justify-content-between">
-                        <div className="col-6">
-                          <p>Rent Price</p>
-                          <p>₹ 15,000/month</p>
-                        </div>
-                        <div className="col-4">
-                          <p>Sale Price</p>
-                          <p>₹ 1.85 Cr</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                    ))}
                 </div>
               </div>
               <hr className="divider_line" />
@@ -363,25 +300,33 @@ function Project() {
                 <h3 className="mt30">
                   {data?.projectDetails[0]?.name} Highlights
                 </h3>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: data?.projectDetails[0]?.highlights,
-                  }}
-                ></div>
+                {data?.projectDetails[0]?.highlights !== "<p></p>\n" ? (
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: data?.projectDetails[0]?.highlights,
+                    }}
+                  ></div>
+                ) : (
+                  <p className="no_data_p">No Highlights Available</p>
+                )}
               </div>
               <hr className="divider_line" />
               <div className="row">
                 <h3 className="mt30">
                   {data?.projectDetails[0]?.name} Amenities
                 </h3>
-                {amenities?.map((amenity, i) => {
-                  return (
-                    <div className="col-6 col-md-4 facility mt20" key={i}>
-                      <img src={amenity?.icon} alt="amenity icon" />
-                      <p>{amenity?.name}</p>
-                    </div>
-                  );
-                })}
+                {amenities.length > 0 ? (
+                  amenities?.map((amenity, i) => {
+                    return (
+                      <div className="col-6 col-md-4 facility mt20" key={i}>
+                        <img src={amenity?.icon} alt="amenity icon" />
+                        <p>{amenity?.name}</p>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <p className="no_data_p">No Amenities Available</p>
+                )}
               </div>
               <hr className="divider_line" />
               <div className="row map">
@@ -403,31 +348,28 @@ function Project() {
                 <h3 className="mt30">
                   {data?.projectDetails[0]?.name} Master Plan
                 </h3>
-                <div className="master_plan mt20">
-                  <img
-                    src={data?.projectDetails[0]?.master_plan}
-                    alt={data?.projectDetails[0]?.name + " " + "master plan"}
-                    className="img-fluid"
-                  />
-                </div>
+                {data?.projectDetails[0]?.master_plan ? (
+                  <div className="master_plan mt20">
+                    <img
+                      src={data?.projectDetails[0]?.master_plan}
+                      alt={data?.projectDetails[0]?.name + " " + "master plan"}
+                      className="img-fluid"
+                    />
+                  </div>
+                ) : (
+                  <p className="no_data_p">No Master Plan Available</p>
+                )}
               </div>
               <hr className="divider_line" />
               <div className="row">
                 <h3 className="mt30">About {data?.projectDetails[0]?.name}</h3>
                 <p className="about_builder mt20">{aboutText}</p>
-                <div>
-                  {aboutText?.length < 351 ? (
-                    <button className="read_btn" onClick={readMore}>
-                      Read more{" "}
-                      <MdKeyboardArrowRight className="read_more_icon" />
-                    </button>
-                  ) : (
-                    <button className="read_btn" onClick={readLess}>
-                      Read less{" "}
-                      <MdKeyboardArrowRight className="read_more_icon" />
-                    </button>
-                  )}
-                </div>
+                {/* <div>
+                  <button className="read_btn" onClick={readMore}>
+                    Read more{" "}
+                    <MdKeyboardArrowRight className="read_more_icon" />
+                  </button>
+                </div> */}
               </div>
             </div>
             <div className="col-lg-4 mob_hide p-0">

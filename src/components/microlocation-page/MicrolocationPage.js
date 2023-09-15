@@ -81,7 +81,10 @@ function MicrolocationPage() {
           return (
             <div className="col-md-3" key={i}>
               <HomeCard
-                builder={"dummy"}
+                builder={element?.builder[0].name
+                  .split(" ")
+                  .join("-")
+                  .toLowerCase()}
                 city={city}
                 projectName={element?.name}
                 startingPrice={element?.starting_price}

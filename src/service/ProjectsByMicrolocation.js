@@ -17,6 +17,9 @@ export const GET_PROJECTS_BY_MICROLOCATIONS = gql`
         project_status
         starting_price
         slug
+        builder {
+          name
+        }
       }
     }
   }

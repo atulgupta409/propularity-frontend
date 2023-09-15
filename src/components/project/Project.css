@@ -157,3 +157,8 @@
 .calci_box {
     margin: 100px 0;
 }
+.no_data_p {
+    margin-top: 30px;
+    color: rgba(34,34,34,0.5);
+    font-size: 16px;
+}
