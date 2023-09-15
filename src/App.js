@@ -9,6 +9,7 @@ import Footer from "./components/footer/Footer";
 import City from "./components/city/City";
 import MicrolocationPage from "./components/microlocation-page/MicrolocationPage";
 import ScrollToTop from "./components/scrollTop/ScrollToTop";
+import ProjectImageGallery from "./components/project/ProjectImageGallery";
 
 function App() {
   return (
@@ -25,6 +26,10 @@ function App() {
         />
         <Route path="/:city/:microlocation" element={<MicrolocationPage />} />
         <Route path="/:city" element={<City />} />
+        <Route
+          path="/:builder/:city/:slug/image-gallery"
+          element={<ProjectImageGallery />}
+        />
       </Routes>
       <Footer />
     </>

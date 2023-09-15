@@ -14,7 +14,8 @@ import MyCarousel from "../carousel/MyCarousel";
 import EmiCalculator from "../emi-calculator/EmiCalculator";
 import { GET_PROJECT_DETAILS } from "../../service/ProjectDetailsservice";
 import { useQuery } from "@apollo/client";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import ImageModal from "./ImageModal";
 
 function Project() {
   const { slug } = useParams();
@@ -72,6 +73,16 @@ function Project() {
     const innerValue = e.target.innerText;
     const planType = innerValue.match(/\d+\sBHK/);
     setFloorPlan(planType[0]);
+  };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -136,14 +147,18 @@ function Project() {
                     }
                     alt={data?.projectDetails[0]?.images[2]?.alt}
                   />
-                  <div className="view_all_img">
-                    <p>
-                      <span>
-                        <IoMdPhotos />
-                      </span>{" "}
-                      Show All Photos
-                    </p>
-                  </div>
+                  <Link
+                    to={`/${data?.projectDetails[0]?.builder[0]?.name.toLowerCase()}/${data?.projectDetails[0]?.location?.city[0]?.name.toLowerCase()}/${slug}/image-gallery`}
+                  >
+                    <div className="view_all_img">
+                      <p>
+                        <span>
+                          <IoMdPhotos />
+                        </span>{" "}
+                        Show All Photos
+                      </p>
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -251,12 +266,18 @@ function Project() {
                         <div className="floor_img">
                           <img
                             src={myPlan.image.length > 0 ? myPlan.image[0] : ""}
-                            data-mdb-img={
-                              myPlan.image.length > 0 ? myPlan.image[0] : ""
-                            }
                             alt={`${data?.projectDetails[0]?.name} floor plan`}
-                            className="img-fluid"
+                            className="img-fluid clickable-image"
+                            onClick={openModal}
                           />
+                          {isModalOpen && (
+                            <ImageModal
+                              imageUrl={
+                                myPlan.image.length > 0 ? myPlan.image[0] : ""
+                              }
+                              onClose={closeModal}
+                            />
+                          )}
                         </div>
                         <div className="card_body">
                           <h5 className="card_title">
