@@ -247,10 +247,13 @@ function Project() {
                   {data?.projectDetails[0]?.plans
                     ?.filter((plan) => plan.category[0].name === floorPlan)
                     .map((myPlan, j) => (
-                      <div className="floor_plan_card" key={j}>
+                      <div className="floor_plan_card lightbox" key={j}>
                         <div className="floor_img">
                           <img
                             src={myPlan.image.length > 0 ? myPlan.image[0] : ""}
+                            data-mdb-img={
+                              myPlan.image.length > 0 ? myPlan.image[0] : ""
+                            }
                             alt={`${data?.projectDetails[0]?.name} floor plan`}
                             className="img-fluid"
                           />
@@ -315,7 +318,7 @@ function Project() {
                 <h3 className="mt30">
                   {data?.projectDetails[0]?.name} Amenities
                 </h3>
-                {amenities.length > 0 ? (
+                {amenities?.length > 0 ? (
                   amenities?.map((amenity, i) => {
                     return (
                       <div className="col-6 col-md-4 facility mt20" key={i}>
@@ -352,6 +355,7 @@ function Project() {
                   <div className="master_plan mt20">
                     <img
                       src={data?.projectDetails[0]?.master_plan}
+                      data-mdb-img={data?.projectDetails[0]?.master_plan}
                       alt={data?.projectDetails[0]?.name + " " + "master plan"}
                       className="img-fluid"
                     />

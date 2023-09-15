@@ -1,7 +1,6 @@
 .project_configuration {
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-between;
     align-items: center;
     overflow-x: scroll;
 }
