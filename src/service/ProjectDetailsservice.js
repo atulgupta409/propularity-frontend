@@ -4,11 +4,17 @@ export const GET_PROJECT_DETAILS = gql`
   query projectsDetails($slug: String) {
     projectDetails(slug: $slug) {
       name
+      builder {
+        name
+      }
       starting_price
       location {
         address
         latitude
         longitude
+        city {
+          name
+        }
       }
       images {
         name
