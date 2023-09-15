@@ -1,2 +1,2 @@
 // export const baseUrl = "http://localhost:8000";
-export const baseUrl = "http://api.propularity.in";
+export const baseUrl = "https://api.propularity.in";
