@@ -4,6 +4,8 @@ import Select from "react-select";
 import { useQuery } from "@apollo/client";
 import {GET_MICROLOCATIONS} from "../../service/MicrolocationService"
 import { GET_ALL_BUILDERS } from "../../service/ProjectDetailsservice";
+
+
 function FilterModalPopup({ closeModal, city }) {
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [selectedStatus, setSelectedStatus] = useState(null);
@@ -13,7 +15,11 @@ function FilterModalPopup({ closeModal, city }) {
       city: city,
     },
   });
-  const { loading: isLoading, error: isError, data: builderData } = useQuery(GET_ALL_BUILDERS);
+  const {
+    loading: isLoading,
+    error: isError,
+    data: builderData,
+  } = useQuery(GET_ALL_BUILDERS);
   const options = [
     { value: "Ready To Move", label: "Ready To Move" },
     { value: "Under Construction", label: "Under Construction" },
@@ -49,7 +55,7 @@ function FilterModalPopup({ closeModal, city }) {
   const handleChangePrice = (e) => {
     setValue(e.target.value);
   };
-console.log(selectedStatus, selectedBuilder, selectedLocation)
+  console.log(selectedStatus, selectedBuilder, selectedLocation);
   return (
     <div className="modal_filter_main">
       <div className="cross_icon">

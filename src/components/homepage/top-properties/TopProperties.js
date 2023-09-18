@@ -3,6 +3,15 @@ import "./TopProperties.css";
 import HomeCard from "../../card/HomeCard";
 
 function TopProperties() {
+
+  const noImage = [
+    {
+      image:
+        "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1694841091626.jpg",
+      alt: "No image",
+    },
+  ];
+
   return (
     <div className="container mt100">
       <div className="row">
@@ -13,28 +22,28 @@ function TopProperties() {
           Explore prime properties based on your preference
         </p>
         <div className="col-12 col-sm-6 col-md-3 mt30">
-          <HomeCard />
+          <HomeCard images={noImage} />
         </div>
         <div className="col-12 col-sm-6 col-md-3 mt30">
-          <HomeCard />
+          <HomeCard images={noImage} />
         </div>
         <div className="col-12 col-sm-6 col-md-3 mt30">
-          <HomeCard />
+          <HomeCard images={noImage} />
         </div>
         <div className="col-12 col-sm-6 col-md-3 mt30">
-          <HomeCard />
+          <HomeCard images={noImage} />
         </div>
         <div className="col-12 col-sm-6 col-md-3 mt30">
-          <HomeCard />
+          <HomeCard images={noImage} />
         </div>
         <div className="col-12 col-sm-6 col-md-3 mt30">
-          <HomeCard />
+          <HomeCard images={noImage} />
         </div>
         <div className="col-12 col-sm-6 col-md-3 mt30">
-          <HomeCard />
+          <HomeCard images={noImage} />
         </div>
         <div className="col-12 col-sm-6 col-md-3 mt30">
-          <HomeCard />
+          <HomeCard images={noImage} />
         </div>
       </div>
     </div>

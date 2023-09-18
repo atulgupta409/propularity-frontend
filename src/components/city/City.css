@@ -1,19 +1,24 @@
 .city_banner_main {
-    margin-top: 170px;
-    padding-top: 52px;
-    background-color: #fff;
-    background: url("../media/citypage-banner.png");
-    background-position: bottom;
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 77vh;
+  margin-top: 170px;
+  padding-top: 52px;
+  background-color: #fff;
+  background: url("../media/citypage-banner.png");
+  background-position: bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 77vh;
 }
 .cityPage_heading {
-    text-align: center;
+  text-align: center;
 }
 .cityPage_heading span {
-    color: #ff385c;
-    text-transform: capitalize;
-    font-size: 40px;
-    line-height: 58px;
+  color: #ff385c;
+  text-transform: capitalize;
+  font-size: 40px;
+  line-height: 58px;
+}
+.no_space_text {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(34, 34, 34, 0.5);
 }

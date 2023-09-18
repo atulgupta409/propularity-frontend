@@ -54,8 +54,8 @@ export const GET_ALL_BUILDERS = gql`
     builders {
       _id
       name
+      BuilderLogo
+      slug
     }
   }
 `;
-
-// short_descrip

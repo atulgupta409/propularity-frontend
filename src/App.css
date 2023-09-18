@@ -20,6 +20,14 @@ h1 {
   font-weight: 600;
   color: #222;
 }
+.error_validate {
+  font-size: 13px;
+  font-weight: 500;
+  color: #ff385c;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 a {
   color: #222;
   text-decoration: none;

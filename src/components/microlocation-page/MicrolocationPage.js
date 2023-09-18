@@ -30,13 +30,13 @@ function MicrolocationPage() {
     }
   }, [data]);
 
-  console.log(projects);
-
   const options = [
     { value: "chocolate", label: "Chocolate" },
     { value: "strawberry", label: "Strawberry" },
     { value: "vanilla", label: "Vanilla" },
   ];
+
+  
 
   return (
     <div className="container mt100 microlocation_container">
@@ -90,6 +90,7 @@ function MicrolocationPage() {
                 startingPrice={element?.starting_price}
                 microlocationName={microlocationName}
                 slug={element?.slug}
+                images={element?.images}
               />
             </div>
           );

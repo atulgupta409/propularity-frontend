@@ -7,10 +7,15 @@
     width: 162px;
 }
 .builder_logo_box {
-    width: 162px;
+    min-width: 129px;
 }
 .builder_logo_box:not(:last-child) {
     margin-right: 62px;
+}
+.builder_logo_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .builders_row::-webkit-scrollbar {
     display: none;

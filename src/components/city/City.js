@@ -3,17 +3,37 @@ import ProjectTypesNav from "../project-types-navbar/ProjectTypesNav";
 import "./City.css";
 import { useParams } from "react-router-dom";
 import searchIcon from "../media/search-icon.png";
-import TopProjectCity from "../homepage/top-projects-city/TopProjectCity";
 import HomeCard from "../card/HomeCard";
 import TopLocalities from "./TopLocalities";
 import PriceRangeSlider from "../homepage/price-range-slider/PriceRangeSlider";
 import FeaturedCollection from "../homepage/featured-collection/FeaturedCollection";
 import BuildersSlider from "./BuilderSlider";
-import { useLocation } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { GET_PROJECTS_BY_CITY } from "../../service/ProjectsByCityService";
+import { GET_ALL_BUILDERS } from "../../service/ProjectDetailsservice";
 
 function City() {
   const { city } = useParams();
   const cityName = city.charAt(0).toUpperCase() + city.slice(1);
+
+  const { loading, error, data } = useQuery(GET_PROJECTS_BY_CITY, {
+    variables: { city: city },
+  });
+
+  const {
+    loading: builderLoading,
+    error: builderError,
+    data: builderData,
+  } = useQuery(GET_ALL_BUILDERS);
+
+  // console.log(builderData);
+
+  const [projects, setProjects] = useState([]);
+  useEffect(() => {
+    if (data) {
+      setProjects(data.projectsByCity);
+    }
+  }, [data]);
 
   return (
     <>
@@ -44,36 +64,30 @@ function City() {
           <p className="heading_text">
             Find Your Home In The City Of Your Choice
           </p>
-          <div className="col-md-3 mt30">
-            <HomeCard />
-          </div>
-          <div className="col-md-3 mt30">
-            <HomeCard />
-          </div>
-          <div className="col-md-3 mt30">
-            <HomeCard />
-          </div>
-          <div className="col-md-3 mt30">
-            <HomeCard />
-          </div>
-          <div className="col-md-3 mt30">
-            <HomeCard />
-          </div>
-          <div className="col-md-3 mt30">
-            <HomeCard />
-          </div>
-          <div className="col-md-3 mt30">
-            <HomeCard />
-          </div>
-          <div className="col-md-3 mt30">
-            <HomeCard />
-          </div>
+          {projects?.map((element, i) => {
+            return (
+              <div className="col-md-3 mt30" key={i}>
+                <HomeCard
+                  builder={element?.builder[0].name
+                    .split(" ")
+                    .join("-")
+                    .toLowerCase()}
+                  city={cityName}
+                  projectName={element?.name}
+                  startingPrice={element?.starting_price}
+                  microlocationName={element?.location?.micro_location[0]?.name}
+                  slug={element?.slug}
+                  images={element?.images}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
       <TopLocalities cityName={cityName} myCity={city} />
       <PriceRangeSlider cityName={cityName} />
       <FeaturedCollection />
-      <BuildersSlider />
+      <BuildersSlider builders={builderData?.builders} />
     </>
   );
 }
