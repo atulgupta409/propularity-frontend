@@ -329,6 +329,7 @@ function Project() {
                     dangerouslySetInnerHTML={{
                       __html: data?.projectDetails[0]?.highlights,
                     }}
+                    className="project_highlights"
                   ></div>
                 ) : (
                   <p className="no_data_p">No Highlights Available</p>

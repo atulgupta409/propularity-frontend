@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Builder.css";
 import star from "../media/star-rating.png";
 import sampleImage from "../media/sample-image.png";
@@ -8,8 +8,27 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import contactImage from "../media/sumit-sir-contact-main.png";
 import MyCarousel from "../carousel/MyCarousel";
 import { IoMdPhotos } from "react-icons/io";
+import { useQuery } from "@apollo/client";
+import { GET_ALL_BUILDERS_DATA } from "../../service/BuildersService";
+import { useParams, Link } from "react-router-dom";
 
 function Builder() {
+  const { builder } = useParams();
+  const slug = builder;
+
+  const { loading, error, data } = useQuery(GET_ALL_BUILDERS_DATA, {
+    variables: { slug: slug },
+  });
+
+  const [builderData, setBuilderData] = useState([]);
+  useEffect(() => {
+    if (data) {
+      setBuilderData(data?.buildersBySlug);
+    }
+  }, [data]);
+
+  console.log(builderData);
+
   const aboutText =
     "Emaar Capital Tower is a place for all who want to develop their Brand Equity and Fame in the world of Business and Retail Space with Top-Notch Office Space, Ground Floor Retail Shops, and other Entertaining spaces. It is prepared by Award-winning Architects. The Entrance of the Emaar MGF Capital Tower 1 is Spectacular and there are a lot more exciting features also. For More Details, You can call us at 99991-8999 and Get your Commercial Property in Emaar Capital Tower 1. Emaar MGF Capital Tower 1 at Downtown Sector-26 Gurgaon over G-12, is available with adjustable";
   const [shortAboutText, setShortAboutText] = useState(
@@ -25,40 +44,57 @@ function Builder() {
     <div className="container mt-5">
       <div className="row">
         <div className="col-6 m60">
-          <h1 className="builder_h1">M3M India</h1>
+          <h1 className="builder_h1">{builderData[0]?.name}</h1>
           <img src={star} alt="star" className="star" />
-          <p className="detail_p d-inline-block">4.0 Estd: 2011</p>
+          <p className="detail_p d-inline-block">
+            {builderData[0]?.ratings} Estd: {builderData[0]?.estb_year}
+          </p>
         </div>
         <div className="col-6 m60 p-0 d-flex flex-column align-items-end">
           <p className="detail_p">Starting Price</p>
           <h1>
-            <span style={{ color: "#ff385c" }}>₹ 1.23 Cr</span> Onwards
+            <span style={{ color: "#ff385c" }}>
+              ₹ {builderData[0]?.starting_price}
+            </span>{" "}
+            Onwards
           </h1>
         </div>
       </div>
       <div className="row mt30">
         <div className="col-6">
           <div className="main_img">
-            <img src={sampleImage} className="img-fluid" alt="sample image" />
+            <img
+              src={builderData[0]?.images[0]?.image}
+              className="img-fluid"
+              alt={builderData[0]?.images[0]?.alt}
+            />
           </div>
         </div>
         <div className="col-3">
           <div className="col-12">
             <div className="small_img">
-              <img src={sampleImage} alt="sample image" />
+              <img
+                src={builderData[0]?.images[1]?.image}
+                alt={builderData[0]?.images[1]?.alt}
+              />
             </div>
           </div>
           <div className="col-12 mt20">
             <div className="small_img small_img_position">
-              <img src={sampleImage} alt="sample image" />
-              <div className="view_all_img">
-                <p>
-                  <span>
-                    <IoMdPhotos />
-                  </span>{" "}
-                  Show All Photos
-                </p>
-              </div>
+              <img
+                src={builderData[0]?.images[2]?.image}
+                alt={builderData[0]?.images[2]?.alt}
+              />
+              <Link to={`/builder/${builderData[0]?.slug}/image-gallery`}>
+                <div className="view_all_img">
+                  <p>
+                    <span>
+                      <IoMdPhotos />
+                    </span>{" "}
+                    Show All Photos
+                  </p>
+                </div>
+              </Link>
             </div>
           </div>
         </div>
@@ -68,14 +104,14 @@ function Builder() {
               <img src={icon} alt="icon" className="detail_icon" />
               <div className="ms-2">
                 <h4 className="detail_h4">Cities</h4>
-                <p className="detail_p">12+</p>
+                <p className="detail_p">{builderData[0]?.cities?.length}+</p>
               </div>
             </div>
             <div className="d-flex mt-3">
               <img src={icon} alt="icon" className="detail_icon" />
               <div className="ms-2">
                 <h4 className="detail_h4">Configuration</h4>
-                <p className="detail_p">Apartment, Villa, Offices, Shops</p>
+                <p className="detail_p">{builderData[0]?.configuration}</p>
               </div>
             </div>
           </div>
@@ -84,14 +120,14 @@ function Builder() {
               <img src={icon} alt="icon" className="detail_icon" />
               <div className="ms-2">
                 <h4 className="detail_h4">Residential Projects</h4>
-                <p className="detail_p">12</p>
+                <p className="detail_p">{builderData[0]?.residential_num}+</p>
               </div>
             </div>
             <div className="d-flex mt-3">
               <img src={icon} alt="icon" className="detail_icon" />
               <div className="ms-2">
                 <h4 className="detail_h4">Commercial Projects</h4>
-                <p className="detail_p">10</p>
+                <p className="detail_p">{builderData[0]?.commercial_num}+</p>
               </div>
             </div>
           </div>
@@ -99,7 +135,7 @@ function Builder() {
       </div>
       <div className="row m60">
         <div className="col-8 main_section_detail">
-          <h3>About M3M India</h3>
+          <h3>About {builderData[0]?.name}</h3>
           <p className="about_builder">{shortAboutText}</p>
           {shortAboutText?.length < 351 ? (
             <button className="read_btn" onClick={readMore}>

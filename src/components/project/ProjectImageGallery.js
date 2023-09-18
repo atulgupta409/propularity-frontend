@@ -3,6 +3,7 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { GET_PROJECT_DETAILS } from "../../service/ImageGalleryService";
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
+import { GrNext } from "react-icons/gr";
 
 function ProjectImageGallery() {
   const { slug } = useParams();
@@ -62,17 +63,27 @@ function ProjectImageGallery() {
           >
             X
           </button>
-          <button onClick={() => imgAction("prev-img")}>Prev</button>
+          <button
+            onClick={() => imgAction("prev-img")}
+            className="gallery_arrow_btn"
+          >
+            Prev
+          </button>
           <img
             src={imgData?.img}
             alt="largeImage"
             style={{ width: "auto", maxWidth: "90%", maxHeight: "90%" }}
           />
-          <button onClick={() => imgAction("next-img")}>Next</button>
+          <button
+            onClick={() => imgAction("next-img")}
+            className="gallery_arrow_btn next_btn"
+          >
+            <GrNext />
+          </button>
         </div>
       )}
 
-      <div className="container mt100">
+      <div className="container mt100 img_gallery_container">
         <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 2 }}>
           <Masonry gutter="10px">
             {data?.projectDetails[0]?.images?.map((image, i) => {

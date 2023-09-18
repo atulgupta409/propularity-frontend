@@ -19,7 +19,7 @@ function TopLocalities() {
               <div className="localities_card">
                 <div className="img">
                   <img
-                    src={locationImg}
+                    src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695022560060.png"
                     alt="location name"
                     className="img-fluid"
                   />
@@ -39,7 +39,7 @@ function TopLocalities() {
               <div className="localities_card">
                 <div className="img">
                   <img
-                    src={locationImg}
+                    src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695022586245.png"
                     alt="location name"
                     className="img-fluid"
                   />
@@ -58,7 +58,7 @@ function TopLocalities() {
             <div className="localities_card">
               <div className="img">
                 <img
-                  src={locationImg}
+                  src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695022538381.png"
                   alt="location name"
                   className="img-fluid"
                 />
@@ -76,7 +76,7 @@ function TopLocalities() {
             <div className="localities_card">
               <div className="img">
                 <img
-                  src={locationImg}
+                  src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695022628666.png"
                   alt="location name"
                   className="img-fluid"
                 />

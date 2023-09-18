@@ -5,11 +5,17 @@ import logo from "../media/logo.png";
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_MICROLOCATIONS } from "../../service/MicrolocationService";
+import { GET_ALL_BUILDERS } from "../../service/ProjectDetailsservice";
 
 function Navbar() {
   const location = useLocation();
   const cities = ["Gurugram", "Mumbai"];
   const { loading, error, data } = useQuery(GET_ALL_MICROLOCATIONS);
+  const {
+    loading: builderLoading,
+    error: builderError,
+    data: builderData,
+  } = useQuery(GET_ALL_BUILDERS);
 
   const [microlocations, setMicrolocations] = useState([]);
   useEffect(() => {
@@ -144,9 +150,15 @@ function Navbar() {
                           <p className="builder_dropdown">Top Builders</p>
                           <hr />
                           <div className="row">
-                            <div className="col-md-4 location_name">
-                              <Link to="/builder/m3m-india">M3M India</Link>
-                            </div>
+                            {builderData?.builders?.map((builder, i) => {
+                              return (
+                                <div className="col-md-4 location_name" key={i}>
+                                  <Link to={`/builder/${builder?.slug}`}>
+                                    {builder?.name}
+                                  </Link>
+                                </div>
+                              );
+                            })}
                           </div>
                         </div>
                       </div>

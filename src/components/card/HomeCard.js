@@ -11,37 +11,30 @@ function HomeCard({
   startingPrice,
   microlocationName,
   slug,
+  images,
 }) {
+  const noImage =
+    "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1694841091626.jpg";
+  console.log(images?.length);
+
   return (
     <div className="property_homecard">
       <Carousel interval={null} controls={false}>
-        <Carousel.Item>
-          <div className="img_card">
-            <Link to={`/${builder}/${city}/${slug}`} className="card-link">
-              <img src={builderImg} alt="" className="img-fluid img_cover" />
-            </Link>
-          </div>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div className="img_card">
-            <Link
-              to={`/${builder}/${city}/${projectName}`}
-              className="card-link"
-            >
-              <img src={builderImg} alt="" className="img-fluid img_cover" />
-            </Link>
-          </div>
-        </Carousel.Item>
-        <Carousel.Item>
-          <div className="img_card">
-            <Link
-              to={`/${builder}/${city}/${projectName}`}
-              className="card-link"
-            >
-              <img src={builderImg} alt="" className="img-fluid img_cover" />
-            </Link>
-          </div>
-        </Carousel.Item>
+        {images?.map((image, i) => {
+          return (
+            <Carousel.Item key={i}>
+              <div className="img_card">
+                <Link to={`/${builder}/${city}/${slug}`} className="card-link">
+                  <img
+                    src={images?.length !== 0 ? image?.image : noImage}
+                    alt={image?.alt}
+                    className="img-fluid img_cover"
+                  />
+                </Link>
+              </div>
+            </Carousel.Item>
+          );
+        })}
       </Carousel>
       <Link to={`/${builder}/${city}/${projectName}`} className="card-link">
         <div className="card_body">

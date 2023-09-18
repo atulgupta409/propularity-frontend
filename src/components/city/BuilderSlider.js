@@ -1,40 +1,20 @@
 import React from "react";
-import builderLogo from "../media/dlf_logo.png";
 
-function BuildersSlider() {
+function BuildersSlider({ builders }) {
   return (
     <div className="container builder_slider_container">
       <div className="builders_row">
-        <div className="builder_logo_box">
-          <img src={builderLogo} alt="builder name" />
-        </div>
-        <div className="builder_logo_box">
-          <img src={builderLogo} alt="builder name" />
-        </div>
-        <div className="builder_logo_box">
-          <img src={builderLogo} alt="builder name" />
-        </div>
-        <div className="builder_logo_box">
-          <img src={builderLogo} alt="builder name" />
-        </div>
-        <div className="builder_logo_box">
-          <img src={builderLogo} alt="builder name" />
-        </div>
-        <div className="builder_logo_box">
-          <img src={builderLogo} alt="builder name" />
-        </div>
-        <div className="builder_logo_box">
-          <img src={builderLogo} alt="builder name" />
-        </div>
-        <div className="builder_logo_box">
-          <img src={builderLogo} alt="builder name" />
-        </div>
-        <div className="builder_logo_box">
-          <img src={builderLogo} alt="builder name" />
-        </div>
-        <div className="builder_logo_box">
-          <img src={builderLogo} alt="builder name" />
-        </div>
+        {builders?.map((builder, i) => {
+          return (
+            <div className="builder_logo_box" key={i}>
+              <img
+                src={builder?.BuilderLogo}
+                alt={builder?.alt}
+                className="img-fluid"
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

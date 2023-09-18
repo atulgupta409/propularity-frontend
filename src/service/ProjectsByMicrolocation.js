@@ -20,6 +20,11 @@ export const GET_PROJECTS_BY_MICROLOCATIONS = gql`
         builder {
           name
         }
+        images {
+          name
+          alt
+          image
+        }
       }
     }
   }

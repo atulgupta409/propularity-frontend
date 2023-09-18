@@ -2,17 +2,47 @@ import React, { useState } from "react";
 import axios from "axios"
 import { baseUrl } from "../../environment/apiconfig";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function ContactForm() {
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [phoneError, setPhoneError] = useState("");
   const [user, setUser] = useState({ name: "", email: "", phone: "" });
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const inputChangeHandler = (e) => {
     let { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
+
+  const notify = () =>
+    toast.success("Thank You for submitting the query!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+
+  const notifyError = () =>
+    toast.error("Error Ocurred!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+
+  const [isSending, setIsSending] = useState(false);
+
   const phonePattern = /^\d{10}$/;
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const validationName = () => {
@@ -38,45 +68,46 @@ function ContactForm() {
     }
   };
 
-    const sendEmail = async (e) => {
-      e.preventDefault();
-      if (
-        user.name.trim() !== "" &&
-        emailPattern.test(user.email) &&
-        phonePattern.test(user.phone)
-      ) {
-        setUser({ name: "", email: "", phone: "" });
-        validationName();
-        validationEmail();
-        validationPhone();
-        setLoading(true);
-        try {
-          await axios.post(
-            `${baseUrl}/sendmail`,
-            {
-              name: user.name,
-              email: user.email,
-              phone: user.phone,
+  const sendEmail = async (e) => {
+    e.preventDefault();
+    if (
+      user.name.trim() !== "" &&
+      emailPattern.test(user.email) &&
+      phonePattern.test(user.phone)
+    ) {
+      setUser({ name: "", email: "", phone: "" });
+      setIsSending(true);
+      validationName();
+      validationEmail();
+      validationPhone();
+      setLoading(true);
+      try {
+        await axios.post(
+          `${baseUrl}/sendmail`,
+          {
+            name: user.name,
+            email: user.email,
+            phone: user.phone,
+            PageLocation: window.location.href,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
             },
-            {
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          );
-          setLoading(false);
-          alert("thank you")
-          // handleSheet();
-          // navigate("/thank-you");
-        } catch (error) {
-          console.error(error);
-        }
-      } else {
-        validationName();
-        validationEmail();
-        validationPhone();
+          }
+        );
+        setLoading(false);
+        setIsSending(false);
+        notify();
+      } catch (error) {
+        console.error(error);
       }
-    };
+    } else {
+      validationName();
+      validationEmail();
+      validationPhone();
+    }
+  };
 
   //   const handleSheet = async () => {
   //     try {
@@ -109,6 +140,7 @@ function ContactForm() {
       <div className="form_heading">
         <h3 className="req_box">Yes, I'm Interested</h3>
       </div>
+      <ToastContainer />
       <form onSubmit={sendEmail}>
         <div className="row">
           <div className="col-md-12 mb-4">
@@ -170,7 +202,7 @@ function ContactForm() {
           handle your personal data
         </p>
         <button className="modal_form_btn" type="submit">
-          Submit
+          {isSending ? "Sending..." : "Submit"}
         </button>
       </form>
     </>
