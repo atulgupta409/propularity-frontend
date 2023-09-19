@@ -27,6 +27,13 @@
     z-index: 99;
     left: -41px;
 }
+.other_builders_top .rec-arrow-left {
+    z-index: 99;
+    left: -41px;
+}
+.other_builders_top .rec-arrow-right {
+    right: -7px;
+}
 .builder_container .rec-arrow-right {
     right: -7px;
 }

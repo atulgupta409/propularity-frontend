@@ -13,7 +13,7 @@ function Home() {
       <TopProperties />
       <TopLocalities />
       <TopProjectCity />
-      <BuildersSlider />
+      <BuildersSlider myClass={"home_top_builders"} />
       <Faq />
     </div>
   );

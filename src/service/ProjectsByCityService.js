@@ -19,6 +19,9 @@ export const GET_PROJECTS_BY_CITY = gql`
         micro_location {
           name
         }
+        city {
+          name
+        }
       }
     }
   }

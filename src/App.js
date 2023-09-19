@@ -18,35 +18,65 @@ function App() {
     <>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={[<Navbar />, <Home />, <Footer />]} />
+        <Route
+          path="/"
+          element={[<Navbar key={1} />, <Home key={2} />, <Footer key={3} />]}
+        />
         <Route
           path="builder/:builder"
-          element={[<Navbar />, <Builder />, <Footer />]}
+          element={[
+            <Navbar key={4} />,
+            <Builder key={5} />,
+            <Footer key={6} />,
+          ]}
         />
         <Route
           path="/:builder/:city/:slug"
-          element={[<Navbar />, <Project />, <Footer />]}
+          element={[
+            <Navbar key={7} />,
+            <Project key={8} />,
+            <Footer key={9} />,
+          ]}
         />
         <Route
           path="/:city/filter/:filteredvalue"
-          element={[<Navbar />, <FilteredItems />, <Footer />]}
+          element={[
+            <Navbar key={10} />,
+            <FilteredItems key={11} />,
+            <Footer key={12} />,
+          ]}
         />
         <Route
           path="/:city/:microlocation"
-          element={[<Navbar />, <MicrolocationPage />, <Footer />]}
+          element={[
+            <Navbar key={13} />,
+            <MicrolocationPage key={14} />,
+            <Footer key={15} />,
+          ]}
         />
-        <Route path="/:city" element={[<Navbar />, <City />, <Footer />]} />
+        <Route
+          path="/:city"
+          element={[
+            <Navbar key={16} />,
+            <City key={17} />,
+            <Footer key={18} />,
+          ]}
+        />
         <Route
           path="/:builder/:city/:slug/image-gallery"
-          element={<ProjectImageGallery />}
+          element={<ProjectImageGallery key={19} />}
         />
         <Route
           path="/contact"
-          element={[<Navbar />, <Contact />, <Footer />]}
+          element={[
+            <Navbar key={20} />,
+            <Contact key={21} />,
+            <Footer key={22} />,
+          ]}
         />
         <Route
           path="/builder/:builder/image-gallery"
-          element={<BuilderImageGallery />}
+          element={<BuilderImageGallery key={23} />}
         />
       </Routes>
     </>

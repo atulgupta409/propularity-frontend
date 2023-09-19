@@ -2,23 +2,23 @@ import React, { useState } from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { GET_PROJECT_DETAILS } from "../../service/ImageGalleryService";
 import { useQuery } from "@apollo/client";
-import { useParams } from "react-router-dom";
-import { GrNext } from "react-icons/gr";
+import { useNavigate, useParams } from "react-router-dom";
+import { AiOutlineClose } from "react-icons/ai";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 function ProjectImageGallery() {
+  const navigate = useNavigate();
   const { slug } = useParams();
   const { loading, error, data } = useQuery(GET_PROJECT_DETAILS, {
     variables: {
       slug: slug,
     },
   });
-  console.log(data);
   const [imgData, setImgdata] = useState({ img: "", i: "" });
 
   const viewImage = (img, i) => {
     setImgdata({ img: img.image, i });
   };
-  console.log(imgData);
 
   const imgAction = (action) => {
     let i = imgData.i;
@@ -42,32 +42,27 @@ function ProjectImageGallery() {
     }
   };
 
+  const goBack = () => {
+    navigate(
+      `/${data?.projectDetails[0]?.builder[0]?.name
+        ?.split(" ")
+        .join("-")
+        .toLowerCase()}/${data?.projectDetails[0]?.location?.city[0]?.name.toLowerCase()}/${slug}`
+    );
+  };
+
   return (
     <>
       {imgData?.img && (
-        <div
-          style={{
-            width: "100%",
-            height: "100vh",
-            background: "black",
-            position: "fixed",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            overflow: "hidden",
-          }}
-        >
-          <button
-            onClick={() => imgAction()}
-            style={{ position: "absolute", top: "10px", right: "10px " }}
-          >
-            X
+        <div className="large_img_box">
+          <button onClick={() => imgAction()} className="gallery_close_btn">
+            <AiOutlineClose /> Close
           </button>
           <button
             onClick={() => imgAction("prev-img")}
-            className="gallery_arrow_btn"
+            className="gallery_arrow_btn prev_btn"
           >
-            Prev
+            <IoIosArrowBack />
           </button>
           <img
             src={imgData?.img}
@@ -78,11 +73,13 @@ function ProjectImageGallery() {
             onClick={() => imgAction("next-img")}
             className="gallery_arrow_btn next_btn"
           >
-            <GrNext />
+            <IoIosArrowForward />
           </button>
         </div>
       )}
-
+      <button className="go_back_gallery" onClick={goBack}>
+        <IoIosArrowBack />
+      </button>
       <div className="container mt100 img_gallery_container">
         <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 2 }}>
           <Masonry gutter="10px">

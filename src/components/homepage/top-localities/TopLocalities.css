@@ -17,6 +17,7 @@
   height: 100% !important;
   object-fit: cover;
   border-radius: 20px;
+  width: 100%;
 }
 .localities_card_overlay {
   position: absolute;
