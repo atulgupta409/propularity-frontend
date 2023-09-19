@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./TopProperties.css";
 import HomeCard from "../../card/HomeCard";
+import { useQuery } from "@apollo/client";
+import { GET_PROJECTS_BY_COUNTRY } from "../../../service/TopProjectsInIndia";
 
 function TopProperties() {
+  const { loading, error, data } = useQuery(GET_PROJECTS_BY_COUNTRY);
+
+  const [topProjects, setTopProjects] = useState([]);
+
+  useEffect(() => {
+    if (data) {
+      setTopProjects(data.topIndiaProjects);
+    }
+  }, [data]);
 
   const noImage = [
     {
@@ -21,30 +32,21 @@ function TopProperties() {
         <p className="heading_text">
           Explore prime properties based on your preference
         </p>
-        <div className="col-12 col-sm-6 col-md-3 mt30">
-          <HomeCard images={noImage} />
-        </div>
-        <div className="col-12 col-sm-6 col-md-3 mt30">
-          <HomeCard images={noImage} />
-        </div>
-        <div className="col-12 col-sm-6 col-md-3 mt30">
-          <HomeCard images={noImage} />
-        </div>
-        <div className="col-12 col-sm-6 col-md-3 mt30">
-          <HomeCard images={noImage} />
-        </div>
-        <div className="col-12 col-sm-6 col-md-3 mt30">
-          <HomeCard images={noImage} />
-        </div>
-        <div className="col-12 col-sm-6 col-md-3 mt30">
-          <HomeCard images={noImage} />
-        </div>
-        <div className="col-12 col-sm-6 col-md-3 mt30">
-          <HomeCard images={noImage} />
-        </div>
-        <div className="col-12 col-sm-6 col-md-3 mt30">
-          <HomeCard images={noImage} />
-        </div>
+        {topProjects?.map((project, i) => {
+          return (
+            <div className="col-12 col-sm-6 col-md-3 mt30" key={i}>
+              <HomeCard
+                images={project?.images?.length > 0 ? project?.images : noImage}
+                builder={project?.builder[0]?.name}
+                city={project?.location?.city[0]?.name}
+                projectName={project?.name}
+                startingPrice={project?.starting_price}
+                microlocationName={project?.location?.micro_location[0]?.name}
+                slug={project?.slug}
+              />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

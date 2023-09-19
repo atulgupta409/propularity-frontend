@@ -1,5 +1,5 @@
 import React from "react";
-import MyCarousel from "../../carousel/MyCarousel";
+import HomeCarousel from "../../carousel/HomeCarousel";
 
 function TopProjectCity() {
   return (
@@ -11,7 +11,16 @@ function TopProjectCity() {
         <p className="heading_text">
           Find Your Home In The City Of Your Choice
         </p>
-        <MyCarousel carouselClass={"full_carousel"} />
+        <HomeCarousel carouselClass={"full_carousel"} city={"Gurugram"} />
+      </div>
+      <div className="container mt100">
+        <h2 className="heading">
+          Top Projects in <span className="primary_color">Mumbai</span>
+        </h2>
+        <p className="heading_text">
+          Find Your Home In The City Of Your Choice
+        </p>
+        <HomeCarousel carouselClass={"full_carousel"} city={"Mumbai"} />
       </div>
     </>
   );

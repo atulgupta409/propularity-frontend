@@ -8,6 +8,14 @@ export const GET_PROJECT_DETAILS = gql`
         alt
         image
       }
+      location {
+        city {
+          name
+        }
+      }
+      builder {
+        name
+      }
     }
   }
 `;

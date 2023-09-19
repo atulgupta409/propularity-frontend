@@ -11,6 +11,7 @@ import { IoMdPhotos } from "react-icons/io";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_BUILDERS_DATA } from "../../service/BuildersService";
 import { useParams, Link } from "react-router-dom";
+import BuilderSlider from "../homepage/builders-slider/BuildersSlider";
 
 function Builder() {
   const { builder } = useParams();
@@ -180,11 +181,8 @@ function Builder() {
               </div>
               <div className="ms-4">
                 <h3 className="req_box text-align-center">Get in Touch</h3>
-                <a
-                  href="mailto: sumit.propularity@gmail.com"
-                  className="form_email"
-                >
-                  sumit.propularity@gmail.com
+                <a href="mailto: hello@propularity.in" className="form_email">
+                  hello@propularity.in
                 </a>
               </div>
             </div>
@@ -192,10 +190,8 @@ function Builder() {
         </div>
       </div>
       <hr className="divider_line" />
-      <h3>Other Builders</h3>
-      <div className="my_carousel">
-        <MyCarousel carouselClass={"full_carousel"} />
-      </div>
+      <h3 className="mt30">Other Builders</h3>
+      <BuilderSlider myClass={"other_builders"} />
     </div>
   );
 }

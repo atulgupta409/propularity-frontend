@@ -29,29 +29,62 @@ function HomeBanner() {
           <img src={mobileImg} alt="mobile image" className="img-fluid" />
         </div>
         <div className="circle_box circle_box1" data-tooltip-id="my-tooltip-1">
-          <img src={buildingImg} alt="builder name" className="img-fluid" />
+          <img
+            src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695107875363.jpeg"
+            alt="Tulip"
+            className="img-fluid"
+          />
         </div>
-        <ReactTooltip id="my-tooltip-1" place="top" content="DLF Belaire" />
+        <ReactTooltip id="my-tooltip-1" place="top" content="Tulip" />
         <div className="circle_box circle_box2" data-tooltip-id="my-tooltip-2">
-          <img src={buildingImg} alt="builder name" className="img-fluid" />
+          <img
+            src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695107856945.png"
+            alt="Mahindra Lifespace"
+            className="img-fluid"
+          />
         </div>
-        <ReactTooltip id="my-tooltip-2" place="top" content="DLF Belaire" />
+        <ReactTooltip
+          id="my-tooltip-2"
+          place="top"
+          content="Mahindra Lifespace"
+        />
         <div className="circle_box circle_box3" data-tooltip-id="my-tooltip-3">
-          <img src={buildingImg} alt="builder name" className="img-fluid" />
+          <img
+            src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695107837214.jpeg"
+            alt="M3M India"
+            className="img-fluid"
+          />
         </div>
-        <ReactTooltip id="my-tooltip-3" place="top" content="DLF Belaire" />
+        <ReactTooltip id="my-tooltip-3" place="top" content="M3M India" />
         <div className="circle_box circle_box4" data-tooltip-id="my-tooltip-4">
-          <img src={buildingImg} alt="builder name" className="img-fluid" />
+          <img
+            src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695107824170.jpg"
+            alt="Lodha"
+            className="img-fluid"
+            style={{ width: "100%" }}
+          />
         </div>
-        <ReactTooltip id="my-tooltip-4" place="top" content="DLF Belaire" />
+        <ReactTooltip id="my-tooltip-4" place="top" content="Lodha" />
         <div className="circle_box circle_box5" data-tooltip-id="my-tooltip-5">
-          <img src={buildingImg} alt="builder name" className="img-fluid" />
+          <img
+            src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695107805600.jpeg"
+            alt="Godrej Properties"
+            className="img-fluid"
+          />
         </div>
-        <ReactTooltip id="my-tooltip-5" place="top" content="DLF Belaire" />
+        <ReactTooltip
+          id="my-tooltip-5"
+          place="top"
+          content="Godrej Properties"
+        />
         <div className="circle_box circle_box6" data-tooltip-id="my-tooltip-6">
-          <img src={buildingImg} alt="builder name" className="img-fluid" />
+          <img
+            src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695107786561.jpeg"
+            alt="Emaar"
+            className="img-fluid"
+          />
         </div>
-        <ReactTooltip id="my-tooltip-6" place="top" content="DLF Belaire" />
+        <ReactTooltip id="my-tooltip-6" place="top" content="Emaar" />
         <div className="circle_box circle_box7"></div>
         <div className="circle_box circle_box8"></div>
         <div className="circle_box circle_box9"></div>
@@ -60,17 +93,29 @@ function HomeBanner() {
         <div className="circle_box circle_box12"></div>
         <div className="circle_box circle_box13"></div>
         <div className="circle_box circle_box14" data-tooltip-id="my-tooltip-7">
-          <img src={buildingImg} alt="builder name" className="img-fluid" />
+          <img
+            src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695107708820.jpg"
+            alt="DLF Ltd."
+            className="img-fluid"
+          />
         </div>
-        <ReactTooltip id="my-tooltip-7" place="top" content="DLF Belaire" />
+        <ReactTooltip id="my-tooltip-7" place="top" content="DLF Ltd." />
         <div className="circle_box circle_box15" data-tooltip-id="my-tooltip-8">
-          <img src={buildingImg} alt="builder name" className="img-fluid" />
+          <img
+            src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695107694674.jpg"
+            alt="BPTP"
+            className="img-fluid"
+          />
         </div>
-        <ReactTooltip id="my-tooltip-8" place="top" content="DLF Belaire" />
+        <ReactTooltip id="my-tooltip-8" place="top" content="BPTP" />
         <div className="circle_box circle_box16" data-tooltip-id="my-tooltip-9">
-          <img src={buildingImg} alt="builder name" className="img-fluid" />
+          <img
+            src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695107678478.jpeg"
+            alt="Ashiana"
+            className="img-fluid"
+          />
         </div>
-        <ReactTooltip id="my-tooltip-9" place="top" content="DLF Belaire" />
+        <ReactTooltip id="my-tooltip-9" place="top" content="Ashiana" />
         <div
           className="circle_box circle_box17"
           data-tooltip-id="my-tooltip-10"

@@ -55,7 +55,6 @@ function FilterModalPopup({ closeModal, city }) {
   const handleChangePrice = (e) => {
     setValue(e.target.value);
   };
-  console.log(selectedStatus, selectedBuilder, selectedLocation);
   return (
     <div className="modal_filter_main">
       <div className="cross_icon">

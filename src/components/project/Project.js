@@ -25,7 +25,6 @@ function Project() {
     },
   });
 
-  console.log(data?.projectDetails);
 
   function removeHtmlTags(html) {
     const tempDiv = document.createElement("div");
@@ -59,7 +58,7 @@ function Project() {
   const readMore = () => {
     setReadMoreText(!readMoretext);
   };
-  console.log(readMoretext);
+  
   const readLess = () => {
     // setShortAboutText(aboutText.substring(0, 350));
   };
@@ -247,15 +246,13 @@ function Project() {
                 </h3>
                 {data?.projectDetails[0]?.plans?.map((plan, i) => {
                   return (
-                    <>
-                      <button
-                        className="floor_plan_btn mt20"
-                        onClick={floorPlanChange}
-                        key={i}
-                      >
-                        {plan.category[0].name} Floor Plans
-                      </button>
-                    </>
+                    <button
+                      className="floor_plan_btn mt20"
+                      onClick={floorPlanChange}
+                      key={i}
+                    >
+                      {plan.category[0].name} Floor Plans
+                    </button>
                   );
                 })}
                 <div className="floor_configuration mt30">

@@ -55,7 +55,7 @@
 
 .navbar .megamenu {
     padding: 1rem 1rem 0;;
-    width: 721px;
+    width: 742px;
     margin: auto;
     left: 0;
     right: 0;
@@ -166,7 +166,7 @@
     color: #ff385c;
 }
 .navbar .megamenu_builder {
-    width: 450px;
+    width: 500px;
 }
 
 @media only screen and (max-width: 600px) {
