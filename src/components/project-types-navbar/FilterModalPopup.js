@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { RxCross2 } from "react-icons/rx";
 import Select from "react-select";
 import { useQuery } from "@apollo/client";
-import {GET_MICROLOCATIONS} from "../../service/MicrolocationService"
+import { GET_MICROLOCATIONS } from "../../service/MicrolocationService";
 import { GET_ALL_BUILDERS } from "../../service/ProjectDetailsservice";
 
-
-function FilterModalPopup({ closeModal, city }) {
+function FilterModalPopup({
+  closeModal,
+  city,
+  sendDataToParent,
+  projectsData,
+}) {
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [selectedStatus, setSelectedStatus] = useState(null);
   const [selectedBuilder, setSelectedBuilder] = useState(null);
+  const [projects, setProjects] = useState([]);
   const { loading, error, data } = useQuery(GET_MICROLOCATIONS, {
     variables: {
       city: city,
@@ -20,11 +25,47 @@ function FilterModalPopup({ closeModal, city }) {
     error: isError,
     data: builderData,
   } = useQuery(GET_ALL_BUILDERS);
+
   const options = [
     { value: "Ready To Move", label: "Ready To Move" },
     { value: "Under Construction", label: "Under Construction" },
     { value: "New Launch", label: "New Launch" },
   ];
+
+  const applyFilters = () => {
+    let filteredData = projectsData;
+
+    if (selectedBuilder) {
+      filteredData = filteredData.filter(
+        (project) => project?.builder[0]?.name === selectedBuilder.label
+      );
+    }
+
+    if (selectedStatus) {
+      filteredData = filteredData?.filter(
+        (project) => project?.project_status === selectedStatus.label
+      );
+    }
+
+    // if (selectedPrice) {
+    //   const [minPrice, maxPrice] = selectedPrice.value.split(" - ");
+    //   filteredData = filteredData.filter((project) => {
+    //     const projectPrice = parseFloat(project?.starting_price);
+    //     return (
+    //       projectPrice >= parseFloat(minPrice) &&
+    //       projectPrice <= parseFloat(maxPrice)
+    //     );
+    //   });
+    // }
+
+    setProjects(filteredData);
+  };
+  // console.log(projectsData);
+
+  useEffect(() => {
+    applyFilters();
+  }, [selectedBuilder, selectedStatus]);
+
   const onChangeOptionHandler = (selectedOption, dropdownIdentifier) => {
     switch (dropdownIdentifier) {
       case "status":
@@ -55,6 +96,17 @@ function FilterModalPopup({ closeModal, city }) {
   const handleChangePrice = (e) => {
     setValue(e.target.value);
   };
+
+  const handleClickFilter = () => {
+    // Some action in the child component
+    const dataToSend = projects;
+
+    // Call the function passed as a prop with the data
+    sendDataToParent(dataToSend);
+    closeModal();
+  };
+  console.log(projects);
+
   return (
     <div className="modal_filter_main">
       <div className="cross_icon">
@@ -103,7 +155,14 @@ function FilterModalPopup({ closeModal, city }) {
           />
         </div>
         <div className="col-12 mb-4">
+          <label className="filter_label">Budget</label>
           <div className="input_range_box">
+            <div className="price_value_text">
+              0 - ₹{" "}
+              {value < 10000000
+                ? (value / 100000).toFixed(2) + " " + "Lacs*"
+                : (value / 10000000).toFixed(2) + " " + "Cr*"}
+            </div>
             <input
               type="range"
               defaultValue={value}
@@ -111,11 +170,17 @@ function FilterModalPopup({ closeModal, city }) {
               min={1000000}
               max={100000000}
               step={1000000}
+              className="w-100"
             />
           </div>
         </div>
         <div className="col-12 mb-4">
-          <button className="btn globalBtn">Search</button>
+          <button
+            className="btn globalBtn filter_modal_btn"
+            onClick={handleClickFilter}
+          >
+            Search
+          </button>
         </div>
       </div>
     </div>

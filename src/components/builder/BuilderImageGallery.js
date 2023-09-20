@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { GET_ALL_IMAGES } from "../../service/BuildersService";
 import { useQuery } from "@apollo/client";
@@ -52,6 +52,19 @@ function BuilderImageGallery() {
     navigate(`/builder/${slug}`);
   };
 
+  const handleEscapeKeyPress = (event) => {
+    if (event.keyCode === 27) {
+      navigate(`/builder/${slug}`);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleEscapeKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleEscapeKeyPress);
+    };
+  }, []);
+
   return (
     <>
       {imgData?.img && (
@@ -68,7 +81,12 @@ function BuilderImageGallery() {
           <img
             src={imgData?.img}
             alt="largeImage"
-            style={{ width: "auto", maxWidth: "90%", maxHeight: "90%" }}
+            style={{
+              width: "68%",
+              height: "80%",
+              maxWidth: "90%",
+              maxHeight: "90%",
+            }}
           />
           <button
             onClick={() => imgAction("next-img")}

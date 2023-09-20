@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Footer.css";
 import logo from "../media/logo.png";
 import { Link } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { GET_ALL_MICROLOCATIONS } from "../../service/MicrolocationService";
 
 function Footer() {
+  const cities = ["Gurugram", "Mumbai"];
+  const { loading, error, data } = useQuery(GET_ALL_MICROLOCATIONS);
+  const [microlocations, setMicrolocations] = useState([]);
+  useEffect(() => {
+    if (data) {
+      setMicrolocations(data.allmicrolocations);
+    }
+  }, [data]);
+  console.log(microlocations);
   return (
     <>
       <div className="footer_main_box">
@@ -25,22 +36,31 @@ function Footer() {
                 Email us: hello@propularity.in
               </a>
             </div>
-            <div className="col-md-3">
+
+            {cities?.map((myCity, i) => {
+              return (
+                <div className="col-md-3" key={i}>
+                  <div className="footer_heading">
+                    <h6>{myCity} Localities</h6>
+                  </div>
+                  {microlocations
+                    ?.filter((microlocation) => {
+                      return microlocation.city.name === myCity;
+                    })
+                    ?.map((filteredMicrolocation, j) => {
+                      return (
+                        <p className="footer_text" key={j}>
+                          {filteredMicrolocation.name}
+                        </p>
+                      );
+                    })}
+                </div>
+              );
+            })}
+
+            {/* <div className="col-md-3">
               <div className="footer_heading">
-                <h6>Residential Projects</h6>
-              </div>
-              <p className="footer_text">Residential Projects in Sector 51</p>
-              <p className="footer_text">Residential Projects in Sector 51</p>
-              <p className="footer_text">Residential Projects in Sector 51</p>
-              <p className="footer_text">Residential Projects in Sector 51</p>
-              <p className="footer_text">Residential Projects in Sector 51</p>
-              <p className="footer_text">Residential Projects in Sector 51</p>
-              <p className="footer_text">Residential Projects in Sector 51</p>
-              <p className="footer_text">Residential Projects in Sector 51</p>
-            </div>
-            <div className="col-md-3">
-              <div className="footer_heading">
-                <h6>Commercial Projects</h6>
+                <h6>Mumbai Localities</h6>
               </div>
               <p className="footer_text">Commercial Projects in Sector 51</p>
               <p className="footer_text">Commercial Projects in Sector 51</p>
@@ -50,7 +70,7 @@ function Footer() {
               <p className="footer_text">Commercial Projects in Sector 51</p>
               <p className="footer_text">Commercial Projects in Sector 51</p>
               <p className="footer_text">Commercial Projects in Sector 51</p>
-            </div>
+            </div> */}
             <div className="col-md-3">
               <div className="footer_heading">
                 <h6>Propularity</h6>

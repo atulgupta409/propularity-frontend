@@ -35,10 +35,29 @@ function City() {
     }
   }, [data]);
 
+  const [filteredData, setFilteredData] = useState(data);
+
+  // Callback function to update filtered data
+  const updateFilteredData = (filteredData) => {
+    setFilteredData(filteredData);
+  };
+
+  // const [receivedData, setReceivedData] = useState(projects);
+
+  // Define a function to receive data from the child
+  const receiveDataFromChild = (datas) => {
+    setProjects(datas);
+  };
+  console.log(projects);
+
   return (
     <>
       <div className="city_banner_main">
-        <ProjectTypesNav city={city} />
+        <ProjectTypesNav
+          city={city}
+          sendDataToParent={receiveDataFromChild}
+          projectsData={projects}
+        />
         <h1 className="cityPage_heading">
           <span>{cityName}</span>
           <br />
@@ -64,24 +83,30 @@ function City() {
           <p className="heading_text">
             Find Your Home In The City Of Your Choice
           </p>
-          {projects?.map((element, i) => {
-            return (
-              <div className="col-md-3 mt30" key={i}>
-                <HomeCard
-                  builder={element?.builder[0].name
-                    .split(" ")
-                    .join("-")
-                    .toLowerCase()}
-                  city={cityName}
-                  projectName={element?.name}
-                  startingPrice={element?.starting_price}
-                  microlocationName={element?.location?.micro_location[0]?.name}
-                  slug={element?.slug}
-                  images={element?.images}
-                />
-              </div>
-            );
-          })}
+          {projects?.length > 0 ? (
+            projects?.map((element, i) => {
+              return (
+                <div className="col-md-3 mt30" key={i}>
+                  <HomeCard
+                    builder={element?.builder[0].name
+                      .split(" ")
+                      .join("-")
+                      .toLowerCase()}
+                    city={cityName}
+                    projectName={element?.name}
+                    startingPrice={element?.starting_price}
+                    microlocationName={
+                      element?.location?.micro_location[0]?.name
+                    }
+                    slug={element?.slug}
+                    images={element?.images}
+                  />
+                </div>
+              );
+            })
+          ) : (
+            <p className="no_filter_match">Not Available</p>
+          )}
         </div>
       </div>
       <TopLocalities cityName={cityName} myCity={city} />

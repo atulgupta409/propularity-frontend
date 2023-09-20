@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import FilterModalPopup from "./FilterModalPopup";
 
-function FilterModal({city}) {
+function FilterModal({ city, sendDataToParent, projectsData }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openModal = () => {
     setModalIsOpen(true);
@@ -28,7 +28,12 @@ function FilterModal({city}) {
         contentLabel="Example Modal"
         ariaHideApp={false}
       >
-        <FilterModalPopup city={city} closeModal={closeModal} />
+        <FilterModalPopup
+          city={city}
+          closeModal={closeModal}
+          sendDataToParent={sendDataToParent}
+          projectsData={projectsData}
+        />
       </Modal>
     </>
   );
