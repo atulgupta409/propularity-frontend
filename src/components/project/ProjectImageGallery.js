@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { GET_PROJECT_DETAILS } from "../../service/ImageGalleryService";
 import { useQuery } from "@apollo/client";
@@ -51,6 +51,24 @@ function ProjectImageGallery() {
     );
   };
 
+  const handleEscapeKeyPress = (event) => {
+    if (event.keyCode === 27) {
+      navigate(
+        `/${data?.projectDetails[0]?.builder[0]?.name
+          ?.split(" ")
+          .join("-")
+          .toLowerCase()}/${data?.projectDetails[0]?.location?.city[0]?.name.toLowerCase()}/${slug}`
+      );
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleEscapeKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleEscapeKeyPress);
+    };
+  }, []);
+
   return (
     <>
       {imgData?.img && (
@@ -67,7 +85,12 @@ function ProjectImageGallery() {
           <img
             src={imgData?.img}
             alt="largeImage"
-            style={{ width: "auto", maxWidth: "90%", maxHeight: "90%" }}
+            style={{
+              width: "68%",
+              height: "80%",
+              maxWidth: "90%",
+              maxHeight: "90%",
+            }}
           />
           <button
             onClick={() => imgAction("next-img")}

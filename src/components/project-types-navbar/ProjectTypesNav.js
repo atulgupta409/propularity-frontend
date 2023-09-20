@@ -4,8 +4,9 @@ import "./ProjectTypesNav.css";
 import { Link } from "react-router-dom";
 import FilterModal from "./FilterModal";
 
-function ProjectTypesNav({ city }) {
+function ProjectTypesNav({ city, sendDataToParent, projectsData }) {
   const filteredValue = "apartments";
+
   return (
     <div className="project_type_main">
       <div className="container">
@@ -49,7 +50,11 @@ function ProjectTypesNav({ city }) {
             <p>Office</p>
           </div>
           <div className="filter_nav_item">
-            <FilterModal city = {city} />
+            <FilterModal
+              city={city}
+              sendDataToParent={sendDataToParent}
+              projectsData={projectsData}
+            />
           </div>
         </div>
       </div>

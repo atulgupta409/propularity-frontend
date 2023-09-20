@@ -28,19 +28,8 @@ function Builder() {
     }
   }, [data]);
 
-  console.log(builderData);
+  // console.log(builderData);
 
-  const aboutText =
-    "Emaar Capital Tower is a place for all who want to develop their Brand Equity and Fame in the world of Business and Retail Space with Top-Notch Office Space, Ground Floor Retail Shops, and other Entertaining spaces. It is prepared by Award-winning Architects. The Entrance of the Emaar MGF Capital Tower 1 is Spectacular and there are a lot more exciting features also. For More Details, You can call us at 99991-8999 and Get your Commercial Property in Emaar Capital Tower 1. Emaar MGF Capital Tower 1 at Downtown Sector-26 Gurgaon over G-12, is available with adjustable";
-  const [shortAboutText, setShortAboutText] = useState(
-    aboutText.substring(0, 350)
-  );
-  const readMore = () => {
-    setShortAboutText(aboutText);
-  };
-  const readLess = () => {
-    setShortAboutText(aboutText.substring(0, 350));
-  };
   return (
     <div className="container mt-5">
       <div className="row">
@@ -137,8 +126,12 @@ function Builder() {
       <div className="row m60">
         <div className="col-8 main_section_detail">
           <h3>About {builderData[0]?.name}</h3>
-          <p className="about_builder">{shortAboutText}</p>
-          {shortAboutText?.length < 351 ? (
+          <p className="about_builder">
+            {builderData[0]?.description !== "<p></p>\n"
+              ? builderData[0]?.description
+              : "Not available"}
+          </p>
+          {/* {shortAboutText?.length < 351 ? (
             <button className="read_btn" onClick={readMore}>
               Read more <MdKeyboardArrowRight className="read_more_icon" />
             </button>
@@ -146,7 +139,8 @@ function Builder() {
             <button className="read_btn" onClick={readLess}>
               Read less <MdKeyboardArrowRight className="read_more_icon" />
             </button>
-          )}
+          )} */}
+
           <hr className="divider_line" />
           <div className="residential_carousel mt30">
             <div className="res_heading">

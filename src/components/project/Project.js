@@ -3,7 +3,6 @@ import star from "../media/star-rating.png";
 import sampleImage from "../media/sample-image.png";
 import icon from "../media/icon.png";
 import { IoMdPhotos } from "react-icons/io";
-import { MdKeyboardArrowRight } from "react-icons/md";
 import ContactForm from "../form/ContactForm";
 import contactImage from "../media/sumit-sir-contact-main.png";
 import "./Project.css";
@@ -24,7 +23,6 @@ function Project() {
       slug: slug,
     },
   });
-
 
   function removeHtmlTags(html) {
     const tempDiv = document.createElement("div");
@@ -58,7 +56,7 @@ function Project() {
   const readMore = () => {
     setReadMoreText(!readMoretext);
   };
-  
+
   const readLess = () => {
     // setShortAboutText(aboutText.substring(0, 350));
   };
@@ -67,6 +65,9 @@ function Project() {
   useEffect(() => {
     setFloorPlan(data?.projectDetails[0]?.plans[0]?.category[0]?.name);
   }, [data]);
+
+  const noImage =
+    "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1694841091626.jpg";
 
   const floorPlanChange = (e) => {
     const innerValue = e.target.innerText;
@@ -115,8 +116,8 @@ function Project() {
                 <img
                   src={
                     data?.projectDetails[0]?.images?.length > 0
-                      ? data?.projectDetails[0]?.images[0].image
-                      : sampleImage
+                      ? data?.projectDetails[0]?.images[0]?.image
+                      : noImage
                   }
                   className="img-fluid"
                   alt={data?.projectDetails[0]?.images[0]?.alt}
@@ -128,9 +129,9 @@ function Project() {
                 <div className="small_img">
                   <img
                     src={
-                      data?.projectDetails[0]?.images?.length > 0
-                        ? data?.projectDetails[0]?.images[1].image
-                        : sampleImage
+                      data?.projectDetails[0]?.images?.length > 1
+                        ? data?.projectDetails[0]?.images[1]?.image
+                        : noImage
                     }
                     alt={data?.projectDetails[0]?.images[1]?.alt}
                   />
@@ -140,9 +141,9 @@ function Project() {
                 <div className="small_img small_img_position">
                   <img
                     src={
-                      data?.projectDetails[0]?.images?.length > 0
-                        ? data?.projectDetails[0]?.images[2].image
-                        : sampleImage
+                      data?.projectDetails[0]?.images?.length > 2
+                        ? data?.projectDetails[0]?.images[2]?.image
+                        : noImage
                     }
                     alt={data?.projectDetails[0]?.images[2]?.alt}
                   />

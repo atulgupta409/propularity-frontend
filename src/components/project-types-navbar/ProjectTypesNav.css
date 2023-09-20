@@ -18,6 +18,21 @@
   z-index: 99;
   top: 87px;
 }
+.price_value_text {
+  font-size: 29px;
+  font-weight: 600;
+  color: #ff385c;
+  text-align: center;
+}
+.filter_modal_btn {
+  width: 100%;
+  background-color: #ff385c;
+  color: #fff;
+}
+.filter_modal_btn:hover {
+  border: 1px solid #ff385c;
+  color: #ff385c;
+}
 .filter_nav_item {
   display: inline-block;
   text-align: center;
@@ -48,13 +63,13 @@
 }
 .filter_label {
   margin-bottom: 10px;
-    color: #ff385c;
-    font-size: 15px;
-    font-weight: 600;
+  color: #ff385c;
+  font-size: 15px;
+  font-weight: 600;
 }
 .modal_filter_main {
   background-color: #fff;
-    width: 555px;
-    padding: 0 30px 30px;
-    border-radius: 20px;
+  width: 555px;
+  padding: 0 30px 30px;
+  border-radius: 20px;
 }
