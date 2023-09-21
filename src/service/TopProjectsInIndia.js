@@ -4,6 +4,7 @@ export const GET_PROJECTS_BY_COUNTRY = gql`
   {
     topIndiaProjects {
       name
+      ratings
       project_status
       starting_price
       slug

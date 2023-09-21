@@ -14,7 +14,8 @@ function FilterModalPopup({
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [selectedStatus, setSelectedStatus] = useState(null);
   const [selectedBuilder, setSelectedBuilder] = useState(null);
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState(projectsData);
+  const [filteredData, setFilteredData] = useState(projectsData);
   const { loading, error, data } = useQuery(GET_MICROLOCATIONS, {
     variables: {
       city: city,
@@ -31,40 +32,6 @@ function FilterModalPopup({
     { value: "Under Construction", label: "Under Construction" },
     { value: "New Launch", label: "New Launch" },
   ];
-
-  const applyFilters = () => {
-    let filteredData = projectsData;
-
-    if (selectedBuilder) {
-      filteredData = filteredData.filter(
-        (project) => project?.builder[0]?.name === selectedBuilder.label
-      );
-    }
-
-    if (selectedStatus) {
-      filteredData = filteredData?.filter(
-        (project) => project?.project_status === selectedStatus.label
-      );
-    }
-
-    // if (selectedPrice) {
-    //   const [minPrice, maxPrice] = selectedPrice.value.split(" - ");
-    //   filteredData = filteredData.filter((project) => {
-    //     const projectPrice = parseFloat(project?.starting_price);
-    //     return (
-    //       projectPrice >= parseFloat(minPrice) &&
-    //       projectPrice <= parseFloat(maxPrice)
-    //     );
-    //   });
-    // }
-
-    setProjects(filteredData);
-  };
-  // console.log(projectsData);
-
-  useEffect(() => {
-    applyFilters();
-  }, [selectedBuilder, selectedStatus]);
 
   const onChangeOptionHandler = (selectedOption, dropdownIdentifier) => {
     switch (dropdownIdentifier) {
@@ -97,15 +64,42 @@ function FilterModalPopup({
     setValue(e.target.value);
   };
 
-  const handleClickFilter = () => {
-    // Some action in the child component
-    const dataToSend = projects;
+  const applyFilters = () => {
+    let filteredDatas;
+    if (selectedBuilder) {
+      filteredDatas = projects?.filter(
+        (project) => project?.builder[0]?.name === selectedBuilder.label
+      );
+    }
 
-    // Call the function passed as a prop with the data
+    if (selectedStatus) {
+      filteredDatas = projects?.filter(
+        (project) => project?.project_status === selectedStatus.label
+      );
+    }
+
+    if (selectedLocation) {
+      filteredDatas = projects?.filter(
+        (project) =>
+          project?.location?.micro_location[0]?.name === selectedLocation.label
+      );
+    }
+    setFilteredData(filteredDatas);
+  };
+  console.log(selectedLocation);
+
+  useEffect(() => {
+    applyFilters();
+  }, [selectedBuilder, selectedStatus]);
+
+  const handleClickFilter = () => {
+    applyFilters();
+    const dataToSend = filteredData;
     sendDataToParent(dataToSend);
     closeModal();
   };
-  console.log(projects);
+
+  // console.log(projects);
 
   return (
     <div className="modal_filter_main">
