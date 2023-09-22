@@ -39,7 +39,7 @@ function App() {
           ]}
         />
         <Route
-          path="/:city/filter/:filteredvalue"
+          path="/:city/filter/:filteredValue"
           element={[
             <Navbar key={10} />,
             <FilteredItems key={11} />,

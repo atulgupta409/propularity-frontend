@@ -193,6 +193,7 @@ function MicrolocationPage() {
                   microlocationName={microlocationName}
                   slug={element?.slug}
                   images={element?.images}
+                  ratings={element?.ratings}
                 />
               </div>
             );

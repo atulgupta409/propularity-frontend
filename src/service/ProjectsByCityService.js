@@ -7,6 +7,7 @@ export const GET_PROJECTS_BY_CITY = gql`
       project_status
       starting_price
       slug
+      ratings
       builder {
         name
       }
