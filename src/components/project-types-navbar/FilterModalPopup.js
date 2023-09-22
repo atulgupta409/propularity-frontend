@@ -4,6 +4,8 @@ import Select from "react-select";
 import { useQuery } from "@apollo/client";
 import { GET_MICROLOCATIONS } from "../../service/MicrolocationService";
 import { GET_ALL_BUILDERS } from "../../service/ProjectDetailsservice";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 
 function FilterModalPopup({
   closeModal,
@@ -15,6 +17,8 @@ function FilterModalPopup({
   const [selectedStatus, setSelectedStatus] = useState(null);
   const [selectedBuilder, setSelectedBuilder] = useState(null);
   const [projects, setProjects] = useState(projectsData);
+  const [minValue, setMinValue] = useState(0);
+  const [maxValue, setMaxValue] = useState(100000000);
   const [filteredData, setFilteredData] = useState(projectsData);
   const { loading, error, data } = useQuery(GET_MICROLOCATIONS, {
     variables: {
@@ -59,10 +63,28 @@ function FilterModalPopup({
     label: builder.name,
   }));
 
-  const [value, setValue] = useState("1000000");
-  const handleChangePrice = (e) => {
-    setValue(e.target.value);
+  const [isPriceChange, setIsPriceChange] = useState(false);
+
+  const handleSliderChange = (values) => {
+    setIsPriceChange(true);
+    setMinValue(values[0]);
+    setMaxValue(values[1]);
   };
+
+  function parsePrice(priceStr) {
+    const regex = /([\d.]+)\s*(Cr|Lacs?)/i;
+    const match = priceStr.match(regex);
+    if (match) {
+      const value = parseFloat(match[1]);
+      const unit = match[2].toLowerCase();
+      if (unit === "cr") {
+        return value * 10000000;
+      } else if (unit === "lacs" || unit === "lac") {
+        return value * 100000;
+      }
+    }
+    return 0;
+  }
 
   const applyFilters = () => {
     let filteredDatas;
@@ -84,13 +106,21 @@ function FilterModalPopup({
           project?.location?.micro_location[0]?.name === selectedLocation.label
       );
     }
+
+    if (isPriceChange) {
+      filteredDatas = projects?.filter(
+        (project) =>
+          parsePrice(project?.starting_price) > minValue &&
+          parsePrice(project?.starting_price) < maxValue
+      );
+    }
+
     setFilteredData(filteredDatas);
   };
-  console.log(selectedLocation);
 
   useEffect(() => {
     applyFilters();
-  }, [selectedBuilder, selectedStatus]);
+  }, [selectedBuilder, selectedStatus, selectedLocation, minValue, maxValue]);
 
   const handleClickFilter = () => {
     applyFilters();
@@ -98,8 +128,6 @@ function FilterModalPopup({
     sendDataToParent(dataToSend);
     closeModal();
   };
-
-  // console.log(projects);
 
   return (
     <div className="modal_filter_main">
@@ -150,23 +178,34 @@ function FilterModalPopup({
         </div>
         <div className="col-12 mb-4">
           <label className="filter_label">Budget</label>
-          <div className="input_range_box">
-            <div className="price_value_text">
-              0 - ₹{" "}
-              {value < 10000000
-                ? (value / 100000).toFixed(2) + " " + "Lacs*"
-                : (value / 10000000).toFixed(2) + " " + "Cr*"}
+          <div className="price_main_box">
+            <div className="price_slider_value_box">
+              <p className="mb-0 min_max">Minimum</p>
+              <p className="mb-0 value_text">
+                ₹{" "}
+                {minValue < 10000000
+                  ? (minValue / 100000).toFixed(2) + " " + "Lacs*"
+                  : (minValue / 10000000).toFixed(2) + " " + "Cr*"}
+              </p>
             </div>
-            <input
-              type="range"
-              defaultValue={value}
-              onChange={handleChangePrice}
-              min={1000000}
-              max={100000000}
-              step={1000000}
-              className="w-100"
-            />
+            <div className="price_slider_value_box">
+              <p className="mb-0 min_max">Maximum</p>
+              <p className="mb-0 value_text">
+                ₹{" "}
+                {maxValue < 10000000
+                  ? (maxValue / 100000).toFixed(2) + " " + "Lacs*"
+                  : (maxValue / 10000000).toFixed(2) + " " + "Cr*"}
+              </p>
+            </div>
           </div>
+
+          <Slider
+            range
+            min={0}
+            max={100000000}
+            defaultValue={[minValue, maxValue]}
+            onChange={handleSliderChange}
+          />
         </div>
         <div className="col-12 mb-4">
           <button
