@@ -24,7 +24,6 @@ function HomeCarousel({ carouselClass, city }) {
     },
   ];
 
-  console.log(projectData);
 
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
