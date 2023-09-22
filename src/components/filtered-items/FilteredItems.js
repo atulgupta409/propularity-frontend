@@ -21,7 +21,7 @@ function FilteredItems() {
   const { loading, error, data } = useQuery(GET_PROJECTS_BY_PLAN_TYPE, {
     variables: { city: city, planType: planType },
   });
-
+  
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ function FilteredItems() {
   const receiveDataFromChild = (datas) => {
     setProjects(datas);
   };
-  // console.log(projects);
+  console.log(data);
 
   return (
     <>
