@@ -14,7 +14,6 @@ function Footer() {
       setMicrolocations(data.allmicrolocations);
     }
   }, [data]);
-  console.log(microlocations);
   return (
     <>
       <div className="footer_main_box">
