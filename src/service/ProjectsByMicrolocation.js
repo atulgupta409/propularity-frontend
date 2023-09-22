@@ -16,6 +16,7 @@ export const GET_PROJECTS_BY_MICROLOCATIONS = gql`
       totalCount
       filteredProjects {
         name
+        ratings
         project_status
         starting_price
         slug

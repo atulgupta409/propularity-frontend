@@ -14,6 +14,7 @@ function Footer() {
       setMicrolocations(data.allmicrolocations);
     }
   }, [data]);
+  // console.log(microlocations);
   return (
     <>
       <div className="footer_main_box">
@@ -46,39 +47,45 @@ function Footer() {
                     ?.filter((microlocation) => {
                       return microlocation.city.name === myCity;
                     })
+                    ?.slice(0, 7)
                     ?.map((filteredMicrolocation, j) => {
                       return (
                         <p className="footer_text" key={j}>
-                          {filteredMicrolocation.name}
+                          <Link
+                            to={`/${myCity.toLowerCase()}/${filteredMicrolocation.name
+                              .split(" ")
+                              .join("-")
+                              .toLowerCase()}`}
+                            className="footer_text"
+                          >
+                            {filteredMicrolocation.name}
+                          </Link>
                         </p>
                       );
                     })}
                 </div>
               );
             })}
-
-            {/* <div className="col-md-3">
-              <div className="footer_heading">
-                <h6>Mumbai Localities</h6>
-              </div>
-              <p className="footer_text">Commercial Projects in Sector 51</p>
-              <p className="footer_text">Commercial Projects in Sector 51</p>
-              <p className="footer_text">Commercial Projects in Sector 51</p>
-              <p className="footer_text">Commercial Projects in Sector 51</p>
-              <p className="footer_text">Commercial Projects in Sector 51</p>
-              <p className="footer_text">Commercial Projects in Sector 51</p>
-              <p className="footer_text">Commercial Projects in Sector 51</p>
-              <p className="footer_text">Commercial Projects in Sector 51</p>
-            </div> */}
             <div className="col-md-3">
               <div className="footer_heading">
                 <h6>Propularity</h6>
               </div>
-              <p className="footer_text">Builders</p>
-              <p className="footer_text">About us</p>
-              <Link to="/contact" className="footer_text">
-                Contact us
-              </Link>
+              <p className="footer_text">
+                <Link to="/gurugram" className="footer_text">
+                  Gurugram
+                </Link>
+              </p>
+              <p className="footer_text">
+                <Link to="/mumbai" className="footer_text">
+                  Mumbai
+                </Link>
+              </p>
+              <p className="footer_text">
+                <Link to="/contact" className="footer_text">
+                  Contact us
+                </Link>
+              </p>
+
               <p className="footer_text">Privacy Policy</p>
             </div>
           </div>

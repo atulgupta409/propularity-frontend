@@ -35,29 +35,10 @@ function City() {
     }
   }, [data]);
 
-  const [filteredData, setFilteredData] = useState(data);
-
-  // Callback function to update filtered data
-  const updateFilteredData = (filteredData) => {
-    setFilteredData(filteredData);
-  };
-
-  // const [receivedData, setReceivedData] = useState(projects);
-
-  // Define a function to receive data from the child
-  const receiveDataFromChild = (datas) => {
-    setProjects(datas);
-  };
-  console.log(projects);
-
   return (
     <>
       <div className="city_banner_main">
-        <ProjectTypesNav
-          city={city}
-          sendDataToParent={receiveDataFromChild}
-          projectsData={projects}
-        />
+        <ProjectTypesNav city={city} showFilter={false} />
         <h1 className="cityPage_heading">
           <span>{cityName}</span>
           <br />
@@ -100,6 +81,7 @@ function City() {
                     }
                     slug={element?.slug}
                     images={element?.images}
+                    ratings={element?.ratings}
                   />
                 </div>
               );

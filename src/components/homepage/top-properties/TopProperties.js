@@ -43,6 +43,7 @@ function TopProperties() {
                 startingPrice={project?.starting_price}
                 microlocationName={project?.location?.micro_location[0]?.name}
                 slug={project?.slug}
+                ratings={project?.ratings}
               />
             </div>
           );
