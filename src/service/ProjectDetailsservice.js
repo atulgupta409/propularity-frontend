@@ -15,6 +15,9 @@ export const GET_PROJECT_DETAILS = gql`
         city {
           name
         }
+        micro_location {
+          name
+        }
       }
       images {
         name

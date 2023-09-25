@@ -80,6 +80,9 @@
   margin-bottom: 4px;
   margin-right: 10px;
 }
+.card_p span a {
+  color: #ff385c;
+}
 
 /* homecard css */
 .property_homecard {
@@ -94,4 +97,7 @@
 .homecard_p span {
   color: #ff385c;
   font-weight: 600;
+}
+.property_card:not(:last-child) {
+  margin-right: 29px;
 }
