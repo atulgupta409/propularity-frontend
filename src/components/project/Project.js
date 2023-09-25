@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
 import star from "../media/star-rating.png";
-import sampleImage from "../media/sample-image.png";
-import icon from "../media/icon.png";
 import { IoMdPhotos } from "react-icons/io";
 import ContactForm from "../form/ContactForm";
 import contactImage from "../media/sumit-sir-contact-main.png";
 import "./Project.css";
 import buildingIcon from "../media/building-icon.png";
-import floorImg from "../media/floor-plan.png";
-import masterPlan from "../media/master-plan.png";
 import MyCarousel from "../carousel/MyCarousel";
 import EmiCalculator from "../emi-calculator/EmiCalculator";
 import { GET_PROJECT_DETAILS } from "../../service/ProjectDetailsservice";
@@ -71,8 +67,9 @@ function Project() {
 
   const floorPlanChange = (e) => {
     const innerValue = e.target.innerText;
-    const planType = innerValue.match(/\d+\sBHK/);
-    setFloorPlan(planType[0]);
+    const planType = innerValue.replace("floor plan", "");
+    // console.log(planType);
+    setFloorPlan(planType.trim());
   };
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -124,7 +121,7 @@ function Project() {
                 />
               </div>
             </div>
-            <div className="col-3">
+            <div className="col-3 small_img_main">
               <div className="col-12">
                 <div className="small_img">
                   <img
@@ -165,7 +162,11 @@ function Project() {
             <div className="col-3 pe-0">
               <div className="col-12 builder_overview">
                 <div className="d-flex">
-                  <img src={icon} alt="icon" className="detail_icon" />
+                  <img
+                    src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695617884484.png"
+                    alt="icon"
+                    className="project_icons"
+                  />
                   <div className="ms-2">
                     <h4 className="detail_h4">Project Type</h4>
                     <p className="detail_p">
@@ -174,7 +175,11 @@ function Project() {
                   </div>
                 </div>
                 <div className="d-flex mt-3">
-                  <img src={icon} alt="icon" className="detail_icon" />
+                  <img
+                    src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695617864882.png"
+                    alt="icon"
+                    className="project_icons"
+                  />
                   <div className="ms-2">
                     <h4 className="detail_h4">Project Size</h4>
                     <p className="detail_p">
@@ -185,7 +190,11 @@ function Project() {
               </div>
               <div className="col-12 builder_overview mt20">
                 <div className="d-flex">
-                  <img src={icon} alt="icon" className="detail_icon" />
+                  <img
+                    src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695617875044.png"
+                    alt="icon"
+                    className="project_icons"
+                  />
                   <div className="ms-2">
                     <h4 className="detail_h4">Configuration</h4>
                     <p className="detail_p">
@@ -194,7 +203,11 @@ function Project() {
                   </div>
                 </div>
                 <div className="d-flex mt-3">
-                  <img src={icon} alt="icon" className="detail_icon" />
+                  <img
+                    src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695617895244.png"
+                    alt="icon"
+                    className="project_icons"
+                  />
                   <div className="ms-2">
                     <h4 className="detail_h4">Project Status</h4>
                     <p className="detail_p">
@@ -219,18 +232,36 @@ function Project() {
                     return (
                       <div className="configuration_box mb30" key={i}>
                         <div className="config_size">
-                          <h6>{plan.category[0].name} Apartment</h6>
-                          <p>{plan.size + plan.size_sq}</p>
+                          <h6>
+                            {plan?.category[0]?.name
+                              ?.toLowerCase()
+                              ?.includes("bhk")
+                              ? plan?.category[0]?.name + " Apartment"
+                              : plan?.category[0]?.name}
+                          </h6>
+                          <p>
+                            {plan?.size +
+                              (plan?.size_sq ? plan?.size_sq : "Sq.Ft")}
+                          </p>
                         </div>
                         <div className="config_price">
                           <div>
                             <p>Price</p>
                             <p>
-                              {plan.price === "coming soon" ||
-                              "Coming soon" ||
-                              "Coming Soon"
-                                ? "Coming Soon"
-                                : "₹" + " " + plan.price + " Onwards"}
+                              {plan?.price ===
+                              ("Call For Price" ||
+                                "call for price" ||
+                                "Call for price" ||
+                                "Call for Price") ? (
+                                <a
+                                  href="tel: 9999063322"
+                                  className="project_details_link"
+                                >
+                                  Call For Price
+                                </a>
+                              ) : (
+                                "Starting ₹ " + plan?.price
+                              )}
                             </p>
                           </div>
                           <img src={buildingIcon} alt="building" />
@@ -252,7 +283,7 @@ function Project() {
                       onClick={floorPlanChange}
                       key={i}
                     >
-                      {plan.category[0].name} Floor Plans
+                      {plan.category[0].name} floor plan
                     </button>
                   );
                 })}
@@ -282,20 +313,28 @@ function Project() {
                             {myPlan.category[0]?.name +
                               " Apartment" +
                               " " +
-                              myPlan.size +
-                              " " +
-                              myPlan.size_sq}
+                              myPlan?.size +
+                              (myPlan?.size_sq ? myPlan?.size_sq : "Sq.Ft")}
                           </h5>
                           <div className="row d-flex justify-content-between">
                             {data?.projectDetails[0]?.for_sale && (
                               <div className="col-6">
                                 <p>Sale Price</p>
                                 <p>
-                                  {myPlan.price === "coming soon" ||
-                                  "Coming soon" ||
-                                  "Coming Soon"
-                                    ? "Coming Soon"
-                                    : "₹ " + myPlan.price}
+                                  {myPlan?.price ===
+                                  ("Call For Price" ||
+                                    "call for price" ||
+                                    "Call for price" ||
+                                    "Call for Price") ? (
+                                    <a
+                                      href="tel: 9999063322"
+                                      className="project_details_link"
+                                    >
+                                      Call For Price
+                                    </a>
+                                  ) : (
+                                    "Starting ₹ " + myPlan?.price
+                                  )}
                                 </p>
                               </div>
                             )}
@@ -303,11 +342,20 @@ function Project() {
                               <div className="col-6">
                                 <p>Rent Price</p>
                                 <p>
-                                  {myPlan.price === "coming soon" ||
-                                  "Coming soon" ||
-                                  "Coming Soon"
-                                    ? "Coming Soon"
-                                    : "₹ " + myPlan.price}
+                                  {myPlan?.price ===
+                                  ("Call For Price" ||
+                                    "call for price" ||
+                                    "Call for price" ||
+                                    "Call for Price") ? (
+                                    <a
+                                      href="tel: 9999063322"
+                                      className="project_details_link"
+                                    >
+                                      Call For Price
+                                    </a>
+                                  ) : (
+                                    "Starting ₹ " + myPlan?.price
+                                  )}
                                 </p>
                               </div>
                             )}
@@ -387,7 +435,11 @@ function Project() {
               <hr className="divider_line" />
               <div className="row">
                 <h3 className="mt30">About {data?.projectDetails[0]?.name}</h3>
-                <p className="about_builder mt20">{aboutText}</p>
+                {data?.projectDetails[0]?.description !== "<p></p>\n" ? (
+                  <p className="about_builder mt20">{aboutText}</p>
+                ) : (
+                  <p className="no_data_p">Not Available</p>
+                )}
                 {/* <div>
                   <button className="read_btn" onClick={readMore}>
                     Read more{" "}
@@ -412,10 +464,10 @@ function Project() {
                   <div className="ms-4">
                     <h3 className="req_box text-align-center">Get in Touch</h3>
                     <a
-                      href="mailto: sumit.propularity@gmail.com"
+                      href="mailto: hello@propularity.in"
                       className="form_email"
                     >
-                      sumit.propularity@gmail.com
+                      hello@propularity.in
                     </a>
                   </div>
                 </div>
@@ -424,21 +476,58 @@ function Project() {
 
             <div className="row">
               <hr className="divider_line" />
-              <h3 className="mt30">
-                Properties for rent in {data?.projectDetails[0]?.name}
-              </h3>
-              <div className="my_carousel mt20">
-                <MyCarousel carouselClass={"full_carousel"} />
-              </div>
+              {data?.projectDetails[0]?.for_sale && (
+                <>
+                  {" "}
+                  <h3 className="mt30">
+                    Properties for Sale in {data?.projectDetails[0]?.name}
+                  </h3>
+                  <div className="my_carousel mt20">
+                    <MyCarousel
+                      carouselClass={"full_carousel"}
+                      isProjectcard={true}
+                      name={data?.projectDetails[0]?.name}
+                      city={data?.projectDetails[0]?.location?.city[0]?.name}
+                      microlocation={
+                        data?.projectDetails[0]?.location?.micro_location[0]
+                          ?.name
+                      }
+                      projectImages={data?.projectDetails[0]?.images}
+                      starting_price={data?.projectDetails[0]?.starting_price}
+                      floorPlans={data?.projectDetails[0]?.plans}
+                      isSale={true}
+                    />
+                  </div>{" "}
+                </>
+              )}
             </div>
             <div className="calci_box">
               <EmiCalculator />
             </div>
             <div className="row">
-              <h3>Properties for sale in {data?.projectDetails[0]?.name}</h3>
-              <div className="my_carousel mt20">
-                <MyCarousel carouselClass={"full_carousel"} />
-              </div>
+              {data?.projectDetails[0]?.for_rent && (
+                <>
+                  <h3>
+                    Properties for Rent in {data?.projectDetails[0]?.name}
+                  </h3>
+                  <div className="my_carousel mt20">
+                    <MyCarousel
+                      carouselClass={"full_carousel"}
+                      isProjectcard={true}
+                      name={data?.projectDetails[0]?.name}
+                      city={data?.projectDetails[0]?.location?.city[0]?.name}
+                      microlocation={
+                        data?.projectDetails[0]?.location?.micro_location[0]
+                          ?.name
+                      }
+                      projectImages={data?.projectDetails[0]?.images}
+                      starting_price={data?.projectDetails[0]?.starting_price}
+                      floorPlans={data?.projectDetails[0]?.plans}
+                      isSale={false}
+                    />
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

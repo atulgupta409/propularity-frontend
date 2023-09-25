@@ -11,6 +11,12 @@
   border-radius: 0;
   padding: 2px 0;
 }
+.calculator_left {
+  padding-right: 50px;
+}
+.calculator_right {
+  padding-left: 50px;
+}
 .form-control:focus {
   box-shadow: none;
   border-color: #ff385c;
