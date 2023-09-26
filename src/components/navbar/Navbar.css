@@ -40,6 +40,11 @@
     transition: all 0.3s ease-in-out;
     border-radius: 10px;
 }
+.callBack_btn_nav a {
+    color: #ff385c;
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+}
 .primary_color {
     color: #ff385c;
 }
@@ -50,6 +55,9 @@
 
 .callBack_btn_nav:hover {
     background-color: #ff385c;
+    color: #fff;
+}
+.callBack_btn_nav:hover a {
     color: #fff;
 }
 

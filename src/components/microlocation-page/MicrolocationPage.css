@@ -60,3 +60,14 @@
 .microlocation_projects {
   margin-top: 50px;
 }
+.pagination .page-item .page-link {
+  background-color: #ffe5ea;
+}
+.pagination .active>.page-link {
+  background-color: #ff4466 !important;
+  border-color: #ff4466;
+}
+.pagination .page-link:focus {
+  box-shadow: none;
+}
+
