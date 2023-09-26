@@ -10,7 +10,7 @@ import EmiCalculator from "../emi-calculator/EmiCalculator";
 import { GET_PROJECT_DETAILS } from "../../service/ProjectDetailsservice";
 import { useQuery } from "@apollo/client";
 import { Link, useParams } from "react-router-dom";
-import ImageModal from "./ImageModal";
+import ProjectCard from "./ProjectCard";
 
 function Project() {
   const { slug } = useParams();
@@ -68,18 +68,7 @@ function Project() {
   const floorPlanChange = (e) => {
     const innerValue = e.target.innerText;
     const planType = innerValue.replace("floor plan", "");
-    // console.log(planType);
     setFloorPlan(planType.trim());
-  };
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
   };
 
   return (
@@ -276,17 +265,25 @@ function Project() {
                 <h3 className="mt30">
                   {data?.projectDetails[0]?.name} Floor Plans
                 </h3>
-                {data?.projectDetails[0]?.plans?.map((plan, i) => {
-                  return (
-                    <button
-                      className="floor_plan_btn mt20"
-                      onClick={floorPlanChange}
-                      key={i}
-                    >
-                      {plan.category[0].name} floor plan
-                    </button>
-                  );
-                })}
+                {data?.projectDetails[0]?.plans && (
+                  <>
+                    {Array.from(
+                      new Set(
+                        data.projectDetails[0].plans.map(
+                          (plan) => plan.category[0].name
+                        )
+                      )
+                    ).map((uniqueName, i) => (
+                      <button
+                        className="floor_plan_btn mt20"
+                        onClick={floorPlanChange}
+                        key={i}
+                      >
+                        {uniqueName} floor plan
+                      </button>
+                    ))}
+                  </>
+                )}
                 <div className="floor_configuration mt30">
                   {data?.projectDetails[0]?.plans
                     ?.filter((plan) => plan.category[0].name === floorPlan)
@@ -294,18 +291,69 @@ function Project() {
                       <div className="floor_plan_card lightbox" key={j}>
                         <div className="floor_img">
                           <img
-                            src={myPlan.image.length > 0 ? myPlan.image[0] : ""}
-                            alt={`${data?.projectDetails[0]?.name} floor plan`}
+                            src={
+                              myPlan.image.length > 0
+                                ? myPlan.image[0]
+                                : noImage
+                            }
+                            alt={
+                              myPlan.image.length > 0
+                                ? `${data?.projectDetails[0]?.name} floor plan`
+                                : "No floor plan"
+                            }
                             className="img-fluid clickable-image"
-                            onClick={openModal}
                           />
-                          {isModalOpen && (
-                            <ImageModal
-                              imageUrl={
-                                myPlan.image.length > 0 ? myPlan.image[0] : ""
-                              }
-                              onClose={closeModal}
-                            />
+                          {myPlan.image.length > 0 && (
+                            <>
+                              <div className="view_floor_plan_img">
+                                <button
+                                  type="button"
+                                  className="btn view_img_btn"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#exampleModal"
+                                >
+                                  View Floor Plan
+                                </button>
+                              </div>
+
+                              <div
+                                className="modal fade"
+                                id="exampleModal"
+                                tabindex="-1"
+                                aria-labelledby="exampleModalLabel"
+                                aria-hidden="true"
+                              >
+                                <div className="modal-dialog modal-dialog-centered">
+                                  <div className="modal-content">
+                                    <div className="modal-header">
+                                      <h5
+                                        className="modal-title"
+                                        id="exampleModalLabel"
+                                      >
+                                        {`${data?.projectDetails[0]?.name} floor plan`}
+                                      </h5>
+                                      <button
+                                        type="button"
+                                        className="btn-close"
+                                        data-bs-dismiss="modal"
+                                        aria-label="Close"
+                                      ></button>
+                                    </div>
+                                    <div className="modal-body">
+                                      <img
+                                        src={
+                                          myPlan.image.length > 0
+                                            ? myPlan.image[0]
+                                            : ""
+                                        }
+                                        alt={`${data?.projectDetails[0]?.name} floor plan`}
+                                        className="img-fluid"
+                                      />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </>
                           )}
                         </div>
                         <div className="card_body">
@@ -427,6 +475,51 @@ function Project() {
                       alt={data?.projectDetails[0]?.name + " " + "master plan"}
                       className="img-fluid"
                     />
+                    <div className="view_floor_plan_img">
+                      <button
+                        type="button"
+                        className="btn view_master_btn"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal2"
+                      >
+                        View Master Plan
+                      </button>
+                    </div>
+
+                    <div
+                      className="modal fade"
+                      id="exampleModal2"
+                      tabindex="-1"
+                      aria-labelledby="exampleModalLabel"
+                      aria-hidden="true"
+                    >
+                      <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">
+                              {`${data?.projectDetails[0]?.name} master plan`}
+                            </h5>
+                            <button
+                              type="button"
+                              className="btn-close"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
+                            ></button>
+                          </div>
+                          <div className="modal-body">
+                            <img
+                              src={
+                                data?.projectDetails[0]?.master_plan
+                                  ? data?.projectDetails[0]?.master_plan
+                                  : noImage
+                              }
+                              alt={`${data?.projectDetails[0]?.name} master plan`}
+                              className="img-fluid"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 ) : (
                   <p className="no_data_p">No Master Plan Available</p>
@@ -482,9 +575,9 @@ function Project() {
                   <h3 className="mt30">
                     Properties for Sale in {data?.projectDetails[0]?.name}
                   </h3>
-                  <div className="my_carousel mt20">
-                    <MyCarousel
-                      carouselClass={"full_carousel"}
+                  <div className="my_carousel projects_carousel mt20">
+                    <ProjectCard
+                      carouselclassName={"full_carousel"}
                       isProjectcard={true}
                       name={data?.projectDetails[0]?.name}
                       city={data?.projectDetails[0]?.location?.city[0]?.name}
@@ -512,7 +605,7 @@ function Project() {
                   </h3>
                   <div className="my_carousel mt20">
                     <MyCarousel
-                      carouselClass={"full_carousel"}
+                      carouselclassName={"full_carousel"}
                       isProjectcard={true}
                       name={data?.projectDetails[0]?.name}
                       city={data?.projectDetails[0]?.location?.city[0]?.name}

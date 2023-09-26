@@ -60,7 +60,7 @@ function Builder() {
             />
           </div>
         </div>
-        <div className="col-3">
+        <div className="col-3 small_img_main">
           <div className="col-12">
             <div className="small_img">
               <img

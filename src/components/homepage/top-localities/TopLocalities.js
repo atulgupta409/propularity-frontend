@@ -9,7 +9,8 @@ function TopLocalities() {
       <div className="container">
         <div className="row section_row">
           <h2 className="heading">
-            Featured <span className="primary_color">Cities</span>
+            Top Cities In India For{" "}
+            <span className="primary_color">Property</span>
           </h2>
           <p className="heading_text">
             Find Your Home In The City Of Your Choice
@@ -24,7 +25,7 @@ function TopLocalities() {
                     className="img-fluid"
                   />
                 </div>
-                <div className="localities_card_overlay">
+                <div className="localities_card_overlay localities_card_overlay1">
                   <div className="overlay_text">
                     <h3>Gurugram</h3>
                     <p>12000+ Properties</p>
@@ -44,7 +45,7 @@ function TopLocalities() {
                     className="img-fluid"
                   />
                 </div>
-                <div className="localities_card_overlay">
+                <div className="localities_card_overlay localities_card_overlay2">
                   <div className="overlay_text">
                     <h3>Mumbai</h3>
                     <p>10000+ Properties</p>
@@ -63,7 +64,7 @@ function TopLocalities() {
                   className="img-fluid"
                 />
               </div>
-              <div className="localities_card_overlay">
+              <div className="localities_card_overlay localities_card_overlay3">
                 <div className="overlay_text">
                   <h3>Delhi</h3>
                   <p>Coming Soon</p>
@@ -81,7 +82,7 @@ function TopLocalities() {
                   className="img-fluid"
                 />
               </div>
-              <div className="localities_card_overlay">
+              <div className="localities_card_overlay localities_card_overlay4">
                 <div className="overlay_text">
                   <h3>Noida</h3>
                   <p>Coming Soon</p>

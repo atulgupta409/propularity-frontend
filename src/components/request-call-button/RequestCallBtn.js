@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ContactFormModal from "../modal-form/ContactFormModal";
 import Modal from "react-modal";
 import "./RequestCallBtn.css";
+import { MdCall } from "react-icons/md";
 
 function RequestCallBtn() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -15,9 +16,14 @@ function RequestCallBtn() {
 
   return (
     <>
-      <button className="globalBtn callBack_btn_nav" onClick={openModal}>
-        Request Call Back
-      </button>
+      <div onClick={openModal} style={{ cursor: "pointer" }}>
+        <p className="card_p mb-0">
+          <span>
+            <MdCall className="card_icon" />
+          </span>
+          Enquire
+        </p>
+      </div>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
