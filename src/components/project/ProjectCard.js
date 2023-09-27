@@ -2,7 +2,14 @@ import React from "react";
 import Carousel from "react-elastic-carousel";
 import RequestCallBtn from "../request-call-button/RequestCallBtn";
 
-function ProjectCard({ projectImages, name, city, microlocation, floorPlans }) {
+function ProjectCard({
+  projectImages,
+  name,
+  city,
+  microlocation,
+  floorPlans,
+  isRent,
+}) {
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
     { width: 576, itemsToShow: 2.4 },
@@ -28,7 +35,9 @@ function ProjectCard({ projectImages, name, city, microlocation, floorPlans }) {
                   <h5 className="card_title">
                     {plan?.category[0]?.name?.toLowerCase()?.includes("bhk")
                       ? plan?.category[0]?.name +
-                        " Apartment For Sale" +
+                        (isRent
+                          ? " Apartment For Rent"
+                          : " Apartment For Sale") +
                         " " +
                         plan?.size +
                         (plan?.size_sq ? plan?.size_sq : "Sq.Ft") +
