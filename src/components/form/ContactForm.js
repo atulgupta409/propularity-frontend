@@ -16,7 +16,6 @@ function ContactForm({button_name, downloadPdf}) {
     let { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
-
   const notify = () =>
     toast.success("Thank You for submitting the query!", {
       position: "top-center",
