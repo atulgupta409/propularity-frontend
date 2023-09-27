@@ -11,6 +11,7 @@ import { GET_PROJECT_DETAILS } from "../../service/ProjectDetailsservice";
 import { useQuery } from "@apollo/client";
 import { Link, useParams } from "react-router-dom";
 import ProjectCard from "./ProjectCard";
+import LeafletMap from "./LeafletMap";
 
 function Project() {
   const { slug } = useParams();
@@ -36,16 +37,8 @@ function Project() {
     }
   }, [data]);
 
-  const [mapSrc, setMapSrc] = useState("");
   const latitude = data?.projectDetails[0]?.location?.latitude;
   const longitude = data?.projectDetails[0]?.location?.longitude;
-  const encodedLatitude = encodeURIComponent(latitude);
-  const encodedLongitude = encodeURIComponent(longitude);
-
-  useEffect(() => {
-    const dynamicMapSrc = `https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14039.739422316317!2d${longitude}!3d${latitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1692360225546!5m2!1sen!2sin&q=${encodedLongitude},${encodedLatitude}`;
-    setMapSrc(dynamicMapSrc);
-  }, [latitude, longitude]);
 
   const amenities = data?.projectDetails[0]?.amenties;
   const [readMoretext, setReadMoreText] = useState(false);
@@ -454,12 +447,11 @@ function Project() {
                   {data?.projectDetails[0]?.location?.address}
                 </p>
                 <div className="map_box">
-                  <iframe
-                    src={mapSrc}
-                    allowFullScreen={true}
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  ></iframe>
+                  <LeafletMap
+                    latitude={latitude}
+                    longitude={longitude}
+                    name={data?.projectDetails[0]?.name}
+                  />
                 </div>
               </div>
               <hr className="divider_line" />
