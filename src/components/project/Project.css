@@ -12,12 +12,65 @@
 .configuration_box:not(:last-child) {
     margin-right: 20px;
 }
+.project_icons {
+    width: 40px;
+    height: 40px;
+}
+.small_img_main {
+    padding-left: 4px !important;
+}
+.project_details_link {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(34, 34, 34, 0.50);
+}
 .config_price {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 14px;
     width: 250px;
+}
+.view_floor_plan_img {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: #00000040;
+    display: flex;
+    justify-content: center;
+    transition: 0.3s all ease-in-out;
+}
+.view_img_btn, .view_master_btn {
+    width: 100%;
+    color: #fff !important;
+    font-size: 14px;
+    font-weight: 600;
+}
+.floor_img {
+    position: relative;
+}
+.floor_img .clickable-image {
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+}
+.floor_img .modal-dialog, .master_plan .modal-dialog {
+    min-width: 60%;
+}
+.floor_img .modal-body, .master_plan .modal-body {
+    text-align: center;
+}
+.floor_img:hover .view_floor_plan_img {
+    opacity: 1;
+}
+.floor_img:hover .view_img_btn {
+    color: #fff;
+}
+.master_plan:hover .view_floor_plan_img {
+    opacity: 1;
 }
 .config_price img {
     width: 40px;
@@ -47,15 +100,7 @@
     display: none;
     transition: 0.3s ease-in-out;
     height: 8px;
-    /* background-color: #fff0f1; */
 }
-/* .project_configurationr:hover::-webkit-scrollbar {
-    display: block;
-    background-color: white;
-}
-.project_configuration:hover::-webkit-scrollbar-thumb {
-    background-color: #fff0f1;
-} */
 .floor_configuration {
     display: block;
     overflow-y: hidden;
@@ -88,14 +133,26 @@
     border: 1px solid rgba(0, 0, 0, 0.10);
     background: rgba(249, 249, 249, 0.50);
     font-size: 12px;
-    padding: 6px;
-    width: 135px;
-    margin-left: 10px;
+    padding: 6px 10px;
     color: #222;
+    width: auto;
+    margin-left: 10px;
 }
 .floor_img {
     height: 184px;
     overflow: hidden;
+}
+.carousel_project .rec-carousel-item {
+    width: 19rem;
+}
+.projects_carousel .full_carousel .rec-arrow-right {
+    right: -40px;
+}
+.projects_carousel {
+    padding-right: 0;
+}
+.carousel_project .rec-carousel-item:not(:last-child) {
+    margin-right: 27px;
 }
 .project_highlights ul {
     padding-left: 17px;
@@ -148,7 +205,7 @@
 .map_box iframe {
     border-radius: 20px;
     width: 100%;
-    height: 250px;
+    height: 300px;
 }
 .master_plan {
     width: 100%;
@@ -159,6 +216,7 @@
     align-items: center;
     border-radius: 20px;
     padding: 0 0 0 12px;
+    position: relative;
 }
 .master_plan img {
     /* height: 100%; */
@@ -171,4 +229,11 @@
     margin-top: 30px;
     color: rgba(34,34,34,0.5);
     font-size: 16px;
+}
+.brochure{
+    border-radius: 5px;
+    border: 1px solid #f6c0c0;
+    width: fit-content;
+    padding: 7px;
+    background: #fffafb;
 }

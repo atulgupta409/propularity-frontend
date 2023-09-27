@@ -60,7 +60,7 @@ function Builder() {
             />
           </div>
         </div>
-        <div className="col-3">
+        <div className="col-3 small_img_main">
           <div className="col-12">
             <div className="small_img">
               <img
@@ -147,7 +147,10 @@ function Builder() {
               <h3>Residential Projects of M3M India</h3>
             </div>
             <div className="my_carousel">
-              <MyCarousel carouselClass={"half_carousel"} />
+              <MyCarousel
+                carouselClass={"half_carousel"}
+                isProjectcard={false}
+              />
             </div>
           </div>
           <hr className="divider_line" />
@@ -156,7 +159,10 @@ function Builder() {
               <h3>Commericial Projects of M3M India</h3>
             </div>
             <div className="my_carousel">
-              <MyCarousel carouselClass={"half_carousel"} />
+              <MyCarousel
+                carouselClass={"half_carousel"}
+                isProjectcard={false}
+              />
             </div>
           </div>
         </div>

@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import ContactFormModal from "../modal-form/ContactFormModal";
 import Modal from "react-modal";
 import "./RequestCallBtn.css";
+import { MdCall } from "react-icons/md";
+import {BiSolidDownload} from "react-icons/bi"
 
-function RequestCallBtn() {
+function RequestCallBtn({button_name, downloadPdf}) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openModal = () => {
     setModalIsOpen(true);
@@ -15,16 +17,21 @@ function RequestCallBtn() {
 
   return (
     <>
-      <button className="globalBtn callBack_btn_nav" onClick={openModal}>
-        Request Call Back
-      </button>
+      <div onClick={openModal} style={{ cursor: "pointer" }}>
+        <p className="card_p mb-0">
+          <span>
+            {button_name === "Enquire" ? <MdCall className="card_icon" /> : <BiSolidDownload className="download_card_icon"/>}
+          </span>
+          {button_name}
+        </p>
+      </div>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
         contentLabel="Example Modal"
         ariaHideApp={false}
       >
-        <ContactFormModal closeModal={closeModal} />
+        <ContactFormModal closeModal={closeModal} button_name={button_name} downloadPdf={downloadPdf}/>
       </Modal>
     </>
   );

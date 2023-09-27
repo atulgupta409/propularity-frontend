@@ -1,6 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
 import "./Navbar.css";
-import RequestCallBtn from "../request-call-button/RequestCallBtn";
 import logo from "../media/logo.png";
 import { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
@@ -168,7 +167,9 @@ function Navbar() {
               </ul>
               <ul className="navbar-nav">
                 <li className="nav-item dropdown mob_hide">
-                  <RequestCallBtn />
+                  <button className="globalBtn callBack_btn_nav">
+                    <a href="tel: 9999063322">Call: +919999063322</a>
+                  </button>
                 </li>
               </ul>
             </div>

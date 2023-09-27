@@ -8,8 +8,8 @@ function EmiCalculator() {
     tenure: "",
     interest: "",
   });
-  const [monthlyEmi, setMonthlyEmi] = useState(20000);
-  const [totalPaybleAmount, setTotalPaybleAmount] = useState(8000000);
+  const [monthlyEmi, setMonthlyEmi] = useState("20,000");
+  const [totalPaybleAmount, setTotalPaybleAmount] = useState("80,00,000");
   const numPattern = /^(?=.*[1-9]|0)\d*(\.\d+)?$/;
 
   const checkValidNum = (e) => {
@@ -21,33 +21,49 @@ function EmiCalculator() {
   };
   const inputChangeHandler = (e) => {
     let { name, value } = e.target;
+    if (name === "interest") {
+      value = value.replace("%", "");
+      if (!isNaN(value)) {
+        value = value + "%";
+      }
+    }
+
+    if (name === "amount") {
+      value = value.replace(/[^0-9]/g, "");
+      value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      if (!value.startsWith("₹")) {
+        value = `₹ ${value}`;
+      }
+    }
     setEmi({ ...emi, [name]: value });
   };
 
   const calculateEmihandler = (e) => {
     e.preventDefault();
-    const RATE = emi.interest / 1200;
+    const numericValueRate = parseFloat(emi.interest.replace("%", ""));
+    const RATE = numericValueRate / 1200;
     const TENURE = emi.tenure * 12;
+    const numericValueAmount = parseFloat(emi.amount.replace(/[^0-9.-]+/g, ""));
     const emiValue =
-      (emi.amount * RATE * Math.pow(1 + RATE, TENURE)) /
+      (numericValueAmount * RATE * Math.pow(1 + RATE, TENURE)) /
       (Math.pow(1 + RATE, TENURE) - 1);
-    setMonthlyEmi(emiValue.toFixed(2));
-    setTotalPaybleAmount((emiValue * TENURE).toFixed(2));
-    // setEmi({ amount: "", tenure: "", interest: "" });
+    const formattedEmi = emiValue.toLocaleString();
+    setMonthlyEmi(formattedEmi);
+    const totalAmount = emiValue * TENURE;
+    const formattedTotalAmount = totalAmount.toLocaleString();
+    setTotalPaybleAmount(formattedTotalAmount);
   };
-
-  //   Rs 10,00,000 * 0.006 * (1 + 0.006)120 / ((1 + 0.006)120 – 1) = Rs 11,714.
 
   return (
     <div className="container">
       <div className="emi_container">
         <div className="row">
-          <div className="col-12 col-md-6">
-            <h3 className="text-center">EMI Calculator</h3>
+          <h3 className="text-center">EMI Calculator</h3>
+          <div className="col-12 col-md-6 calculator_left">
             <form onSubmit={calculateEmihandler}>
               <div className="mt20 col-12">
                 <label htmlFor="loanamount" className="form-label">
-                  Loan Amount
+                  Loan Amount (Rs.)*
                 </label>
                 <input
                   type="text"
@@ -64,7 +80,7 @@ function EmiCalculator() {
               <div className="row">
                 <div className="mt20 col-6">
                   <label htmlFor="loantenure" className="form-label">
-                    Loan Tenure
+                    Loan Tenure (Year)*
                   </label>
                   <input
                     type="text"
@@ -80,7 +96,7 @@ function EmiCalculator() {
                 </div>
                 <div className="mt20 col-6">
                   <label htmlFor="loanrate" className="form-label">
-                    Interest Rate % (p.a)
+                    Interest Rate % (p.a)*
                   </label>
                   <input
                     type="text"
@@ -100,11 +116,11 @@ function EmiCalculator() {
               </button>
             </form>
           </div>
-          <div className="col-12 col-md-6">
+          <div className="col-12 col-md-6 mt30 calculator_right">
             <div className="row">
               <div className="col-6">
                 <h5>EMI Amount</h5>
-                <p className="emi_amount">₹ {monthlyEmi.toLocaleString()}</p>
+                <p className="emi_amount">₹ {monthlyEmi}</p>
               </div>
               <div className="col-6">
                 <h5>Total Payble Amount</h5>

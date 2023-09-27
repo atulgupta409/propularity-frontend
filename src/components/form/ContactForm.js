@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function ContactForm() {
+function ContactForm({button_name, downloadPdf}) {
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [phoneError, setPhoneError] = useState("");
@@ -99,6 +99,9 @@ function ContactForm() {
         setLoading(false);
         setIsSending(false);
         notify();
+        if(button_name === "Download Brochure"){
+          downloadPdf()
+        }
       } catch (error) {
         console.error(error);
       }

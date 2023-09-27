@@ -27,7 +27,7 @@ function BuildersSlider({ myClass }) {
       {myClass === "home_top_builders" ? (
         <>
           <h2 className="heading">
-            Top <span className="primary_color">Developers</span>
+            Top Developers In <span className="primary_color">India</span>
           </h2>
           <p className="heading_text">
             Discover Top Developers to Your Specific Preferences.
@@ -51,11 +51,11 @@ function BuildersSlider({ myClass }) {
                         alt={builder?.alt}
                       />
                     </div>
-                    <div className="card-body">
+                    {/* <div className="card-body">
                       <p className="card-text builder_card_text">
                         {builder?.name}
                       </p>
-                    </div>
+                    </div> */}
                   </div>
                 </Link>
               );

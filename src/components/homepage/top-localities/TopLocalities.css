@@ -16,20 +16,27 @@
 .localities_card .img img {
   height: 100% !important;
   object-fit: cover;
-  border-radius: 20px;
+  border-radius: 23px;
   width: 100%;
 }
 .localities_card_overlay {
   position: absolute;
-  background: linear-gradient(
-    0deg,
-    #ffecef 43.75%,
-    rgba(238, 240, 245, 0) 100%
-  );
   width: 100%;
   border-radius: 20px;
   bottom: 0;
   height: 40%;
+}
+.localities_card_overlay1 {
+  background: linear-gradient(0deg, #F0F7FF 43.75%, rgba(238, 240, 245, 0.00) 100%);
+}
+.localities_card_overlay2 {
+  background: linear-gradient(0deg, #FFE7CE 43.75%, rgba(238, 240, 245, 0.00) 100%);
+}
+.localities_card_overlay3 {
+  background: linear-gradient(0deg, #FFFBEB 43.75%, rgba(238, 240, 245, 0.00) 100%);
+}
+.localities_card_overlay4 {
+  background: linear-gradient(0deg, #F4F2FF 43.75%, rgba(238, 240, 245, 0.00) 100%);
 }
 .overlay_text {
   text-align: center;

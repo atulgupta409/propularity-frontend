@@ -154,8 +154,7 @@ function MicrolocationPage() {
     setSelectedBuilder(null);
     setSelectedStatus(null);
     setSelectedPrice(null);
-    setIsSearch(false)
-      
+    setIsSearch(false);
   };
 
   return (
@@ -215,10 +214,13 @@ function MicrolocationPage() {
       </div>
       <div className="row microlocation_projects">
         {(isSearch ? searchedprojects?.length : projects?.length > 0) ? (
-          (isSearch ? searchedprojects?.slice(
-              (curPage - 1) * item_per_page,
-              curPage * item_per_page
-            ) : projects)?.map((element, i) => {
+          (isSearch
+            ? searchedprojects?.slice(
+                (curPage - 1) * item_per_page,
+                curPage * item_per_page
+              )
+            : projects
+          )?.map((element, i) => {
             return (
               <div className="col-md-3" key={i}>
                 <HomeCard
@@ -250,7 +252,9 @@ function MicrolocationPage() {
         pageCount={totalPage}
         marginPagesDisplayed={2}
         onPageChange={handlePageClick}
-        containerClassName={"pagination justify-content-center pagination_box"}
+        containerClassName={
+          "pagination justify-content-center pagination_box mt20"
+        }
         pageClassName={"page-item page_item"}
         pageLinkClassName={"page-link page_link"}
         previousClassName={"page-item page_item"}
