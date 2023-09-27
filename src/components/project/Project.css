@@ -142,6 +142,12 @@
     height: 184px;
     overflow: hidden;
 }
+.leaflet-top {
+    z-index: 990;
+}
+.leaflet-bottom {
+    opacity: 0;
+}
 .carousel_project .rec-carousel-item {
     width: 19rem;
 }
