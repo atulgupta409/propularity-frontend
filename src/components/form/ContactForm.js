@@ -18,7 +18,7 @@ function ContactForm({button_name, downloadPdf}) {
   };
   const notify = () =>
     toast.success("Thank You for submitting the query!", {
-      position: "top-center",
+      position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -30,7 +30,7 @@ function ContactForm({button_name, downloadPdf}) {
 
   const notifyError = () =>
     toast.error("Error Ocurred!", {
-      position: "top-center",
+      position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -98,11 +98,12 @@ function ContactForm({button_name, downloadPdf}) {
         setLoading(false);
         setIsSending(false);
         notify();
-        if(button_name === "Download Brochure"){
-          downloadPdf()
+        if (button_name === "Download Brochure") {
+          downloadPdf();
         }
       } catch (error) {
         console.error(error);
+        notifyError();
       }
     } else {
       validationName();
@@ -139,10 +140,10 @@ function ContactForm({button_name, downloadPdf}) {
 
   return (
     <>
+      <ToastContainer style={{ zIndex: "99999" }} />
       <div className="form_heading">
         <h3 className="req_box">Yes, I'm Interested</h3>
       </div>
-      <ToastContainer />
       <form onSubmit={sendEmail}>
         <div className="row">
           <div className="col-md-12 mb-4">
