@@ -8,6 +8,7 @@ export const GET_PROJECT_DETAILS = gql`
         name
       }
       starting_price
+      brochure
       location {
         address
         latitude

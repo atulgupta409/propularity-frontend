@@ -28,7 +28,7 @@ function ProjectCard({ projectImages, name, city, microlocation, floorPlans }) {
                   <h5 className="card_title">
                     {plan?.category[0]?.name?.toLowerCase()?.includes("bhk")
                       ? plan?.category[0]?.name +
-                        " Apartment" +
+                        " Apartment For Sale" +
                         " " +
                         plan?.size +
                         (plan?.size_sq ? plan?.size_sq : "Sq.Ft") +
@@ -59,7 +59,7 @@ function ProjectCard({ projectImages, name, city, microlocation, floorPlans }) {
                       </p>
                     </div>
 
-                    <RequestCallBtn />
+                    <RequestCallBtn button_name={"Enquire"} />
                   </div>
                 </div>
               </div>

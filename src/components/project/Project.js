@@ -11,6 +11,7 @@ import { GET_PROJECT_DETAILS } from "../../service/ProjectDetailsservice";
 import { useQuery } from "@apollo/client";
 import { Link, useParams } from "react-router-dom";
 import ProjectCard from "./ProjectCard";
+import RequestCallBtn from "../request-call-button/RequestCallBtn";
 import LeafletMap from "./LeafletMap";
 
 function Project() {
@@ -28,7 +29,7 @@ function Project() {
   }
 
   const [aboutText, setAboutText] = useState("");
-
+  
   useEffect(() => {
     if (data?.projectDetails && data?.projectDetails?.length > 0) {
       const description = data?.projectDetails[0]?.description;
@@ -36,7 +37,6 @@ function Project() {
       setAboutText(plainText);
     }
   }, [data]);
-
   const latitude = data?.projectDetails[0]?.location?.latitude;
   const longitude = data?.projectDetails[0]?.location?.longitude;
 
@@ -62,6 +62,21 @@ function Project() {
     const innerValue = e.target.innerText;
     const planType = innerValue.replace("floor plan", "");
     setFloorPlan(planType.trim());
+  };
+
+  const downloadPdf = async () => {
+    try {
+      const response = await fetch(data?.projectDetails[0]?.brochure);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'downloaded-pdf.pdf';
+      a.click();
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error downloading PDF:', error);
+    }
   };
 
   return (
@@ -519,18 +534,15 @@ function Project() {
               </div>
               <hr className="divider_line" />
               <div className="row">
-                <h3 className="mt30">About {data?.projectDetails[0]?.name}</h3>
+                <h3 className="mt30">{data?.projectDetails[0]?.name+" " +data?.projectDetails[0]?.location?.micro_location[0]?.name+ " " + data?.projectDetails[0]?.location?.city[0]?.name}</h3>
                 {data?.projectDetails[0]?.description !== "<p></p>\n" ? (
                   <p className="about_builder mt20">{aboutText}</p>
                 ) : (
                   <p className="no_data_p">Not Available</p>
                 )}
-                {/* <div>
-                  <button className="read_btn" onClick={readMore}>
-                    Read more{" "}
-                    <MdKeyboardArrowRight className="read_more_icon" />
-                  </button>
-                </div> */}
+                {data?.projectDetails[0]?.brochure && (<div className="brochure">
+                  <RequestCallBtn button_name={"Download Brochure"} downloadPdf={downloadPdf}/>
+                </div>)}
               </div>
             </div>
             <div className="col-lg-4 mob_hide p-0">
@@ -565,7 +577,7 @@ function Project() {
                 <>
                   {" "}
                   <h3 className="mt30">
-                    Properties for Sale in {data?.projectDetails[0]?.name}
+                    Apartment for Sale in {data?.projectDetails[0]?.name}
                   </h3>
                   <div className="my_carousel projects_carousel mt20">
                     <ProjectCard
