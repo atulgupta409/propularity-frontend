@@ -5,7 +5,6 @@ import ContactForm from "../form/ContactForm";
 import contactImage from "../media/sumit-sir-contact-main.png";
 import "./Project.css";
 import buildingIcon from "../media/building-icon.png";
-import MyCarousel from "../carousel/MyCarousel";
 import EmiCalculator from "../emi-calculator/EmiCalculator";
 import { GET_PROJECT_DETAILS } from "../../service/ProjectDetailsservice";
 import { useQuery } from "@apollo/client";
