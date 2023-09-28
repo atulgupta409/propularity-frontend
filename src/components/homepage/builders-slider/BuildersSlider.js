@@ -6,7 +6,7 @@ import { useQuery } from "@apollo/client";
 import { GET_ALL_BUILDERS } from "../../../service/ProjectDetailsservice";
 import { Link } from "react-router-dom";
 
-function BuildersSlider({ myClass }) {
+function BuildersSlider({ myClass, name }) {
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
     { width: 576, itemsToShow: 2.4 },
@@ -39,28 +39,47 @@ function BuildersSlider({ myClass }) {
 
       <div className="carousel_container mt30">
         <div className="carousel-wrapper">
-          <Carousel breakPoints={breakPoints}>
-            {data?.builders?.map((builder, i) => {
-              return (
-                <Link to={`/builder/${builder?.slug}`} key={i}>
-                  <div className="card builder_card">
-                    <div className="builder_img">
-                      <img
-                        src={builder?.BuilderLogo}
-                        className="card-img-top"
-                        alt={builder?.alt}
-                      />
+          {myClass === "other_builders" ? (
+            <Carousel breakPoints={breakPoints}>
+              {data?.builders
+                ?.filter((build) => {
+                  return build?.name !== name;
+                })
+                ?.map((builder, i) => {
+                  return (
+                    <Link to={`/builder/${builder?.slug}`} key={i}>
+                      <div className="card builder_card">
+                        <div className="builder_img">
+                          <img
+                            src={builder?.BuilderLogo}
+                            className="card-img-top"
+                            alt={builder?.alt}
+                          />
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
+            </Carousel>
+          ) : (
+            <Carousel breakPoints={breakPoints}>
+              {data?.builders?.map((builder, i) => {
+                return (
+                  <Link to={`/builder/${builder?.slug}`} key={i}>
+                    <div className="card builder_card">
+                      <div className="builder_img">
+                        <img
+                          src={builder?.BuilderLogo}
+                          className="card-img-top"
+                          alt={builder?.alt}
+                        />
+                      </div>
                     </div>
-                    {/* <div className="card-body">
-                      <p className="card-text builder_card_text">
-                        {builder?.name}
-                      </p>
-                    </div> */}
-                  </div>
-                </Link>
-              );
-            })}
-          </Carousel>
+                  </Link>
+                );
+              })}
+            </Carousel>
+          )}
         </div>
       </div>
     </div>

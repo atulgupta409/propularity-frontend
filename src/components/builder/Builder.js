@@ -9,26 +9,44 @@ import contactImage from "../media/sumit-sir-contact-main.png";
 import MyCarousel from "../carousel/MyCarousel";
 import { IoMdPhotos } from "react-icons/io";
 import { useQuery } from "@apollo/client";
-import { GET_ALL_BUILDERS_DATA } from "../../service/BuildersService";
+import {
+  GET_ALL_BUILDERS_DATA,
+  GET_ALL_PROJECTS_BY_BUILDER,
+} from "../../service/BuildersService";
 import { useParams, Link } from "react-router-dom";
 import BuilderSlider from "../homepage/builders-slider/BuildersSlider";
 
 function Builder() {
   const { builder } = useParams();
   const slug = builder;
+  const [builderData, setBuilderData] = useState([]);
 
   const { loading, error, data } = useQuery(GET_ALL_BUILDERS_DATA, {
     variables: { slug: slug },
   });
+  const builderName = builderData[0]?.name;
+  const {
+    loading: projectLoading,
+    error: projectError,
+    data: projectData,
+  } = useQuery(GET_ALL_PROJECTS_BY_BUILDER, {
+    variables: { builderName },
+  });
 
-  const [builderData, setBuilderData] = useState([]);
   useEffect(() => {
     if (data) {
       setBuilderData(data?.buildersBySlug);
     }
   }, [data]);
+  const [projectType, setProjectType] = useState([]);
 
-  // console.log(builderData);
+  useEffect(() => {
+    if (projectData) {
+      setProjectType(projectData.projectsByBuilder);
+    }
+  }, [projectData]);
+
+  console.log(projectType);
 
   return (
     <div className="container mt-5">
@@ -91,14 +109,22 @@ function Builder() {
         <div className="col-3 pe-0">
           <div className="col-12 builder_overview">
             <div className="d-flex">
-              <img src={icon} alt="icon" className="detail_icon" />
+              <img
+                src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695805294596.png"
+                alt="city icon"
+                className="detail_icon"
+              />
               <div className="ms-2">
                 <h4 className="detail_h4">Cities</h4>
                 <p className="detail_p">{builderData[0]?.cities?.length}+</p>
               </div>
             </div>
             <div className="d-flex mt-3">
-              <img src={icon} alt="icon" className="detail_icon" />
+              <img
+                src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695617875044.png"
+                alt="configuration icon"
+                className="detail_icon"
+              />
               <div className="ms-2">
                 <h4 className="detail_h4">Configuration</h4>
                 <p className="detail_p">{builderData[0]?.configuration}</p>
@@ -107,14 +133,22 @@ function Builder() {
           </div>
           <div className="col-12 builder_overview mt20">
             <div className="d-flex">
-              <img src={icon} alt="icon" className="detail_icon" />
+              <img
+                src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695617884484.png"
+                alt="residential icon"
+                className="detail_icon"
+              />
               <div className="ms-2">
                 <h4 className="detail_h4">Residential Projects</h4>
                 <p className="detail_p">{builderData[0]?.residential_num}+</p>
               </div>
             </div>
             <div className="d-flex mt-3">
-              <img src={icon} alt="icon" className="detail_icon" />
+              <img
+                src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695805311265.png"
+                alt="commercial icon"
+                className="detail_icon"
+              />
               <div className="ms-2">
                 <h4 className="detail_h4">Commercial Projects</h4>
                 <p className="detail_p">{builderData[0]?.commercial_num}+</p>
@@ -191,7 +225,7 @@ function Builder() {
       </div>
       <hr className="divider_line" />
       <h3 className="mt30">Other Builders</h3>
-      <BuilderSlider myClass={"other_builders"} />
+      <BuilderSlider myClass={"other_builders"} name={builderData[0]?.name} />
     </div>
   );
 }
