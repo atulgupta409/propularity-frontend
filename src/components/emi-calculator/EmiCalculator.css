@@ -27,6 +27,9 @@
 .bank_logo {
   width: 150px;
 }
+.bank_logo img {
+  opacity: 0.6;
+}
 .calculator_left {
   padding-right: 50px;
 }

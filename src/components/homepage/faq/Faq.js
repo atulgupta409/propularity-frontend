@@ -137,7 +137,7 @@ function Faq() {
                   className="accordion-button collapsed"
                   type="button"
                   data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseFive"
+                  data-bs-target="#flush-collapsefive"
                   aria-expanded="false"
                   aria-controls="flush-collapseFive"
                 >

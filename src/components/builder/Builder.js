@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./Builder.css";
 import star from "../media/star-rating.png";
-import sampleImage from "../media/sample-image.png";
-import icon from "../media/icon.png";
 import ContactForm from "../form/ContactForm";
-import { MdKeyboardArrowRight } from "react-icons/md";
 import contactImage from "../media/sumit-sir-contact-main.png";
-import MyCarousel from "../carousel/MyCarousel";
 import { IoMdPhotos } from "react-icons/io";
 import { useQuery } from "@apollo/client";
 import {
@@ -15,8 +11,17 @@ import {
 } from "../../service/BuildersService";
 import { useParams, Link } from "react-router-dom";
 import BuilderSlider from "../homepage/builders-slider/BuildersSlider";
+import Carousel from "react-elastic-carousel";
+import Card from "../card/Card";
 
 function Builder() {
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 576, itemsToShow: 2.4 },
+    { width: 768, itemsToShow: 2.4 },
+    { width: 1200, itemsToShow: 4 },
+  ];
+
   const { builder } = useParams();
   const slug = builder;
   const [builderData, setBuilderData] = useState([]);
@@ -46,7 +51,8 @@ function Builder() {
     }
   }, [projectData]);
 
-  console.log(projectType);
+  const noImage =
+    "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1694841091626.jpg";
 
   return (
     <div className="container mt-5">
@@ -72,9 +78,17 @@ function Builder() {
         <div className="col-6">
           <div className="main_img">
             <img
-              src={builderData[0]?.images[0]?.image}
+              src={
+                builderData[0]?.images?.length > 0
+                  ? builderData[0]?.images[0]?.image
+                  : noImage
+              }
               className="img-fluid"
-              alt={builderData[0]?.images[0]?.alt}
+              alt={
+                builderData[0]?.images?.length > 0
+                  ? builderData[0]?.images[0]?.alt
+                  : "no image"
+              }
             />
           </div>
         </div>
@@ -82,27 +96,45 @@ function Builder() {
           <div className="col-12">
             <div className="small_img">
               <img
-                src={builderData[0]?.images[1]?.image}
-                alt={builderData[0]?.images[1]?.alt}
+                src={
+                  builderData[0]?.images?.length > 1
+                    ? builderData[0]?.images[1]?.image
+                    : noImage
+                }
+                alt={
+                  builderData[0]?.images?.length > 1
+                    ? builderData[0]?.images[1]?.alt
+                    : "no image"
+                }
               />
             </div>
           </div>
           <div className="col-12 mt20">
             <div className="small_img small_img_position">
               <img
-                src={builderData[0]?.images[2]?.image}
-                alt={builderData[0]?.images[2]?.alt}
+                src={
+                  builderData[0]?.images?.length > 2
+                    ? builderData[0]?.images[2]?.image
+                    : noImage
+                }
+                alt={
+                  builderData[0]?.images?.length > 2
+                    ? builderData[0]?.images[2]?.alt
+                    : "no image"
+                }
               />
-              <Link to={`/builder/${builderData[0]?.slug}/image-gallery`}>
-                <div className="view_all_img">
-                  <p>
-                    <span>
-                      <IoMdPhotos />
-                    </span>{" "}
-                    Show All Photos
-                  </p>
-                </div>
-              </Link>
+              {builderData[0]?.images?.length > 0 && (
+                <Link to={`/builder/${builderData[0]?.slug}/image-gallery`}>
+                  <div className="view_all_img">
+                    <p>
+                      <span>
+                        <IoMdPhotos />
+                      </span>{" "}
+                      Show All Photos
+                    </p>
+                  </div>
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -165,40 +197,95 @@ function Builder() {
               ? builderData[0]?.description
               : "Not available"}
           </p>
-          {/* {shortAboutText?.length < 351 ? (
-            <button className="read_btn" onClick={readMore}>
-              Read more <MdKeyboardArrowRight className="read_more_icon" />
-            </button>
-          ) : (
-            <button className="read_btn" onClick={readLess}>
-              Read less <MdKeyboardArrowRight className="read_more_icon" />
-            </button>
-          )} */}
+          {projectType.some(
+            (e) => e?.project_type.toLowerCase() === "residential"
+          ) && (
+            <>
+              <hr className="divider_line" />
+              <div className="residential_carousel mt30">
+                <div className="res_heading">
+                  <h3 className="d-inline-block">
+                    Residential Projects of {builderData[0]?.name}
+                  </h3>
+                  <div>
+                    <Link
+                      to={`/builder/${builderData[0]?.name
+                        ?.split(" ")
+                        .join("-")
+                        ?.toLowerCase()}/projects/residential`}
+                      className="view_all_text"
+                    >
+                      View All
+                    </Link>
+                  </div>
+                </div>
+                <div className="my_carousel">
+                  <div className="mt30 carousel_container half_carousel">
+                    <div className="carousel-wrapper">
+                      <Carousel breakPoints={breakPoints}>
+                        {projectType
+                          ?.filter((project) => {
+                            return (
+                              project?.project_type?.toLowerCase() ===
+                              "residential"
+                            );
+                          })
+                          ?.slice(0, 8)
+                          ?.map((project, i) => {
+                            return <Card project={project} key={i} />;
+                          })}
+                      </Carousel>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
 
-          <hr className="divider_line" />
-          <div className="residential_carousel mt30">
-            <div className="res_heading">
-              <h3>Residential Projects of M3M India</h3>
-            </div>
-            <div className="my_carousel">
-              <MyCarousel
-                carouselClass={"half_carousel"}
-                isProjectcard={false}
-              />
-            </div>
-          </div>
-          <hr className="divider_line" />
-          <div className="residential_carousel mt30">
-            <div className="res_heading">
-              <h3>Commericial Projects of M3M India</h3>
-            </div>
-            <div className="my_carousel">
-              <MyCarousel
-                carouselClass={"half_carousel"}
-                isProjectcard={false}
-              />
-            </div>
-          </div>
+          {projectType.some(
+            (e) => e?.project_type.toLowerCase() === "commercial"
+          ) && (
+            <>
+              <hr className="divider_line" />
+              <div className="residential_carousel mt30">
+                <div className="res_heading">
+                  <h3 className="d-inline-block">
+                    Commercial Projects of {builderData[0]?.name}
+                  </h3>
+                  <div>
+                    <Link
+                      className="view_all_text"
+                      to={`/builder/${builderData[0]?.name
+                        ?.split(" ")
+                        .join("-")
+                        ?.toLowerCase()}/projects/commercial`}
+                    >
+                      View All
+                    </Link>
+                  </div>
+                </div>
+                <div className="my_carousel">
+                  <div className="mt30 carousel_container half_carousel">
+                    <div className="carousel-wrapper">
+                      <Carousel breakPoints={breakPoints}>
+                        {projectType
+                          ?.filter((project) => {
+                            return (
+                              project?.project_type?.toLowerCase() ===
+                              "commercial"
+                            );
+                          })
+                          ?.slice(0, 8)
+                          ?.map((project, i) => {
+                            return <Card project={project} key={i} />;
+                          })}
+                      </Carousel>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
         </div>
         <div className="col-lg-4 mob_hide p-0">
           <div className="sticky_form">

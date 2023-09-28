@@ -127,8 +127,18 @@
 }
 
 .detail_icon {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
+}
+.res_heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.view_all_text {
+  font-size: 14px;
+    font-weight: 600;
+    color: #eb4b71;
 }
 
 .builder_overview {
