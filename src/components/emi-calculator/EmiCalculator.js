@@ -59,9 +59,9 @@ function EmiCalculator() {
       <div className="emi_container">
         <div className="row">
           <h3 className="text-center">EMI Calculator</h3>
-          <div className="col-12 col-md-6 calculator_left">
-            <form onSubmit={calculateEmihandler}>
-              <div className="mt20 col-12">
+          <form onSubmit={calculateEmihandler}>
+            <div className="row calculator_top_row">
+              <div className="mt20 col-md-3">
                 <label htmlFor="loanamount" className="form-label">
                   Loan Amount (Rs.)*
                 </label>
@@ -77,46 +77,48 @@ function EmiCalculator() {
                   required
                 />
               </div>
-              <div className="row">
-                <div className="mt20 col-6">
-                  <label htmlFor="loantenure" className="form-label">
-                    Loan Tenure (Year)*
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control my_input"
-                    id="loantenure"
-                    onBlur={checkValidNum}
-                    name="tenure"
-                    value={emi.tenure}
-                    onChange={inputChangeHandler}
-                    placeholder="12*"
-                    required
-                  />
-                </div>
-                <div className="mt20 col-6">
-                  <label htmlFor="loanrate" className="form-label">
-                    Interest Rate % (p.a)*
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control my_input"
-                    id="loanrate"
-                    onBlur={checkValidNum}
-                    name="interest"
-                    value={emi.interest}
-                    onChange={inputChangeHandler}
-                    placeholder="12*"
-                    required
-                  />
-                </div>
+              <div className="mt20 col-md-3">
+                <label htmlFor="loantenure" className="form-label">
+                  Loan Tenure (Year)*
+                </label>
+                <input
+                  type="text"
+                  className="form-control my_input"
+                  id="loantenure"
+                  onBlur={checkValidNum}
+                  name="tenure"
+                  value={emi.tenure}
+                  onChange={inputChangeHandler}
+                  placeholder="12*"
+                  required
+                />
               </div>
-              <button className="mt30 modal_form_btn" type="submit">
-                Calculate
-              </button>
-            </form>
-          </div>
-          <div className="col-12 col-md-6 mt30 calculator_right">
+              <div className="mt20 col-md-3">
+                <label htmlFor="loanrate" className="form-label">
+                  Interest Rate % (p.a)*
+                </label>
+                <input
+                  type="text"
+                  className="form-control my_input"
+                  id="loanrate"
+                  onBlur={checkValidNum}
+                  name="interest"
+                  value={emi.interest}
+                  onChange={inputChangeHandler}
+                  placeholder="12*"
+                  required
+                />
+              </div>
+              <div className="mt20 col-md-3">
+                <button className="modal_form_btn" type="submit">
+                  Calculate
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div className="row calculator_middle_row">
+          <div className="col-md-6">
             <div className="row">
               <div className="col-6">
                 <h5>EMI Amount</h5>
@@ -129,9 +131,12 @@ function EmiCalculator() {
                 </p>
               </div>
             </div>
-            <hr className="divider_line2" />
-            <div className="row mt30">
-              <h5>Why Propularity?</h5>
+          </div>
+          <div className="col-md-6">
+            <div className="row">
+              <div className="col-12">
+                <h5>Why Propularity?</h5>
+              </div>
               <div className="col-4 d-flex mt20">
                 <div className="right_tick_box">
                   <img src={rightTick} alt="right tick" />
@@ -151,6 +156,50 @@ function EmiCalculator() {
                 <p className="emi_p">Get Highest Loan Value</p>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="row calculator_bottom_row">
+          <div className="bank_logo">
+            <img
+              src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695800697036.png"
+              alt="yes bank"
+              className="img-fluid"
+            />
+          </div>
+          <div className="bank_logo">
+            <img
+              src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695800689477.png"
+              alt="sbi bank"
+              className="img-fluid"
+            />
+          </div>
+          <div className="bank_logo">
+            <img
+              src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695800681376.png"
+              alt="icici bank"
+              className="img-fluid"
+            />
+          </div>
+          <div className="bank_logo">
+            <img
+              src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695800671426.png"
+              alt="canara bank"
+              className="img-fluid"
+            />
+          </div>
+          <div className="bank_logo">
+            <img
+              src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695800662685.png"
+              alt="bank of baroda"
+              className="img-fluid"
+            />
+          </div>
+          <div className="bank_logo">
+            <img
+              src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695800653737.png"
+              alt="axis bank"
+              className="img-fluid"
+            />
           </div>
         </div>
       </div>
