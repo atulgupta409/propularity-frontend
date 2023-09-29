@@ -5,7 +5,6 @@ import ContactForm from "../form/ContactForm";
 import contactImage from "../media/sumit-sir-contact-main.png";
 import "./Project.css";
 import buildingIcon from "../media/building-icon.png";
-import MyCarousel from "../carousel/MyCarousel";
 import EmiCalculator from "../emi-calculator/EmiCalculator";
 import { GET_PROJECT_DETAILS } from "../../service/ProjectDetailsservice";
 import { useQuery } from "@apollo/client";
@@ -457,7 +456,7 @@ function Project() {
               </div>
               <hr className="divider_line" />
               <div className="row map">
-                <h3 className="mt30">{data?.projectDetails[0]?.name}</h3>
+                <h3 className="mt30">{data?.projectDetails[0]?.name} on Google Map</h3>
                 <p className="mt-2">
                   {data?.projectDetails[0]?.location?.address}
                 </p>
@@ -534,15 +533,26 @@ function Project() {
               </div>
               <hr className="divider_line" />
               <div className="row">
-                <h3 className="mt30">{data?.projectDetails[0]?.name+" " +data?.projectDetails[0]?.location?.micro_location[0]?.name+ " " + data?.projectDetails[0]?.location?.city[0]?.name}</h3>
+                <h3 className="mt30">
+                  {data?.projectDetails[0]?.name +
+                    " " +
+                    data?.projectDetails[0]?.location?.micro_location[0]?.name +
+                    " " +
+                    data?.projectDetails[0]?.location?.city[0]?.name}
+                </h3>
                 {data?.projectDetails[0]?.description !== "<p></p>\n" ? (
                   <p className="about_builder mt20">{aboutText}</p>
                 ) : (
                   <p className="no_data_p">Not Available</p>
                 )}
-                {data?.projectDetails[0]?.brochure && (<div className="brochure">
-                  <RequestCallBtn button_name={"Download Brochure"} downloadPdf={downloadPdf}/>
-                </div>)}
+                {data?.projectDetails[0]?.brochure && (
+                  <div className="brochure">
+                    <RequestCallBtn
+                      button_name={"Download Brochure"}
+                      downloadPdf={downloadPdf}
+                    />
+                  </div>
+                )}
               </div>
             </div>
             <div className="col-lg-4 mob_hide p-0">
@@ -581,6 +591,7 @@ function Project() {
                   </h3>
                   <div className="my_carousel projects_carousel mt20">
                     <ProjectCard
+                      isRent={false}
                       carouselclassName={"full_carousel"}
                       isProjectcard={true}
                       name={data?.projectDetails[0]?.name}
@@ -604,11 +615,10 @@ function Project() {
             <div className="row">
               {data?.projectDetails[0]?.for_rent && (
                 <>
-                  <h3>
-                    Properties for Rent in {data?.projectDetails[0]?.name}
-                  </h3>
-                  <div className="my_carousel mt20">
-                    <MyCarousel
+                  <h3>Apartment for Rent in {data?.projectDetails[0]?.name}</h3>
+                  <div className="my_carousel projects_carousel mt20">
+                    <ProjectCard
+                      isRent={true}
                       carouselclassName={"full_carousel"}
                       isProjectcard={true}
                       name={data?.projectDetails[0]?.name}
@@ -620,7 +630,7 @@ function Project() {
                       projectImages={data?.projectDetails[0]?.images}
                       starting_price={data?.projectDetails[0]?.starting_price}
                       floorPlans={data?.projectDetails[0]?.plans}
-                      isSale={false}
+                      isSale={true}
                     />
                   </div>
                 </>

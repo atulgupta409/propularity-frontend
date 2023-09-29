@@ -36,3 +36,34 @@ export const GET_ALL_IMAGES = gql`
     }
   }
 `;
+
+export const GET_ALL_PROJECTS_BY_BUILDER = gql`
+  query projects_by_builders($builderName: String) {
+    projectsByBuilder(builderName: $builderName) {
+      name
+      ratings
+      slug
+      starting_price
+      project_status
+      project_type
+      location {
+        micro_location {
+          name
+        }
+        city {
+          name
+        }
+      }
+      builder {
+        name
+      }
+      images {
+        name
+        alt
+        image
+      }
+    }
+  }
+`;
+
+

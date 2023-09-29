@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Builder from "./components/builder/Builder";
 import "./App.css";
@@ -12,6 +12,7 @@ import ScrollToTop from "./components/scrollTop/ScrollToTop";
 import ProjectImageGallery from "./components/project/ProjectImageGallery";
 import Contact from "./components/contact/Contact";
 import BuilderImageGallery from "./components/builder/BuilderImageGallery";
+import ProjectTypePage from "./components/project-type-page/ProjectTypePage";
 
 function App() {
   return (
@@ -77,6 +78,14 @@ function App() {
         <Route
           path="/builder/:builder/image-gallery"
           element={<BuilderImageGallery key={23} />}
+        />
+        <Route
+          path="/builder/:builder/projects/:projectType"
+          element={[
+            <Navbar key={23} />,
+            <ProjectTypePage key={24} />,
+            <Footer key={25} />,
+          ]}
         />
       </Routes>
     </>
