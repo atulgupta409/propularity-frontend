@@ -16,6 +16,7 @@ function ContactForm({button_name, downloadPdf}) {
     let { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
+  const location =  window.location.href 
   const notify = () =>
     toast.success("Thank You for submitting the query!", {
       position: "top-center",
@@ -87,7 +88,7 @@ function ContactForm({button_name, downloadPdf}) {
             name: user.name,
             email: user.email,
             phone: user.phone,
-            PageLocation: window.location.href,
+            PageLocation: location,
           },
           {
             headers: {
@@ -98,6 +99,7 @@ function ContactForm({button_name, downloadPdf}) {
         setLoading(false);
         setIsSending(false);
         notify();
+        handleSheet();
         if(button_name === "Download Brochure"){
           downloadPdf()
         }
@@ -111,31 +113,31 @@ function ContactForm({button_name, downloadPdf}) {
     }
   };
 
-  //   const handleSheet = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         "https://v1.nocodeapi.com/spacite/google_sheets/JlgXOIuxNJHqwITV?tabId=coworking",
-  //         {
-  //           method: "POST",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify([
-  //             [
-  //               user.name,
-  //               user.email,
-  //               user.phone,
-  //               location,
-  //               new Date().toLocaleString(),
-  //             ],
-  //           ]),
-  //         }
-  //       );
-  //       await response.json();
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
+    const handleSheet = async () => {
+      try {
+        const response = await fetch(
+          "https://v1.nocodeapi.com/propularity/google_sheets/tYUnsaSLwvJXDnpB?tabId=sheet1",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify([
+              [
+                user.name,
+                user.email,
+                user.phone,
+                location,
+                new Date().toLocaleString(),
+              ],
+            ]),
+          }
+        );
+        await response.json();
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
   return (
     <>
