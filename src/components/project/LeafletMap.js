@@ -9,7 +9,7 @@ function LeafletMap({ latitude, longitude, name }) {
         center={position}
         zoom={13}
         scrollWheelZoom={false}
-        style={{ width: "100%", height: "300px", borderRadius: "20px" }}
+        style={{ width: "100%", height: "340px", borderRadius: "20px" }}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

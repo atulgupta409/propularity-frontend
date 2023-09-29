@@ -456,7 +456,7 @@ function Project() {
               </div>
               <hr className="divider_line" />
               <div className="row map">
-                <h3 className="mt30">{data?.projectDetails[0]?.name}</h3>
+                <h3 className="mt30">{data?.projectDetails[0]?.name} on Google Map</h3>
                 <p className="mt-2">
                   {data?.projectDetails[0]?.location?.address}
                 </p>
