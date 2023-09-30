@@ -22,6 +22,7 @@ function FilteredItems() {
     variables: { city: city, planType: planType },
   });
   
+  
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
@@ -33,7 +34,7 @@ function FilteredItems() {
   const receiveDataFromChild = (datas) => {
     setProjects(datas);
   };
-  console.log(data);
+  console.log(data, city, planType);  
 
   return (
     <>
