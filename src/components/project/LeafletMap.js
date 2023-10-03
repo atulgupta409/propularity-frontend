@@ -7,7 +7,7 @@ function LeafletMap({ latitude, longitude, name }) {
     <div>
       <MapContainer
         center={position}
-        zoom={13}
+        zoom={14}
         scrollWheelZoom={false}
         style={{ width: "100%", height: "340px", borderRadius: "20px" }}
       >
