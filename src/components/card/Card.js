@@ -4,7 +4,6 @@ import "./Card.css";
 import { Link } from "react-router-dom";
 
 function Card({ project }) {
-  console.log(project);
   const starImage =
     "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695277991289.png";
   return (

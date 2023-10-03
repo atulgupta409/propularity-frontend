@@ -197,7 +197,7 @@ function ContactForm({button_name, downloadPdf}) {
               id="flexCheckDefault"
             />
             <label className="form-check-label" htmlFor="flexCheckDefault">
-              Send me alerts for similar properties
+              Send me alerts for similar properties 
             </label>
           </div>
         </div>

@@ -3,18 +3,12 @@ import { gql } from "@apollo/client";
 export const GET_PROJECTS_BY_MICROLOCATIONS = gql`
   query builder_ProjectsByLocation(
     $location: String
-    $page: Int
-    $perPage: Int
     $city: String
   ) {
     builderProjectsByLocation(
       location: $location
-      page: $page
-      perPage: $perPage
       city: $city
     ) {
-      totalCount
-      filteredProjects {
         name
         ratings
         project_status
@@ -28,7 +22,6 @@ export const GET_PROJECTS_BY_MICROLOCATIONS = gql`
           alt
           image
         }
-      }
     }
   }
 `;
