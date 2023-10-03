@@ -43,10 +43,9 @@ function TopLocalities({ cityName, myCity }) {
                         className="img-fluid"
                       />
                     </div>
-                    <div className="localities_card_overlay">
-                      <div className="overlay_text">
+                    <div className="localities_card_overlay city_localities">
+                      <div className="overlay_text mb-4">
                         <h3>{microlocation.name}</h3>
-                        <p>12000+ Properties</p>
                       </div>
                     </div>
                     <div className="overlay2"></div>

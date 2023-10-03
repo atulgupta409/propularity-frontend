@@ -55,7 +55,7 @@ function Builder() {
     "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1694841091626.jpg";
 
   return (
-    <div className="container mt-5">
+    <div className="container mt-5" style={{ minHeight: "100vh" }}>
       <div className="row">
         <div className="col-6 m60">
           <h1 className="builder_h1">{builderData[0]?.name}</h1>

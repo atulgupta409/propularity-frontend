@@ -17,6 +17,9 @@
   font-size: 40px;
   line-height: 58px;
 }
+.city_localities {
+  background: linear-gradient(0deg, #F4F2FF 43.75%, rgba(238, 240, 245, 0.00) 100%);
+}
 .no_space_text {
   font-size: 16px;
   font-weight: 600;
