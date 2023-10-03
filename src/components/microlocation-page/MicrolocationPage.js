@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import Select from "react-select";
 import HomeCard from "../card/HomeCard";
 import { useQuery } from "@apollo/client";
-import { GET_PROJECTS_BY_LOCATIONS_AND_CITY, GET_PROJECTS_BY_MICROLOCATIONS } from "../../service/ProjectsByMicrolocation";
+import { GET_PROJECTS_BY_MICROLOCATIONS } from "../../service/ProjectsByMicrolocation";
 import { GET_ALL_BUILDERS } from "../../service/ProjectDetailsservice";
 import ReactPaginate from "react-paginate";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
@@ -35,33 +35,18 @@ function MicrolocationPage() {
     data: builderData,
   } = useQuery(GET_ALL_BUILDERS);
 
-  const [selectedOption, setSelectedOption] = useState(null);
-
   const {
     loading,
     error,
     data: projectsData,
   } = useQuery(GET_PROJECTS_BY_MICROLOCATIONS, {
-    variables: {
-      page: curPage,
-      perPage: item_per_page,
-      location: microlocationName,
-      city: city,
-    },
-  });
-
-  const {
-    loading: searchLoading,
-    error: searchError,
-    data: searchData,
-  } = useQuery(GET_PROJECTS_BY_LOCATIONS_AND_CITY, {
     variables: { location: microlocationName, city: city },
   });
 
   let totalPage = Math.ceil(
     (isSearch
       ? searchedprojects?.length
-      : projectsData?.builderProjectsByLocation?.totalCount) / item_per_page
+      : projectsData?.builderProjectsByLocation?.length) / item_per_page
   );
   let current_page = 1;
   const handlePageClick = async (data_page) => {
@@ -70,10 +55,9 @@ function MicrolocationPage() {
   };
   useEffect(() => {
     if (projectsData) {
-      setProjects(projectsData?.builderProjectsByLocation?.filteredProjects);
+      setProjects(projectsData?.builderProjectsByLocation);
     }
   }, [projectsData]);
-
   function convertPriceToNumeric(priceStr) {
     const regexCr = /([\d.]+)\s*Cr/;
     const regexLacs = /([\d.]+)\s*Lacs?/i;
@@ -91,7 +75,7 @@ function MicrolocationPage() {
   }
 
   const applyFilters = () => {
-    let filteredData = searchData?.projectsByLocationForSearch;
+    let filteredData = projectsData?.builderProjectsByLocation;
 
     if (selectedBuilder) {
       filteredData = filteredData.filter(
@@ -229,7 +213,10 @@ function MicrolocationPage() {
                 (curPage - 1) * item_per_page,
                 curPage * item_per_page
               )
-            : projects
+            : projects?.slice(
+                (curPage - 1) * item_per_page,
+                curPage * item_per_page
+              )
           )?.map((element, i) => {
             return (
               <div className="col-md-3" key={i}>
@@ -255,24 +242,26 @@ function MicrolocationPage() {
           </p>
         )}
       </div>
-      <ReactPaginate
-        previousLabel={<MdKeyboardArrowLeft className="pagination_icon" />}
-        nextLabel={<MdKeyboardArrowRight className="pagination_icon" />}
-        breakLabel={"..."}
-        pageCount={totalPage}
-        marginPagesDisplayed={2}
-        onPageChange={handlePageClick}
-        containerClassName={
-          "pagination justify-content-center pagination_box mt20"
-        }
-        pageClassName={"page-item page_item"}
-        pageLinkClassName={"page-link page_link"}
-        previousClassName={"page-item page_item"}
-        previousLinkClassName={"page-link page_link"}
-        nextClassName={"page-item page_item"}
-        nextLinkClassName={"page-link page_link"}
-        activeClassName={"active"}
-      ></ReactPaginate>
+      {projectsData?.length > 16 && (
+        <ReactPaginate
+          previousLabel={<MdKeyboardArrowLeft className="pagination_icon" />}
+          nextLabel={<MdKeyboardArrowRight className="pagination_icon" />}
+          breakLabel={"..."}
+          pageCount={totalPage}
+          marginPagesDisplayed={2}
+          onPageChange={handlePageClick}
+          containerClassName={
+            "pagination justify-content-center pagination_box mt20"
+          }
+          pageClassName={"page-item page_item"}
+          pageLinkClassName={"page-link page_link"}
+          previousClassName={"page-item page_item"}
+          previousLinkClassName={"page-link page_link"}
+          nextClassName={"page-item page_item"}
+          nextLinkClassName={"page-link page_link"}
+          activeClassName={"active"}
+        ></ReactPaginate>
+      )}
     </div>
   );
 }
