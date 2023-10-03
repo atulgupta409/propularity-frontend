@@ -1,12 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import HomeCard from "../card/HomeCard";
 import "./FilteredItems.css";
 import ProjectTypesNav from "../project-types-navbar/ProjectTypesNav";
 import { useQuery } from "@apollo/client";
 import { GET_PROJECTS_BY_PLAN_TYPE } from "../../service/DataByPlanTypeService";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
 
 function FilteredItems() {
   const currentUrl = window.location.href;
@@ -15,14 +13,14 @@ function FilteredItems() {
   const pathParts = path.split("/");
   const desiredPart = pathParts[1];
   const city = desiredPart;
-  const { filteredValue } = useParams();
+  const params = useParams();
+  const { filteredValue } = params;
   const planType = filteredValue.split("-").join(" ");
 
   const { loading, error, data } = useQuery(GET_PROJECTS_BY_PLAN_TYPE, {
     variables: { city: city, planType: planType },
   });
-  
-  
+
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
@@ -34,7 +32,7 @@ function FilteredItems() {
   const receiveDataFromChild = (datas) => {
     setProjects(datas);
   };
-  console.log(data, city, planType);  
+  // console.log(data, city, planType);
 
   return (
     <>

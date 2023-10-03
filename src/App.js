@@ -13,6 +13,7 @@ import ProjectImageGallery from "./components/project/ProjectImageGallery";
 import Contact from "./components/contact/Contact";
 import BuilderImageGallery from "./components/builder/BuilderImageGallery";
 import ProjectTypePage from "./components/project-type-page/ProjectTypePage";
+import FeaturedCollection from "./components/city/featured-collection/FeaturedCollection";
 
 function App() {
   return (
@@ -39,6 +40,15 @@ function App() {
             <Footer key={9} />,
           ]}
         />
+
+        <Route
+          path="/:city/:microlocation"
+          element={[
+            <Navbar key={13} />,
+            <MicrolocationPage key={14} />,
+            <Footer key={15} />,
+          ]}
+        />
         <Route
           path="/:city/filter/:filteredValue"
           element={[
@@ -48,11 +58,11 @@ function App() {
           ]}
         />
         <Route
-          path="/:city/:microlocation"
+          path="/:city/projects/:featured"
           element={[
-            <Navbar key={13} />,
-            <MicrolocationPage key={14} />,
-            <Footer key={15} />,
+            <Navbar key={26} />,
+            <FeaturedCollection key={27} />,
+            <Footer key={28} />,
           ]}
         />
         <Route

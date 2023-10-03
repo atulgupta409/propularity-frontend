@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 import searchIcon from "../media/search-icon.png";
 import HomeCard from "../card/HomeCard";
 import TopLocalities from "./TopLocalities";
-import PriceRangeSlider from "../homepage/price-range-slider/PriceRangeSlider";
 import FeaturedCollection from "../homepage/featured-collection/FeaturedCollection";
 import BuildersSlider from "./BuilderSlider";
 import { useQuery } from "@apollo/client";
@@ -92,8 +91,7 @@ function City() {
         </div>
       </div>
       <TopLocalities cityName={cityName} myCity={city} />
-      <PriceRangeSlider cityName={cityName} />
-      <FeaturedCollection />
+      <FeaturedCollection city={city} />
       <BuildersSlider builders={builderData?.builders} />
     </>
   );

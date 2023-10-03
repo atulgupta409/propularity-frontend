@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
-import "./MicrolocationPage.css";
 import { useParams } from "react-router-dom";
-import Select from "react-select";
-import HomeCard from "../card/HomeCard";
 import { useQuery } from "@apollo/client";
-import { GET_PROJECTS_BY_LOCATIONS_AND_CITY, GET_PROJECTS_BY_MICROLOCATIONS } from "../../service/ProjectsByMicrolocation";
-import { GET_ALL_BUILDERS } from "../../service/ProjectDetailsservice";
+import { GET_PROJECTS_BY_STATUS } from "../../../service/ProjectsByCityAndStatus";
+import Select from "react-select";
+import HomeCard from "../../card/HomeCard";
 import ReactPaginate from "react-paginate";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+import { GET_ALL_BUILDERS } from "../../../service/ProjectDetailsservice";
 
-function MicrolocationPage() {
-  const [selectedStatus, setSelectedStatus] = useState(null);
+function FeaturedCollection() {
   const [selectedBuilder, setSelectedBuilder] = useState(null);
   const [selectedPrice, setSelectedPrice] = useState(null);
   const [curPage, setCurPage] = useState(1);
@@ -18,61 +16,52 @@ function MicrolocationPage() {
   const [searchedprojects, setSearchedprojects] = useState([]);
   const [isSearch, setIsSearch] = useState(false);
   let item_per_page = 16;
-  const { microlocation } = useParams();
-
-  const microlocationArray = microlocation.split("-");
-  const microlocationName = microlocationArray
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-
   const pageUrl = window.location.href;
-  const pageUrlArr = pageUrl.split("/");
-  const city = pageUrlArr[pageUrlArr.length - 2];
+  const pageUrlArray = pageUrl?.split("/");
+  const city = pageUrlArray[pageUrlArray?.length - 3];
+  const titleCity = city?.charAt(0)?.toUpperCase() + city?.slice(1);
+  const projectStatus = pageUrlArray[pageUrlArray?.length - 1];
+  const extractstatus = projectStatus?.replace(/-projects$/, "");
+  const status = extractstatus?.split("-")?.join(" ");
+  console.log(status);
+  const titleArray = status?.split(" ");
+  const myTitle = titleArray
+    ?.map((word) => {
+      if (word?.length > 0) {
+        return word?.charAt(0)?.toUpperCase() + word?.slice(1);
+      }
+    })
+    ?.join(" ");
+
+  const { loading, error, data } = useQuery(GET_PROJECTS_BY_STATUS, {
+    variables: {
+      city: city,
+      status: status,
+    },
+  });
 
   const {
     loading: isLoading,
     error: isError,
     data: builderData,
   } = useQuery(GET_ALL_BUILDERS);
-
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  const {
-    loading,
-    error,
-    data: projectsData,
-  } = useQuery(GET_PROJECTS_BY_MICROLOCATIONS, {
-    variables: {
-      page: curPage,
-      perPage: item_per_page,
-      location: microlocationName,
-      city: city,
-    },
-  });
-
-  const {
-    loading: searchLoading,
-    error: searchError,
-    data: searchData,
-  } = useQuery(GET_PROJECTS_BY_LOCATIONS_AND_CITY, {
-    variables: { location: microlocationName, city: city },
-  });
+  console.log(data);
+  useEffect(() => {
+    if (data) {
+      setProjects(data?.projectsByCityAndStatus);
+    }
+  }, [data]);
 
   let totalPage = Math.ceil(
     (isSearch
       ? searchedprojects?.length
-      : projectsData?.builderProjectsByLocation?.totalCount) / item_per_page
+      : data?.projectsByCityAndStatus?.length) / item_per_page
   );
   let current_page = 1;
   const handlePageClick = async (data_page) => {
     current_page += data_page.selected;
     setCurPage(current_page);
   };
-  useEffect(() => {
-    if (projectsData) {
-      setProjects(projectsData?.builderProjectsByLocation?.filteredProjects);
-    }
-  }, [projectsData]);
 
   function convertPriceToNumeric(priceStr) {
     const regexCr = /([\d.]+)\s*Cr/;
@@ -91,17 +80,11 @@ function MicrolocationPage() {
   }
 
   const applyFilters = () => {
-    let filteredData = searchData?.projectsByLocationForSearch;
+    let filteredData = data?.projectsByCityAndStatus;
 
     if (selectedBuilder) {
       filteredData = filteredData.filter(
         (project) => project?.builder[0]?.name === selectedBuilder.label
-      );
-    }
-
-    if (selectedStatus) {
-      filteredData = filteredData.filter(
-        (project) => project?.project_status === selectedStatus.label
       );
     }
 
@@ -122,13 +105,10 @@ function MicrolocationPage() {
   };
   useEffect(() => {
     applyFilters();
-  }, [selectedBuilder, selectedStatus, selectedPrice]);
+  }, [selectedBuilder, selectedPrice]);
+
   const onChangeOptionHandler = (selectedOption, dropdownIdentifier) => {
     switch (dropdownIdentifier) {
-      case "status":
-        setSelectedStatus(selectedOption);
-        setIsSearch(true);
-        break;
       case "price":
         setSelectedPrice(selectedOption);
         setIsSearch(true);
@@ -141,11 +121,6 @@ function MicrolocationPage() {
         break;
     }
   };
-  const statusOptions = [
-    { value: "Ready To Move", label: "Ready To Move" },
-    { value: "Under Construction", label: "Under Construction" },
-    { value: "New Launch", label: "New Launch" },
-  ];
 
   const priceOptions = [
     { value: "0 - 1.00Cr", label: "0 - 1.00Cr" },
@@ -162,7 +137,6 @@ function MicrolocationPage() {
 
   const resetFilterHandler = () => {
     setSelectedBuilder(null);
-    setSelectedStatus(null);
     setSelectedPrice(null);
     setIsSearch(false);
   };
@@ -171,7 +145,9 @@ function MicrolocationPage() {
     <div className="container mt100 microlocation_container">
       <div className="row">
         <div className="col-md-6">
-          <h1>Projects in {microlocationName}</h1>
+          <h1>
+            {myTitle} Projects in {titleCity}
+          </h1>
         </div>
         <div className="col-md-6">
           <div className="row justify-content-end">
@@ -184,18 +160,6 @@ function MicrolocationPage() {
                 isSearchable
                 options={builderOptions}
                 placeholder={"Builder"}
-                className="select_builder"
-              />
-            </div>
-            <div className="col-3">
-              <Select
-                value={selectedStatus}
-                onChange={(selectedOption) =>
-                  onChangeOptionHandler(selectedOption, "status")
-                }
-                isSearchable
-                options={statusOptions}
-                placeholder={"Project Status"}
                 className="select_builder"
               />
             </div>
@@ -229,7 +193,10 @@ function MicrolocationPage() {
                 (curPage - 1) * item_per_page,
                 curPage * item_per_page
               )
-            : projects
+            : projects?.slice(
+                (curPage - 1) * item_per_page,
+                curPage * item_per_page
+              )
           )?.map((element, i) => {
             return (
               <div className="col-md-3" key={i}>
@@ -238,10 +205,10 @@ function MicrolocationPage() {
                     .split(" ")
                     .join("-")
                     .toLowerCase()}
-                  city={city}
+                  city={element?.location?.city[0]?.name}
                   projectName={element?.name}
                   startingPrice={element?.starting_price}
-                  microlocationName={microlocationName}
+                  microlocationName={element?.location?.micro_location[0]?.name}
                   slug={element?.slug}
                   images={element?.images}
                   ratings={element?.ratings}
@@ -255,26 +222,28 @@ function MicrolocationPage() {
           </p>
         )}
       </div>
-      <ReactPaginate
-        previousLabel={<MdKeyboardArrowLeft className="pagination_icon" />}
-        nextLabel={<MdKeyboardArrowRight className="pagination_icon" />}
-        breakLabel={"..."}
-        pageCount={totalPage}
-        marginPagesDisplayed={2}
-        onPageChange={handlePageClick}
-        containerClassName={
-          "pagination justify-content-center pagination_box mt20"
-        }
-        pageClassName={"page-item page_item"}
-        pageLinkClassName={"page-link page_link"}
-        previousClassName={"page-item page_item"}
-        previousLinkClassName={"page-link page_link"}
-        nextClassName={"page-item page_item"}
-        nextLinkClassName={"page-link page_link"}
-        activeClassName={"active"}
-      ></ReactPaginate>
+      {projects?.length > 16 && (
+        <ReactPaginate
+          previousLabel={<MdKeyboardArrowLeft className="pagination_icon" />}
+          nextLabel={<MdKeyboardArrowRight className="pagination_icon" />}
+          breakLabel={"..."}
+          pageCount={totalPage}
+          marginPagesDisplayed={2}
+          onPageChange={handlePageClick}
+          containerClassName={
+            "pagination justify-content-center pagination_box mt20"
+          }
+          pageClassName={"page-item page_item"}
+          pageLinkClassName={"page-link page_link"}
+          previousClassName={"page-item page_item"}
+          previousLinkClassName={"page-link page_link"}
+          nextClassName={"page-item page_item"}
+          nextLinkClassName={"page-link page_link"}
+          activeClassName={"active"}
+        ></ReactPaginate>
+      )}
     </div>
   );
 }
 
-export default MicrolocationPage;
+export default FeaturedCollection;
