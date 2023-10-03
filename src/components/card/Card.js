@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import RequestCallBtn from "../request-call-button/RequestCallBtn";
 
 function Card({ project }) {
-  console.log(project);
   return (
     <div className="property_card">
       <div>
