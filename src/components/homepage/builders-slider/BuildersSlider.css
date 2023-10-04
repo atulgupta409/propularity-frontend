@@ -74,4 +74,13 @@
     .builder_img img {
         width: 73px;
     }
+    .builder_slider_container {
+        padding: 50px 10px;
+    }
+    .builder_logo_box:not(:last-child) {
+        margin-right: 30px;
+    }
+    .builder_logo_box {
+        min-width: 78px;
+    }
 }

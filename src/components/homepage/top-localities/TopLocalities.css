@@ -59,4 +59,10 @@
   font-size: 12px;
     margin-bottom: 8px;
 }
+.localities_card .img img {
+  border-radius: 10px;
+}
+.localities_card_overlay {
+  border-radius: 6px;
+}
 }

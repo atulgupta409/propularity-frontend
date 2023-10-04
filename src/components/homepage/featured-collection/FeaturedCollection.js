@@ -24,20 +24,39 @@ function FeaturedCollection({ city }) {
                 className="img-fluid"
               />
             </div>
-            <h3 className="mt20">New Launch Projects</h3>
-            <p className="mt20">
+            <h3 className="mt20 mob_hide featured_collection_h3">
+              New Launch Projects
+            </h3>
+            <p className="mt20 mob_hide">
               Residential properties that are fully completed and available for
               immediate occupancy.
             </p>
-            <Link to={`/${city}/projects/new-launch-projects`}>
+            <Link
+              to={`/${city}/projects/new-launch-projects`}
+              className="mob_hide"
+            >
               <p className="featured_explore">
                 Explore <BsArrowRight />
               </p>
             </Link>
+            <div className="mt10 d-flex align-items-center justify-content-between desk_hide">
+              <h3 className="desk_hide featured_collection_h3">
+                New Launch Projects
+              </h3>
+              <Link
+                to={`/${city}/projects/new-launch-projects`}
+                className="desk_hide"
+              >
+                <p className="featured_explore">
+                  Explore <BsArrowRight />
+                </p>
+              </Link>
+            </div>
           </div>
+
           <div className="col-12 col-md-6 featured_right">
-            <div className="row">
-              <div className="col-6">
+            <div className="featured_card_box">
+              <div className="featured_card">
                 <div className="featured_ready_move">
                   <img
                     src={readyMoveImg}
@@ -45,22 +64,20 @@ function FeaturedCollection({ city }) {
                     className="img-fluid"
                   />
                 </div>
-              </div>
-              <div className="col-6 justify-content-center d-flex flex-column">
-                <h3>Ready to Move In</h3>
-                <p>
-                  Residential properties that are fully completed and available
-                  for immediate occupancy.
-                </p>
-                <Link to={`/${city}/projects/ready-to-move-projects`}>
-                  <p className="featured_explore">
-                    Explore <BsArrowRight />
+                <div className="ms-4 featured_collection_status">
+                  <h3 className="featured_collection_h3">Ready to Move In</h3>
+                  <p className="mob_hide">
+                    Residential properties that are fully completed and
+                    available for immediate occupancy.
                   </p>
-                </Link>
+                  <Link to={`/${city}/projects/ready-to-move-projects`}>
+                    <p className="featured_explore">
+                      Explore <BsArrowRight />
+                    </p>
+                  </Link>
+                </div>
               </div>
-            </div>
-            <div className="row">
-              <div className="col-6">
+              <div className="featured_card ml2">
                 <div className="featured_ready_move">
                   <img
                     src={underConstructionImg}
@@ -68,18 +85,20 @@ function FeaturedCollection({ city }) {
                     className="img-fluid"
                   />
                 </div>
-              </div>
-              <div className="col-6 justify-content-center d-flex flex-column">
-                <h3>Under Construction Projects</h3>
-                <p>
-                  Residential properties that are fully completed and available
-                  for immediate occupancy.
-                </p>
-                <Link to={`/${city}/projects/under-construction-projects`}>
-                  <p className="featured_explore">
-                    Explore <BsArrowRight />
+                <div className="ms-4 featured_collection_status">
+                  <h3 className="featured_collection_h3">
+                    Under Construction Projects
+                  </h3>
+                  <p className="mob_hide">
+                    Residential properties that are fully completed and
+                    available for immediate occupancy.
                   </p>
-                </Link>
+                  <Link to={`/${city}/projects/under-construction-projects`}>
+                    <p className="featured_explore">
+                      Explore <BsArrowRight />
+                    </p>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

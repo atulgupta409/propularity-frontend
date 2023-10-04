@@ -3,7 +3,13 @@ import "./ProjectTypesNav.css";
 import { Link } from "react-router-dom";
 import FilterModal from "./FilterModal";
 
-function ProjectTypesNav({ city, sendDataToParent, projectsData, showFilter }) {
+function ProjectTypesNav({
+  city,
+  sendDataToParent,
+  projectsData,
+  showFilter,
+  isMobile,
+}) {
   const planTypes = [
     {
       name: "Apartment",
@@ -44,7 +50,9 @@ function ProjectTypesNav({ city, sendDataToParent, projectsData, showFilter }) {
   ];
 
   return (
-    <div className="project_type_main mob_hide">
+    <div
+      className={isMobile ? "project_type_main" : "project_type_main mob_hide"}
+    >
       <div className="container">
         <div className="filter_nav_main">
           {planTypes.map((planType, i) => {

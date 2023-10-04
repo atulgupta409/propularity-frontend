@@ -23,12 +23,12 @@ function TopLocalities({ cityName, myCity }) {
           <h2 className="heading">
             Top Localities in <span className="primary_color">{cityName}</span>
           </h2>
-          <p className="heading_text">
+          <p className="heading_text mob_hide">
             Find Your Home In The City Of Your Choice
           </p>
           {microlocations?.slice(0, 8)?.map((microlocation, i) => {
             return (
-              <div className="col-12 col-sm-6 col-md-3 mt30" key={i}>
+              <div className="col-6 col-md-3 mt30" key={i}>
                 <Link
                   to={`/${myCity}/${microlocation.name
                     .split(" ")
@@ -44,7 +44,7 @@ function TopLocalities({ cityName, myCity }) {
                       />
                     </div>
                     <div className="localities_card_overlay city_localities">
-                      <div className="overlay_text mb-4">
+                      <div className="overlay_text city_overlay_text mb-4">
                         <h3>{microlocation.name}</h3>
                       </div>
                     </div>

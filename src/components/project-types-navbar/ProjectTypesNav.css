@@ -113,3 +113,14 @@
   padding: 0 30px 30px;
   border-radius: 20px;
 }
+
+@media only screen and (max-width: 768px) {
+  .project_type_main {
+    position: initial;
+    box-shadow: none;
+    background: transparent;
+  }
+  .filter_nav_item {
+    min-width: 98px;
+  }
+}

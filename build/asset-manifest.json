@@ -1,22 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.bbba1ee4.css",
-    "main.js": "/static/js/main.a11d4705.js",
+    "main.css": "/static/css/main.6e8e8daa.css",
+    "main.js": "/static/js/main.877656e9.js",
     "static/js/787.d72965a6.chunk.js": "/static/js/787.d72965a6.chunk.js",
     "static/media/new-launch.png": "/static/media/new-launch.6c5e0f9b9017f4be735f.png",
-    "static/media/home-mobile.png": "/static/media/home-mobile.f383cb73b8b4462d5078.png",
     "static/media/ready-to-move.png": "/static/media/ready-to-move.a7ac7ef6cec4d7bf522b.png",
     "static/media/sample-image.png": "/static/media/sample-image.d4b2b8a9e981cc9c475b.png",
     "static/media/under-construction.png": "/static/media/under-construction.b4f3d995d9d2cc699712.png",
     "static/media/sumit-sir-contact-main.png": "/static/media/sumit-sir-contact-main.6a80238bc66799b9e9a3.png",
     "static/media/citypage-banner.png": "/static/media/citypage-banner.76ca04ee1e4307ee8307.png",
     "index.html": "/index.html",
-    "main.bbba1ee4.css.map": "/static/css/main.bbba1ee4.css.map",
-    "main.a11d4705.js.map": "/static/js/main.a11d4705.js.map",
+    "main.6e8e8daa.css.map": "/static/css/main.6e8e8daa.css.map",
+    "main.877656e9.js.map": "/static/js/main.877656e9.js.map",
     "787.d72965a6.chunk.js.map": "/static/js/787.d72965a6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bbba1ee4.css",
-    "static/js/main.a11d4705.js"
+    "static/css/main.6e8e8daa.css",
+    "static/js/main.877656e9.js"
   ]
 }
