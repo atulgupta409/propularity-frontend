@@ -70,3 +70,26 @@ p {
 .primary_color {
   color: #ff385c;
 }
+.desk_hide {
+  display: none;
+}
+@media only screen and (max-width: 768px) {
+  .mob_hide {
+    display: none;
+  }
+  h1 {
+    font-size: 22px;
+  }
+  .mt100 {
+    margin-top: 50px;
+  }
+  .heading {
+    font-size: 20px;
+  }
+  h3 {
+    font-size: 17px;
+  }
+  .desk_hide {
+    display: block;
+  }
+}

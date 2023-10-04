@@ -35,3 +35,20 @@
 .bottom_footer {
   padding: 10px 0;
 }
+@media only screen and (max-width: 768px) {
+  .footer_text {
+    font-size: 13px;
+  }
+  .footer_main_box {
+    padding: 25px 0;
+  }
+  .footer_link {
+    font-size: 13px;
+  }
+  .bottom_footer p {
+    font-size: 10px;
+  }
+  .footer_main_box {
+    margin-top: 40px;
+  }
+}

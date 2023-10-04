@@ -1,6 +1,5 @@
 import React from "react";
 import "./TopLocalities.css";
-import locationImg from "../../media/sample-image.png";
 import { Link } from "react-router-dom";
 
 function TopLocalities() {
@@ -12,10 +11,10 @@ function TopLocalities() {
             Top Cities In India For{" "}
             <span className="primary_color">Property</span>
           </h2>
-          <p className="heading_text">
+          <p className="heading_text mob_hide">
             Find Your Home In The City Of Your Choice
           </p>
-          <div className="col-12 col-sm-6 col-md-3 mt30">
+          <div className="col-6 col-md-3 mt30">
             <Link to="/gurugram">
               <div className="localities_card">
                 <div className="img">
@@ -35,7 +34,7 @@ function TopLocalities() {
               </div>
             </Link>
           </div>
-          <div className="col-12 col-sm-6 col-md-3 mt30">
+          <div className="col-6 col-md-3 mt30">
             <Link to="/mumbai">
               <div className="localities_card">
                 <div className="img">
@@ -55,7 +54,7 @@ function TopLocalities() {
               </div>
             </Link>
           </div>
-          <div className="col-12 col-sm-6 col-md-3 mt30">
+          <div className="col-6 col-md-3 mt30">
             <div className="localities_card">
               <div className="img">
                 <img
@@ -73,7 +72,7 @@ function TopLocalities() {
               <div className="overlay2"></div>
             </div>
           </div>
-          <div className="col-12 col-sm-6 col-md-3 mt30">
+          <div className="col-6 col-md-3 mt30">
             <div className="localities_card">
               <div className="img">
                 <img

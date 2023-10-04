@@ -1,10 +1,8 @@
 import React from "react";
 import "./HomeBanner.css";
 import logo from "../../media/logo.png";
-import mobileImg from "../../media/home-mobile.png";
 import buildingImg from "../../media/sample-image.png";
 import { Tooltip as ReactTooltip } from "react-tooltip";
-import searchIcon from "../../media/search-icon.png";
 
 function HomeBanner() {
   return (
@@ -13,20 +11,13 @@ function HomeBanner() {
         <img src={logo} alt="propularity logo" />
         <h1>Where Property Comes To Life</h1>
       </div>
-      <form className="d-flex searchForm" role="search">
-        <input
-          className="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <div className="search_img_box">
-          <img src={searchIcon} alt="search icon" width={16} height={16} />
-        </div>
-      </form>
-      <div className="container my_container">
+      <div className="container my_container mob_hide">
         <div className="mob_box">
-          <img src={mobileImg} alt="mobile image" className="img-fluid" />
+          <img
+            src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1696401301600.png"
+            alt="mobile image"
+            className="img-fluid"
+          />
         </div>
         <div className="circle_box circle_box1" data-tooltip-id="my-tooltip-1">
           <img

@@ -39,7 +39,7 @@ function Footer() {
 
             {cities?.map((myCity, i) => {
               return (
-                <div className="col-md-3 footer_col" key={i}>
+                <div className="col-md-3 footer_col mob_hide" key={i}>
                   <div className="footer_heading">
                     <h6>{myCity} Localities</h6>
                   </div>
@@ -66,7 +66,7 @@ function Footer() {
                 </div>
               );
             })}
-            <div className="col-md-3 footer_col">
+            <div className="col-md-3 footer_col mob_hide">
               <div className="footer_heading">
                 <h6>Propularity</h6>
               </div>
@@ -95,7 +95,7 @@ function Footer() {
         <p className="text-center">
           COPYRIGHT © 2023 PROPULARITY ALL RIGHTS RESERVED | PROPULARITY IS A
           PART OF{" "}
-          <a style={{ color: "blue" }} href="https://cofynd.com/">
+          <a style={{ color: "#ff385c" }} href="https://cofynd.com/">
             COFYND
           </a>{" "}
           SPACE NETWORK

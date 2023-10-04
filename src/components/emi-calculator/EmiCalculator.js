@@ -12,13 +12,18 @@ function EmiCalculator() {
   const [totalPaybleAmount, setTotalPaybleAmount] = useState("80,00,000");
   const numPattern = /^(?=.*[1-9]|0)\d*(\.\d+)?$/;
 
+  const [isError, setIsError] = useState(false);
+
   const checkValidNum = (e) => {
     if (numPattern.test(e.target.value)) {
-      console.log("yes, go ahead.");
+      // console.log("yes, go ahead.");
+      setIsError(false);
     } else {
-      console.log("please enter the correct value");
+      setIsError(true);
+      // console.log("please enter the correct value");
     }
   };
+
   const inputChangeHandler = (e) => {
     let { name, value } = e.target;
     if (name === "interest") {
@@ -76,6 +81,9 @@ function EmiCalculator() {
                   placeholder="₹ 50,00,000*"
                   required
                 />
+                {/* {isError && (
+                  <p className="error_message">Please enter the valid input.</p>
+                )} */}
               </div>
               <div className="mt20 col-md-3">
                 <label htmlFor="loantenure" className="form-label">
@@ -92,6 +100,9 @@ function EmiCalculator() {
                   placeholder="12*"
                   required
                 />
+                {/* {isError && (
+                  <p className="error_message">Please enter the valid input.</p>
+                )} */}
               </div>
               <div className="mt20 col-md-3">
                 <label htmlFor="loanrate" className="form-label">
@@ -108,6 +119,9 @@ function EmiCalculator() {
                   placeholder="12*"
                   required
                 />
+                {/* {isError && (
+                  <p className="error_message">Please enter the valid input.</p>
+                )} */}
               </div>
               <div className="mt20 col-md-3">
                 <button className="modal_form_btn" type="submit">

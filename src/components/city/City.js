@@ -25,8 +25,6 @@ function City() {
     data: builderData,
   } = useQuery(GET_ALL_BUILDERS);
 
-  // console.log(builderData);
-
   const [projects, setProjects] = useState([]);
   useEffect(() => {
     if (data) {

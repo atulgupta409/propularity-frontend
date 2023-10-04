@@ -8,9 +8,9 @@ import { Link } from "react-router-dom";
 
 function BuildersSlider({ myClass, name }) {
   const breakPoints = [
-    { width: 1, itemsToShow: 1 },
-    { width: 576, itemsToShow: 2.4 },
-    { width: 768, itemsToShow: 2.4 },
+    { width: 1, itemsToShow: 3.2 },
+    { width: 576, itemsToShow: 3.2 },
+    { width: 768, itemsToShow: 3.2 },
     { width: 1200, itemsToShow: 4 },
   ];
 
@@ -29,7 +29,7 @@ function BuildersSlider({ myClass, name }) {
           <h2 className="heading">
             Top Developers In <span className="primary_color">India</span>
           </h2>
-          <p className="heading_text">
+          <p className="heading_text mob_hide">
             Discover Top Developers to Your Specific Preferences.
           </p>
         </>

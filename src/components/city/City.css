@@ -25,3 +25,8 @@
   font-weight: 600;
   color: rgba(34, 34, 34, 0.5);
 }
+@media only screen and (max-width: 768px) {
+  .city_banner_main {
+    margin-top: 50px;
+  }
+}

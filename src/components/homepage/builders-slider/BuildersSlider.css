@@ -60,3 +60,18 @@
     font-weight: 800;
     color: #222;
 }
+
+@media only screen and (max-width: 768px) {
+    .builder_container {
+        padding: 50px 10px;
+    }
+    .builder_card {
+        width: 6rem;
+    }
+    .builder_img {
+        height: 100px;
+    }
+    .builder_img img {
+        width: 73px;
+    }
+}

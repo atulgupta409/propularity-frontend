@@ -20,7 +20,7 @@ function Contact() {
               questions, concerns, or suggestions. Please don't hesitate to get
               in touch with us. Our dedicated team is ready to respond to your
               inquiries promptly. You can reach us by sending an email to{" "}
-              <a href="mailto: hello@propularity.in">hello@propularity.in</a>.
+              <a href="mailto:hello@propularity.in">hello@propularity.in</a>.
               We're here to help you.
             </p>
           </div>

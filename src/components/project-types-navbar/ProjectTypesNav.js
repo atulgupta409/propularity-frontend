@@ -44,7 +44,7 @@ function ProjectTypesNav({ city, sendDataToParent, projectsData, showFilter }) {
   ];
 
   return (
-    <div className="project_type_main">
+    <div className="project_type_main mob_hide">
       <div className="container">
         <div className="filter_nav_main">
           {planTypes.map((planType, i) => {

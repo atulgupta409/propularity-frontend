@@ -102,3 +102,18 @@
 .property_card:not(:last-child) {
   margin-right: 29px;
 }
+
+@media only screen and (max-width: 768px) {
+  .property_homecard {
+    width: 100%;
+  }
+  .card_title {
+    font-size: 13px;
+  }
+  .card_p {
+    font-size: 12px;
+  }
+  .star_image p {
+    font-size: 12px;
+  }
+}
