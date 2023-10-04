@@ -18,25 +18,59 @@
   line-height: 58px;
 }
 .city_localities {
-  background: linear-gradient(0deg, #F4F2FF 43.75%, rgba(238, 240, 245, 0.00) 100%);
+  background: linear-gradient(
+    0deg,
+    #f4f2ff 43.75%,
+    rgba(238, 240, 245, 0) 100%
+  );
 }
 .no_space_text {
   font-size: 16px;
   font-weight: 600;
   color: rgba(34, 34, 34, 0.5);
 }
-.search_location{
+.search_location {
   width: 566px;
-    margin: 30px auto 0;
-    position: relative;
+  margin: 30px auto 0;
+  position: relative;
 }
-.search_location .css-13cymwt-control{
+.search_location .css-13cymwt-control {
   border-radius: 29px !important;
   padding: 6px 0 !important;
 }
-.search_location .css-t3ipsp-control{
+.search_location .css-t3ipsp-control {
   border-radius: 29px !important;
   padding: 6px 0 !important;
   border-color: #ff7b93 !important;
   box-shadow: 0 0 0 1px #ff7b93 !important;
+}
+@media only screen and (max-width: 768px) {
+  .city_banner_main {
+    margin-top: 50px;
+    background: rgba(255, 245, 246, 0.50);
+    height: 50vh;
+  }
+  .search_location {
+    width: 86%;
+  }
+  .search_location .css-13cymwt-control {
+    border-radius: 21px !important;
+    padding: 3px 0 !important;
+  }
+  .cityPage_heading span {
+    font-size: 30px;
+    line-height: 40px;
+  }
+  .city_row {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    margin-top: -150px;
+  }
+  .city_overlay_text h3 {
+    font-size: 14px;
+  }
+  .city_overlay_text {
+    margin-bottom: 14px !important;
+  }
 }

@@ -47,3 +47,22 @@
   bottom: 0px;
 }
 
+@media only screen and (max-width: 768px) {
+  .section_row {
+    padding: 50px 0;
+}
+.localities_card {
+  width: 100%;
+  height: auto;
+}
+.overlay_text p {
+  font-size: 12px;
+    margin-bottom: 8px;
+}
+.localities_card .img img {
+  border-radius: 10px;
+}
+.localities_card_overlay {
+  border-radius: 6px;
+}
+}

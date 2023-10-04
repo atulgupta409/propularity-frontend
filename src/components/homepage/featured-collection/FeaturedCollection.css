@@ -45,26 +45,108 @@
   justify-content: space-between;
 }
 .featured_left_box {
-    position: relative;
+  position: relative;
 }
 .featured_left_box::after {
-    content: "";
-    position: absolute;
-    height: 100%;
-    width: 2px;
-    background: rgba(34, 34, 34, 0.10);
-    top: 0;
-    right: 17px;
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 2px;
+  background: rgba(34, 34, 34, 0.1);
+  top: 0;
+  right: 17px;
 }
 .featured_right .row:nth-child(1) {
-    position: relative;
+  position: relative;
 }
 .featured_right .row:nth-child(1)::after {
-    content: "";
-    position: absolute;
-    height: 2px;
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: rgba(34, 34, 34, 0.1);
+  bottom: -31px;
+  left: -19px;
+}
+.featured_card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.featured_collection_status {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+}
+.featured_card:nth-child(2) {
+  margin-top: 40px;
+}
+.featured_card_box {
+  display: flex;
+  flex-direction: column;
+}
+.featured_collection_box {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (max-width: 768px) {
+  .featured_box {
+    padding: 50px 0;
+  }
+  .featured_left_box::after {
+    display: none;
+  }
+  .featured_new_launch {
     width: 100%;
-    background: rgba(34, 34, 34, 0.10);
-    bottom: -31px;
-    left: -19px;
+  }
+  .featured_card {
+    flex-direction: column;
+  }
+
+  .featured_collection_status {
+    flex-direction: column;
+    margin-left: 0 !important;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .featured_card:nth-child(2) {
+    margin-top: 0px;
+  }
+  .featured_ready_move {
+    width: 100%;
+  }
+  .featured_ready_move:nth-child(2) {
+    margin-left: 10px;
+  }
+  .featured_card_box {
+    flex-direction: row;
+    margin-top: 15px;
+  }
+  .ml2 {
+    margin-left: 15px;
+  }
+  .ms-4 {
+    margin-left: 0 !important;
+  }
+  .featured_collection_h3 {
+    font-size: 13px;
+  }
+  .featured_explore {
+    font-size: 12px;
+    color: gray;
+  }
+  .featured_new_launch img {
+    border-radius: 10px;
+  }
+  .featured_ready_move img {
+    border-radius: 10px;
+  }
+  .mt10 {
+    margin-top: 10px;
+  }
+  
 }

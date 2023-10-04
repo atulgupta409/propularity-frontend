@@ -60,3 +60,27 @@
     font-weight: 800;
     color: #222;
 }
+
+@media only screen and (max-width: 768px) {
+    .builder_container {
+        padding: 50px 10px;
+    }
+    .builder_card {
+        width: 6rem;
+    }
+    .builder_img {
+        height: 100px;
+    }
+    .builder_img img {
+        width: 73px;
+    }
+    .builder_slider_container {
+        padding: 50px 10px;
+    }
+    .builder_logo_box:not(:last-child) {
+        margin-right: 30px;
+    }
+    .builder_logo_box {
+        min-width: 78px;
+    }
+}

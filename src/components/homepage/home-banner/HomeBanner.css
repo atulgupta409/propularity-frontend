@@ -1,6 +1,6 @@
 .home_banner_main {
     background: rgba(255, 245, 246, 0.50);
-    padding-top: 42px;
+    padding-top: 82px;
     margin-top: 87px;
 }
 .searchForm {
@@ -33,7 +33,7 @@
     width: 279px;
 }
 .mob_box {
-    width: 288px;
+    width: 304px;
     margin: 60px auto 0;
 }
 .my_container {
@@ -47,7 +47,7 @@
 .circle_box1 {
     width: 144px;
     height: 144px;
-    top: 22px;
+    top: 53px;
     left: 344px;
 }
 .circle_box img {
@@ -86,7 +86,7 @@
 .circle_box7 {
     width: 30px;
     height: 30px;
-    top: 44px;
+    top: 72px;
     left: 275px;
     background-color: #FFF0F1;
 }
@@ -136,7 +136,7 @@
 .circle_box14 {
     width: 110px;
     height: 110px;
-    top: 35px;
+    top: 50px;
     right: 367px;
 }
 .circle_box15 {
@@ -200,4 +200,16 @@
 }
 .react-tooltip {
     z-index: 99;
+}
+
+@media only screen and (max-width: 600px) {
+    .home_banner_main {
+        margin-top: 0;
+        padding-top: 109px;
+        height: 392px;
+    }
+    .brand_logo img {
+        width: 160px;
+    }
+
 }

@@ -1,6 +1,7 @@
 import React from "react";
 
 function BuildersSlider({ builders }) {
+  console.log(builders);
   return (
     <div className="container builder_slider_container">
       <div className="builders_row">

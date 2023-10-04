@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import ProjectTypesNav from "../project-types-navbar/ProjectTypesNav";
 import "./City.css";
 import { useNavigate, useParams } from "react-router-dom";
-import searchIcon from "../media/search-icon.png";
 import HomeCard from "../card/HomeCard";
 import TopLocalities from "./TopLocalities";
 import FeaturedCollection from "../homepage/featured-collection/FeaturedCollection";
@@ -17,7 +16,7 @@ function City() {
   const cityName = city.charAt(0).toUpperCase() + city.slice(1);
   const [projects, setProjects] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { loading, error, data } = useQuery(GET_PROJECTS_BY_CITY, {
     variables: { city: city },
   });
@@ -35,24 +34,27 @@ function City() {
     variables: { city: city },
   });
 
-
   const locationOptions = locationData?.microlocations?.map((location) => ({
     value: location._id,
     label: location.name,
   }));
 
- const onChangeOptionHandler = (selectedOption, dropdownIdentifier) => {
+  const onChangeOptionHandler = (selectedOption, dropdownIdentifier) => {
     switch (dropdownIdentifier) {
       case "location":
         setSelectedLocation(selectedOption);
-        navigate(`/${city?.toLowerCase()}/${selectedOption?.label.split(" ").join("-").toLowerCase()}`)
+        navigate(
+          `/${city?.toLowerCase()}/${selectedOption?.label
+            .split(" ")
+            .join("-")
+            .toLowerCase()}`
+        );
         break;
       default:
         break;
     }
-  }; 
+  };
 
- 
   useEffect(() => {
     if (data) {
       setProjects(data.projectsByCity);
@@ -62,36 +64,36 @@ function City() {
   return (
     <>
       <div className="city_banner_main">
-        <ProjectTypesNav city={city} showFilter={false} />
+        <ProjectTypesNav city={city} showFilter={false} isMobile={false} />
         <h1 className="cityPage_heading">
           <span>{cityName}</span>
           <br />
           Where Property Comes To Life
         </h1>
         <Select
-                value={selectedLocation}
-                onChange={(selectedOption) =>
-                  onChangeOptionHandler(selectedOption, "location")
-                }
-                isSearchable
-                options={locationOptions}
-                placeholder={"Search Location"}
-                className="search_location"
-              />
-        
+          value={selectedLocation}
+          onChange={(selectedOption) =>
+            onChangeOptionHandler(selectedOption, "location")
+          }
+          isSearchable
+          options={locationOptions}
+          placeholder={"Search Location"}
+          className="search_location"
+        />
+        <ProjectTypesNav city={city} showFilter={false} isMobile={true} />
       </div>
       <div className="container mt100">
-        <div className="row">
-          <h2 className="heading">
+        <div className="row city_row">
+          <h2 className="heading mob_hide">
             Top Projects in <span className="primary_color">{cityName}</span>
           </h2>
-          <p className="heading_text">
+          <p className="heading_text mob_hide">
             Find Your Home In The City Of Your Choice
           </p>
           {projects?.length > 0 ? (
             projects?.map((element, i) => {
               return (
-                <div className="col-md-3 mt30" key={i}>
+                <div className="col-8 col-md-3 mt30" key={i}>
                   <HomeCard
                     builder={element?.builder[0].name
                       .split(" ")

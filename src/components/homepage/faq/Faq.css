@@ -14,3 +14,16 @@
 .faq_img_box img {
     width: 100px;
 }
+
+@media only screen and (max-width: 768px) {
+    .accordion-button {
+        font-size: 13px;
+        --bs-accordion-btn-padding-x: 0.25rem;
+    }
+    .accordion-button::after {
+        --bs-accordion-btn-icon-width: 14px;
+    }
+    .accordion-body {
+        font-size: 12px;
+    }
+}

@@ -6,7 +6,7 @@ function Faq() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-12 col-md-6">
+        <div className="col-12 col-md-6 mob_hide">
           <div className="faq_img">
             <div className="faq_img_box">
               <img src={faqSideImg} alt="faq side profile" />
@@ -14,12 +14,15 @@ function Faq() {
             <h2 className="heading text-start mt20">
               We're Here to <span className="primary_color">Help</span>
             </h2>
-            <p className="heading_text text-start">
+            <p className="heading_text text-start mob_hide">
               Property Discovery With Expert Guidance
             </p>
           </div>
         </div>
         <div className="col-12 col-md-6">
+          <h2 className="heading mt20 desk_hide">
+            We're Here to <span className="primary_color">Help</span>
+          </h2>
           <div className="accordion accordion-flush" id="accordionFlushExample">
             <div className="accordion-item">
               <h2 className="accordion-header">

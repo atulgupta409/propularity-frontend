@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_PROJECTS_BY_STATUS } from "../../../service/ProjectsByCityAndStatus";
 import Select from "react-select";
