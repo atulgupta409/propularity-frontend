@@ -17,8 +17,11 @@
 }
 .footer_heading {
   border-bottom: 1px solid rgba(34, 34, 34, 0.1);
-  width: 79%;
+  width: 64%;
   padding-bottom: 6px;
+}
+.footer_col {
+  padding-left: 60px;
 }
 .footer_heading h6 {
   font-size: 16px;

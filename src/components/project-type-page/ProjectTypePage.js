@@ -10,30 +10,34 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 function ProjectTypePage() {
   const [selectedStatus, setSelectedStatus] = useState(null);
   const [selectedPrice, setSelectedPrice] = useState(null);
-  const [curPage, setCurPage] = useState(1)
+  const [curPage, setCurPage] = useState(1);
   const [projects, setProjects] = useState([]);
-  const [searchedprojects, setSearchedprojects] = useState([])
-  const [isSearch, setIsSearch] = useState(false)
+  const [searchedprojects, setSearchedprojects] = useState([]);
+  const [isSearch, setIsSearch] = useState(false);
   let item_per_page = 5;
- 
+
   const pageUrl = window.location.href;
   const pageUrlArr = pageUrl?.split("/");
-  const builderName = pageUrlArr[pageUrlArr.length-3]
-  const type = pageUrlArr[pageUrlArr.length-1]
-  
+  const builderName = pageUrlArr[pageUrlArr.length - 3];
+  const type = pageUrlArr[pageUrlArr.length - 1];
+
   const {
     loading,
     error,
     data: projectsData,
   } = useQuery(GET_PROJECTS_BY_BUILDER_AND_TYPE, {
-    variables: { builderName, type},
+    variables: { builderName, type },
   });
-  
-  let totalPage = Math.ceil((isSearch ? searchedprojects?.length : projectsData?.projectsByBuilderAndTypes?.length) / item_per_page);
+
+  let totalPage = Math.ceil(
+    (isSearch
+      ? searchedprojects?.length
+      : projectsData?.projectsByBuilderAndTypes?.length) / item_per_page
+  );
   let current_page = 1;
   const handlePageClick = async (data_page) => {
     current_page += data_page.selected;
-    setCurPage(current_page); 
+    setCurPage(current_page);
   };
   useEffect(() => {
     if (projectsData) {
@@ -46,18 +50,18 @@ function ProjectTypePage() {
     const matchCr = priceStr.match(regexCr);
     if (matchCr) {
       const value = parseFloat(matchCr[1]);
-      return value * 10000000; 
+      return value * 10000000;
     }
     const matchLacs = priceStr.match(regexLacs);
     if (matchLacs) {
       const value = parseFloat(matchLacs[1]);
-      return value*100000
+      return value * 100000;
     }
     return 0;
   }
-  
+
   const applyFilters = () => {
-    let filteredData =   projectsData?.projectsByBuilderAndTypes;
+    let filteredData = projectsData?.projectsByBuilderAndTypes;
 
     if (selectedStatus) {
       filteredData = filteredData?.filter(
@@ -65,7 +69,7 @@ function ProjectTypePage() {
       );
     }
 
-      if (selectedPrice) {
+    if (selectedPrice) {
       const [minPrice, maxPrice] = selectedPrice.value.split(" - ");
       const minPriceVal = convertPriceToNumeric(minPrice);
       const maxPriceVal = convertPriceToNumeric(maxPrice);
@@ -87,16 +91,16 @@ function ProjectTypePage() {
     switch (dropdownIdentifier) {
       case "status":
         setSelectedStatus(selectedOption);
-        setIsSearch(true)
+        setIsSearch(true);
         break;
       case "price":
         setSelectedPrice(selectedOption);
-        setIsSearch(true)
+        setIsSearch(true);
         break;
       default:
         break;
     }
-  }; 
+  };
   const statusOptions = [
     { value: "Ready To Move", label: "Ready To Move" },
     { value: "Under Construction", label: "Under Construction" },
@@ -110,9 +114,7 @@ function ProjectTypePage() {
     { value: "4.00Cr - 6.00Cr", label: "4.00Cr - 6.00Cr" },
     { value: "6.00Cr - 10.00Cr", label: "6.00Cr - 10.00Cr" },
   ];
-    
 
-  
   const resetFilterHandler = () => {
     setSelectedStatus(null);
     setSelectedPrice(null);
@@ -170,9 +172,9 @@ function ProjectTypePage() {
                 curPage * item_per_page
               )
             : projects?.slice(
-              (curPage - 1) * item_per_page,
-              curPage * item_per_page
-            )
+                (curPage - 1) * item_per_page,
+                curPage * item_per_page
+              )
           )?.map((element, i) => {
             return (
               <div className="col-md-3" key={i}>

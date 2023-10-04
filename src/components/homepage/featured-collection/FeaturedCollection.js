@@ -4,8 +4,9 @@ import newLaunchImg from "../../media/new-launch.png";
 import { BsArrowRight } from "react-icons/bs";
 import readyMoveImg from "../../media/ready-to-move.png";
 import underConstructionImg from "../../media/under-construction.png";
+import { Link } from "react-router-dom";
 
-function FeaturedCollection() {
+function FeaturedCollection({ city }) {
   return (
     <div className="featured_box">
       <div className="container">
@@ -28,9 +29,11 @@ function FeaturedCollection() {
               Residential properties that are fully completed and available for
               immediate occupancy.
             </p>
-            <p className="featured_explore">
-              Explore <BsArrowRight />
-            </p>
+            <Link to={`/${city}/projects/new-launch-projects`}>
+              <p className="featured_explore">
+                Explore <BsArrowRight />
+              </p>
+            </Link>
           </div>
           <div className="col-12 col-md-6 featured_right">
             <div className="row">
@@ -49,9 +52,11 @@ function FeaturedCollection() {
                   Residential properties that are fully completed and available
                   for immediate occupancy.
                 </p>
-                <p className="featured_explore">
-                  Explore <BsArrowRight />
-                </p>
+                <Link to={`/${city}/projects/ready-to-move-projects`}>
+                  <p className="featured_explore">
+                    Explore <BsArrowRight />
+                  </p>
+                </Link>
               </div>
             </div>
             <div className="row">
@@ -70,9 +75,11 @@ function FeaturedCollection() {
                   Residential properties that are fully completed and available
                   for immediate occupancy.
                 </p>
-                <p className="featured_explore">
-                  Explore <BsArrowRight />
-                </p>
+                <Link to={`/${city}/projects/under-construction-projects`}>
+                  <p className="featured_explore">
+                    Explore <BsArrowRight />
+                  </p>
+                </Link>
               </div>
             </div>
           </div>
