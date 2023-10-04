@@ -25,3 +25,18 @@
   font-weight: 600;
   color: rgba(34, 34, 34, 0.5);
 }
+.search_location{
+  width: 566px;
+    margin: 30px auto 0;
+    position: relative;
+}
+.search_location .css-13cymwt-control{
+  border-radius: 29px !important;
+  padding: 6px 0 !important;
+}
+.search_location .css-t3ipsp-control{
+  border-radius: 29px !important;
+  padding: 6px 0 !important;
+  border-color: #ff7b93 !important;
+  box-shadow: 0 0 0 1px #ff7b93 !important;
+}

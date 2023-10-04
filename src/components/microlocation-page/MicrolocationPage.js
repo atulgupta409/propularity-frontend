@@ -42,12 +42,7 @@ function MicrolocationPage() {
   } = useQuery(GET_PROJECTS_BY_MICROLOCATIONS, {
     variables: { location: microlocationName, city: city },
   });
-
-  let totalPage = Math.ceil(
-    (isSearch
-      ? searchedprojects?.length
-      : projectsData?.builderProjectsByLocation?.length) / item_per_page
-  );
+  let totalPage = Math.ceil((isSearch ? searchedprojects?.length : projectsData?.builderProjectsByLocation?.length) / item_per_page);
   let current_page = 1;
   const handlePageClick = async (data_page) => {
     current_page += data_page.selected;
@@ -115,7 +110,7 @@ function MicrolocationPage() {
         break;
       case "price":
         setSelectedPrice(selectedOption);
-        setIsSearch(true);
+        setIsSearch(true) 
         break;
       case "builder":
         setSelectedBuilder(selectedOption);
