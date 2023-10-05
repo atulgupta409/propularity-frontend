@@ -117,7 +117,7 @@ function Navbar() {
                                     key={i}
                                   >
                                     <Link
-                                      to={`/mumbai/${filteredMicrolocation.name
+                                      to={`/gurugram/${filteredMicrolocation.name
                                         .split(" ")
                                         .join("-")
                                         .toLowerCase()}`}
@@ -127,7 +127,7 @@ function Navbar() {
                                   </div>
                                 );
                               })}
-                            <Link to={`/mumbai`} className="m-0">
+                            <Link to={`/gurugram`} className="m-0">
                               <button>View All</button>
                             </Link>
                           </div>
