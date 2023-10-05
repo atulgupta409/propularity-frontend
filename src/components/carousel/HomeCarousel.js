@@ -4,6 +4,7 @@ import Carousel from "react-elastic-carousel";
 import "./MyCarousel.css";
 import { useQuery } from "@apollo/client";
 import { GET_PROJECTS_BY_CITY } from "../../service/ProjectsByCityService";
+import ProjectSkeleton from "../loader/ProjectSkeleton";
 
 function HomeCarousel({ carouselClass, city }) {
   const { loading, error, data } = useQuery(GET_PROJECTS_BY_CITY, {
@@ -41,6 +42,7 @@ function HomeCarousel({ carouselClass, city }) {
     >
       <div className="carousel-wrapper">
         <Carousel breakPoints={breakPoints}>
+        {loading && <ProjectSkeleton cards={4}/>}
           {projectData?.map((project, i) => {
             return (
               <div className="col-11" key={i}>

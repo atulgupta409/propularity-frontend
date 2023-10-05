@@ -3,6 +3,7 @@ import "./TopProperties.css";
 import HomeCard from "../../card/HomeCard";
 import { useQuery } from "@apollo/client";
 import { GET_PROJECTS_BY_COUNTRY } from "../../../service/TopProjectsInIndia";
+import ProjectSkeleton from "../../loader/ProjectSkeleton"
 
 function TopProperties() {
   const { loading, error, data } = useQuery(GET_PROJECTS_BY_COUNTRY);
@@ -32,6 +33,7 @@ function TopProperties() {
         <p className="heading_text mob_hide">
           Explore prime properties based on your preference
         </p>
+        {loading && <ProjectSkeleton cards={8}/>}
         {topProjects?.map((project, i) => {
           return (
             <div className="col-8 col-sm-6 col-md-3 mt30" key={i}>
