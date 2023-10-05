@@ -137,8 +137,8 @@
 }
 .view_all_text {
   font-size: 14px;
-    font-weight: 600;
-    color: #eb4b71;
+  font-weight: 600;
+  color: #eb4b71;
 }
 
 .builder_overview {
@@ -234,4 +234,31 @@
   text-decoration: none;
   font-size: 15px;
   font-weight: 400;
+}
+
+@media only screen and (max-width: 768px) {
+  .builder_h1 {
+    margin-bottom: 0;
+  }
+  .detail_p {
+    font-size: 12px;
+  }
+  .star {
+    width: 14px;
+  }
+  .builder_overview {
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+  }
+  .main_section_detail {
+    padding-right: 0;
+  }
+  .detail_h4 {
+    font-size: 13px;
+  }
+  .about_builder {
+    font-size: 13px;
+    margin-top: 10px;
+  }
 }

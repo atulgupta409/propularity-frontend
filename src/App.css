@@ -76,6 +76,7 @@ p {
 @media only screen and (max-width: 768px) {
   .mob_hide {
     display: none;
+    margin: 0 !important;
   }
   h1 {
     font-size: 22px;
@@ -91,5 +92,14 @@ p {
   }
   .desk_hide {
     display: block;
+  }
+  .m60 {
+    margin-top: 30px;
+  }
+  h6, p {
+    font-size: 13px;
+  }
+  h5 {
+    font-size: 14px;
   }
 }

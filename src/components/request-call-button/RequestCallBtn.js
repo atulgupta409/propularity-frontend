@@ -5,7 +5,7 @@ import "./RequestCallBtn.css";
 import { MdCall } from "react-icons/md";
 import {BiSolidDownload} from "react-icons/bi"
 
-function RequestCallBtn({button_name, downloadPdf}) {
+function RequestCallBtn({ button_name, downloadPdf, darkBtn }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openModal = () => {
     setModalIsOpen(true);
@@ -18,9 +18,13 @@ function RequestCallBtn({button_name, downloadPdf}) {
   return (
     <>
       <div onClick={openModal} style={{ cursor: "pointer" }}>
-        <p className="card_p mb-0">
+        <p className={darkBtn ? "color_white card_p mb-0" : "card_p mb-0"}>
           <span>
-            {button_name === "Enquire" ? <MdCall className="card_icon" /> : <BiSolidDownload className="download_card_icon"/>}
+            {button_name === "Enquire" ? (
+              <MdCall className="card_icon" />
+            ) : (
+              <BiSolidDownload className="download_card_icon" />
+            )}
           </span>
           {button_name}
         </p>
@@ -31,7 +35,11 @@ function RequestCallBtn({button_name, downloadPdf}) {
         contentLabel="Example Modal"
         ariaHideApp={false}
       >
-        <ContactFormModal closeModal={closeModal} button_name={button_name} downloadPdf={downloadPdf}/>
+        <ContactFormModal
+          closeModal={closeModal}
+          button_name={button_name}
+          downloadPdf={downloadPdf}
+        />
       </Modal>
     </>
   );

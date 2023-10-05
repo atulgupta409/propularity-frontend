@@ -85,7 +85,7 @@ function EmiCalculator() {
                   <p className="error_message">Please enter the valid input.</p>
                 )} */}
               </div>
-              <div className="mt20 col-md-3">
+              <div className="mt20 col-6 col-md-3">
                 <label htmlFor="loantenure" className="form-label">
                   Loan Tenure (Year)*
                 </label>
@@ -104,7 +104,7 @@ function EmiCalculator() {
                   <p className="error_message">Please enter the valid input.</p>
                 )} */}
               </div>
-              <div className="mt20 col-md-3">
+              <div className="mt20 col-6 col-md-3">
                 <label htmlFor="loanrate" className="form-label">
                   Interest Rate % (p.a)*
                 </label>
@@ -146,7 +146,7 @@ function EmiCalculator() {
               </div>
             </div>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-6 mob_hide">
             <div className="row">
               <div className="col-12">
                 <h5>Why Propularity?</h5>
@@ -175,13 +175,6 @@ function EmiCalculator() {
         <div className="row calculator_bottom_row">
           <div className="bank_logo">
             <img
-              src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695800697036.png"
-              alt="yes bank"
-              className="img-fluid"
-            />
-          </div>
-          <div className="bank_logo">
-            <img
               src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695800689477.png"
               alt="sbi bank"
               className="img-fluid"
@@ -196,15 +189,8 @@ function EmiCalculator() {
           </div>
           <div className="bank_logo">
             <img
-              src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695800671426.png"
-              alt="canara bank"
-              className="img-fluid"
-            />
-          </div>
-          <div className="bank_logo">
-            <img
-              src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695800662685.png"
-              alt="bank of baroda"
+              src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1696406120759.png"
+              alt="HDFC bank"
               className="img-fluid"
             />
           </div>
