@@ -154,8 +154,8 @@ function MicrolocationPage() {
           <h1>Projects in {microlocationName}</h1>
         </div>
         <div className="col-md-6">
-          <div className="row justify-content-end">
-            <div className="col-3">
+          <div className="row .justify-content-md-end">
+            <div className="col-3 select_column">
               <Select
                 value={selectedBuilder}
                 onChange={(selectedOption) =>
@@ -167,7 +167,7 @@ function MicrolocationPage() {
                 className="select_builder"
               />
             </div>
-            <div className="col-3">
+            <div className="col-3 select_column">
               <Select
                 value={selectedStatus}
                 onChange={(selectedOption) =>
@@ -175,11 +175,11 @@ function MicrolocationPage() {
                 }
                 isSearchable
                 options={statusOptions}
-                placeholder={"Project Status"}
+                placeholder={"Status"}
                 className="select_builder"
               />
             </div>
-            <div className="col-3">
+            <div className="col-3 select_column">
               <Select
                 value={selectedPrice}
                 onChange={(selectedOption) =>
@@ -190,7 +190,7 @@ function MicrolocationPage() {
                 className="select_builder"
               />
             </div>
-            <div className="col-md-2">
+            <div className="col-3 col-md-2 select_column">
               <button
                 className="clear_filter_btn"
                 role="button"

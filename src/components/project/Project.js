@@ -678,7 +678,10 @@ function Project() {
         <div className="container-fluid">
           <div className="starting_price">
             <p>Starting</p>
-            <p>₹ 50,000</p>
+            <p>
+              ₹ {data?.projectDetails[0]?.starting_price}{" "}
+              <span style={{ color: "#222", fontSize: "13px" }}>Onwards</span>
+            </p>
           </div>
           <button>
             <RequestCallBtn button_name={"Enquire"} darkBtn={true} />

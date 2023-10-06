@@ -15,25 +15,32 @@ function ProjectTypesNav({
       name: "Apartment",
       icon: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695977020209.png",
     },
+
+    {
+      name: "Service Apartment",
+      icon: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695976931764.png",
+    },
     {
       name: "Town House",
       icon: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695977030821.png",
     },
+
     {
-      name: "Villa",
-      icon: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695977005255.png",
+      name: "Studio Apartment",
+      icon: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695976941172.png",
     },
     {
       name: "Plot",
       icon: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695976921735.png",
     },
     {
-      name: "Studio Apartment",
-      icon: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695976941172.png",
+      name: "Villa",
+      icon: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695977005255.png",
     },
+
     {
-      name: "Service Apartment",
-      icon: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695976931764.png",
+      name: "Office",
+      icon: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695976900770.png",
     },
     {
       name: "Penthouse",
@@ -42,10 +49,6 @@ function ProjectTypesNav({
     {
       name: "Farmhouse",
       icon: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695976886523.png",
-    },
-    {
-      name: "Office",
-      icon: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695976900770.png",
     },
   ];
 

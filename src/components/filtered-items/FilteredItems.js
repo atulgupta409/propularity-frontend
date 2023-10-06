@@ -36,12 +36,15 @@ function FilteredItems() {
 
   return (
     <>
-      <ProjectTypesNav
-        city={desiredPart}
-        showFilter={true}
-        sendDataToParent={receiveDataFromChild}
-        projectsData={data?.topProjectsByPlanAndCity}
-      />
+      <div className="filtered_items_nav_main">
+        <ProjectTypesNav
+          city={desiredPart}
+          showFilter={true}
+          sendDataToParent={receiveDataFromChild}
+          projectsData={data?.topProjectsByPlanAndCity}
+          isMobile={true}
+        />
+      </div>
       <div className="container">
         <div className="filtered_items_main">
           <div className="row">
