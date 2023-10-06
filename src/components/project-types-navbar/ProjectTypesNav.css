@@ -123,4 +123,14 @@
   .filter_nav_item {
     min-width: 98px;
   }
+  .filter_nav_item:nth-child(1) {
+    min-width: 52px;
+    margin-right: 12px;
+  }
+  .filter_nav_main {
+    padding: 10px 0;
+  }
+  .filter_nav_item p {
+    font-size: 10px;
+  }
 }

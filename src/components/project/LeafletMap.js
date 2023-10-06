@@ -1,15 +1,16 @@
 import React from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
 
 function LeafletMap({ latitude, longitude, name }) {
   const position = [latitude, longitude];
+
   return (
     <div>
       <MapContainer
         center={position}
-        zoom={14}
+        zoom={15}
         scrollWheelZoom={false}
-        style={{ width: "100%", height: "340px", borderRadius: "20px" }}
+        style={{ width: "100%", height: "440px", borderRadius: "20px" }}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
