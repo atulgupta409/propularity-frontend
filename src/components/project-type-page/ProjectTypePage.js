@@ -7,8 +7,7 @@ import { useQuery } from "@apollo/client";
 import { GET_PROJECTS_BY_BUILDER_AND_TYPE } from "../../service/DataByPlanTypeService";
 import ReactPaginate from "react-paginate";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
-
-
+import ProjectSkeleton from "../loader/ProjectSkeleton";
 function ProjectTypePage() {
   const params = useParams();
   const { projectType, builder } = params;
@@ -209,6 +208,7 @@ function ProjectTypePage() {
         </div>
       </div>
       <div className="row microlocation_projects">
+        {loading && <ProjectSkeleton cards={8} />}
         {(isSearch ? searchedprojects?.length : projects?.length > 0) ? (
           (isSearch
             ? searchedprojects?.slice(

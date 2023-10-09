@@ -8,6 +8,7 @@ import { GET_PROJECTS_BY_MICROLOCATIONS } from "../../service/ProjectsByMicroloc
 import { GET_ALL_BUILDERS } from "../../service/ProjectDetailsservice";
 import ReactPaginate from "react-paginate";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+import ProjectSkeleton from "../loader/ProjectSkeleton";
 
 function MicrolocationPage() {
   const [selectedStatus, setSelectedStatus] = useState(null);
@@ -202,6 +203,7 @@ function MicrolocationPage() {
         </div>
       </div>
       <div className="row microlocation_projects">
+      {loading && <ProjectSkeleton cards={8}/>}
         {(isSearch ? searchedprojects?.length : projects?.length > 0) ? (
           (isSearch
             ? searchedprojects?.slice(
