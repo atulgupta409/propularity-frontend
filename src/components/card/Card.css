@@ -116,4 +116,7 @@
   .star_image p {
     font-size: 12px;
   }
+  .w96 {
+    width: 96%;
+  }
 }
