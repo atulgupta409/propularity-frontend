@@ -3,11 +3,13 @@ import Carousel from "react-bootstrap/Carousel";
 import "./Card.css";
 import { Link } from "react-router-dom";
 
-function Card({ project }) {
+function Card({ project, isbuilderPage }) {
   const starImage =
     "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695277991289.png";
   return (
-    <div className="property_homecard">
+    <div
+      className={isbuilderPage ? "property_homecard w96" : "property_homecard"}
+    >
       <Carousel interval={null} controls={false}>
         {project?.images?.map((image, i) => {
           return (

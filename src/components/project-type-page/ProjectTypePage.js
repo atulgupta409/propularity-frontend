@@ -7,9 +7,21 @@ import { useQuery } from "@apollo/client";
 import { GET_PROJECTS_BY_BUILDER_AND_TYPE } from "../../service/DataByPlanTypeService";
 import ReactPaginate from "react-paginate";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+
+
 function ProjectTypePage() {
+  const params = useParams();
+  const { projectType, builder } = params;
+  const builderNameArr = builder?.split("-");
+  const builderName = builderNameArr
+    ?.map((word) => {
+      return word?.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" ");
+
   const [selectedStatus, setSelectedStatus] = useState(null);
   const [selectedPrice, setSelectedPrice] = useState(null);
+  const [selectedCity, setSelectedCity] = useState(null);
   const [curPage, setCurPage] = useState(1);
   const [projects, setProjects] = useState([]);
   const [searchedprojects, setSearchedprojects] = useState([]);
@@ -18,7 +30,7 @@ function ProjectTypePage() {
 
   const pageUrl = window.location.href;
   const pageUrlArr = pageUrl?.split("/");
-  const builderName = pageUrlArr[pageUrlArr.length - 3];
+  // const builderName = pageUrlArr[pageUrlArr.length - 3];
   const type = pageUrlArr[pageUrlArr.length - 1];
 
   const {
@@ -69,6 +81,12 @@ function ProjectTypePage() {
       );
     }
 
+    if (selectedCity) {
+      filteredData = filteredData?.filter(
+        (project) => project?.location?.city[0]?.name === selectedCity.label
+      );
+    }
+
     if (selectedPrice) {
       const [minPrice, maxPrice] = selectedPrice.value.split(" - ");
       const minPriceVal = convertPriceToNumeric(minPrice);
@@ -84,9 +102,11 @@ function ProjectTypePage() {
     setSearchedprojects(filteredData);
     setCurPage(1);
   };
+
   useEffect(() => {
     applyFilters();
-  }, [selectedStatus, selectedPrice]);
+  }, [selectedStatus, selectedPrice, selectedCity]);
+
   const onChangeOptionHandler = (selectedOption, dropdownIdentifier) => {
     switch (dropdownIdentifier) {
       case "status":
@@ -97,6 +117,10 @@ function ProjectTypePage() {
         setSelectedPrice(selectedOption);
         setIsSearch(true);
         break;
+      case "city":
+        setSelectedCity(selectedOption);
+        setIsSearch(true);
+        break;
       default:
         break;
     }
@@ -105,6 +129,11 @@ function ProjectTypePage() {
     { value: "Ready To Move", label: "Ready To Move" },
     { value: "Under Construction", label: "Under Construction" },
     { value: "New Launch", label: "New Launch" },
+  ];
+
+  const cityOptions = [
+    { value: "Gurugram", label: "Gurugram" },
+    { value: "Mumbai", label: "Mumbai" },
   ];
 
   const priceOptions = [
@@ -118,6 +147,7 @@ function ProjectTypePage() {
   const resetFilterHandler = () => {
     setSelectedStatus(null);
     setSelectedPrice(null);
+    setSelectedCity(null);
     setIsSearch(false);
   };
 
@@ -125,10 +155,13 @@ function ProjectTypePage() {
     <div className="container mt100 microlocation_container">
       <div className="row">
         <div className="col-md-6">
-          {/* <h1>Projects in {microlocationName}</h1> */}
+          <h1>
+            <span style={{ textTransform: "capitalize" }}>{projectType}</span>{" "}
+            Projects of <span>{builderName}</span>
+          </h1>
         </div>
-        <div className="col-md-6">
-          <div className="row justify-content-end">
+        <div className="col-12 col-md-6">
+          <div className="row justify-content-md-end">
             <div className="col-3">
               <Select
                 value={selectedStatus}
@@ -137,7 +170,7 @@ function ProjectTypePage() {
                 }
                 isSearchable
                 options={statusOptions}
-                placeholder={"Project Status"}
+                placeholder={"Status"}
                 className="select_builder"
               />
             </div>
@@ -152,7 +185,18 @@ function ProjectTypePage() {
                 className="select_builder"
               />
             </div>
-            <div className="col-md-2">
+            <div className="col-3">
+              <Select
+                value={selectedCity}
+                onChange={(selectedOption) =>
+                  onChangeOptionHandler(selectedOption, "city")
+                }
+                options={cityOptions}
+                placeholder={"City"}
+                className="select_builder"
+              />
+            </div>
+            <div className="col-3 col-md-2">
               <button
                 className="clear_filter_btn"
                 role="button"
@@ -200,24 +244,26 @@ function ProjectTypePage() {
           </p>
         )}
       </div>
-      <ReactPaginate
-        previousLabel={<MdKeyboardArrowLeft className="pagination_icon" />}
-        nextLabel={<MdKeyboardArrowRight className="pagination_icon" />}
-        breakLabel={"..."}
-        pageCount={totalPage}
-        marginPagesDisplayed={2}
-        onPageChange={handlePageClick}
-        containerClassName={
-          "pagination justify-content-center pagination_box mt20"
-        }
-        pageClassName={"page-item page_item"}
-        pageLinkClassName={"page-link page_link"}
-        previousClassName={"page-item page_item"}
-        previousLinkClassName={"page-link page_link"}
-        nextClassName={"page-item page_item"}
-        nextLinkClassName={"page-link page_link"}
-        activeClassName={"active"}
-      ></ReactPaginate>
+      {projects?.length > 16 && (
+        <ReactPaginate
+          previousLabel={<MdKeyboardArrowLeft className="pagination_icon" />}
+          nextLabel={<MdKeyboardArrowRight className="pagination_icon" />}
+          breakLabel={"..."}
+          pageCount={totalPage}
+          marginPagesDisplayed={2}
+          onPageChange={handlePageClick}
+          containerClassName={
+            "pagination justify-content-center pagination_box mt20"
+          }
+          pageClassName={"page-item page_item"}
+          pageLinkClassName={"page-link page_link"}
+          previousClassName={"page-item page_item"}
+          previousLinkClassName={"page-link page_link"}
+          nextClassName={"page-item page_item"}
+          nextLinkClassName={"page-link page_link"}
+          activeClassName={"active"}
+        ></ReactPaginate>
+      )}
     </div>
   );
 }

@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.54234307.css",
-    "main.js": "/static/js/main.a6439f3e.js",
+    "main.css": "/static/css/main.990a7588.css",
+    "main.js": "/static/js/main.9aac4e88.js",
     "static/js/787.d72965a6.chunk.js": "/static/js/787.d72965a6.chunk.js",
     "static/media/new-launch.png": "/static/media/new-launch.6c5e0f9b9017f4be735f.png",
     "static/media/ready-to-move.png": "/static/media/ready-to-move.a7ac7ef6cec4d7bf522b.png",
@@ -10,12 +10,12 @@
     "static/media/sumit-sir-contact-main.png": "/static/media/sumit-sir-contact-main.6a80238bc66799b9e9a3.png",
     "static/media/citypage-banner.png": "/static/media/citypage-banner.76ca04ee1e4307ee8307.png",
     "index.html": "/index.html",
-    "main.54234307.css.map": "/static/css/main.54234307.css.map",
-    "main.a6439f3e.js.map": "/static/js/main.a6439f3e.js.map",
+    "main.990a7588.css.map": "/static/css/main.990a7588.css.map",
+    "main.9aac4e88.js.map": "/static/js/main.9aac4e88.js.map",
     "787.d72965a6.chunk.js.map": "/static/js/787.d72965a6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.54234307.css",
-    "static/js/main.a6439f3e.js"
+    "static/css/main.990a7588.css",
+    "static/js/main.9aac4e88.js"
   ]
 }

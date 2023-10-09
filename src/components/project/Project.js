@@ -246,7 +246,10 @@ function Project() {
                 </p>
                 <div className="row">
                   <h3 className="mt30">
-                    {data?.projectDetails[0]?.name} Configuration
+                    {data?.projectDetails[0]?.name +
+                      " " +
+                      data?.projectDetails[0]?.location?.city[0]?.name}{" "}
+                    Price
                   </h3>
                   <div className="project_configuration mt30">
                     {data?.projectDetails[0]?.plans?.map((plan, i) => {
@@ -275,10 +278,10 @@ function Project() {
                                   "Call for price" ||
                                   "Call for Price") ? (
                                   <a
-                                    href="tel: 9999063322"
+                                    href="tel:9999063322"
                                     className="project_details_link"
                                   >
-                                    Call For Price
+                                    Call For Offer
                                   </a>
                                 ) : (
                                   "Starting ₹ " + plan?.price
@@ -295,7 +298,10 @@ function Project() {
                 <hr className="divider_line" />
                 <div className="row">
                   <h3 className="mt30">
-                    {data?.projectDetails[0]?.name} Floor Plans
+                    {data?.projectDetails[0]?.name +
+                      " " +
+                      data?.projectDetails[0]?.location?.city[0]?.name}{" "}
+                    Floor Plans
                   </h3>
                   <div className="row floor_plan_scrollar">
                     {data?.projectDetails[0]?.plans && (
@@ -364,7 +370,12 @@ function Project() {
                                           className="modal-title"
                                           id="exampleModalLabel"
                                         >
-                                          {`${data?.projectDetails[0]?.name} floor plan`}
+                                          {`${
+                                            data?.projectDetails[0]?.name +
+                                            " " +
+                                            data?.projectDetails[0]?.location
+                                              ?.city[0]?.name
+                                          } floor plan`}
                                         </h5>
                                         <button
                                           type="button"
@@ -380,7 +391,12 @@ function Project() {
                                               ? myPlan.image[0]
                                               : ""
                                           }
-                                          alt={`${data?.projectDetails[0]?.name} floor plan`}
+                                          alt={`${
+                                            data?.projectDetails[0]?.name +
+                                            " " +
+                                            data?.projectDetails[0]?.location
+                                              ?.city[0]?.name
+                                          } floor plan`}
                                           className="img-fluid"
                                         />
                                       </div>
@@ -450,7 +466,10 @@ function Project() {
                 <hr className="divider_line" />
                 <div className="row">
                   <h3 className="mt30">
-                    {data?.projectDetails[0]?.name} Highlights
+                    {data?.projectDetails[0]?.name +
+                      " " +
+                      data?.projectDetails[0]?.location?.city[0]?.name}{" "}
+                    Highlights
                   </h3>
                   {data?.projectDetails[0]?.highlights !== "<p></p>\n" ? (
                     <div
@@ -466,7 +485,10 @@ function Project() {
                 <hr className="divider_line" />
                 <div className="row">
                   <h3 className="mt30">
-                    {data?.projectDetails[0]?.name} Amenities
+                    {data?.projectDetails[0]?.name +
+                      " " +
+                      data?.projectDetails[0]?.location?.city[0]?.name}{" "}
+                    Amenities
                   </h3>
                   {amenities?.length > 0 ? (
                     amenities?.map((amenity, i) => {
@@ -484,7 +506,10 @@ function Project() {
                 <hr className="divider_line" />
                 <div className="row map">
                   <h3 className="mt30">
-                    {data?.projectDetails[0]?.name} on Google Map
+                    {data?.projectDetails[0]?.name +
+                      " " +
+                      data?.projectDetails[0]?.location?.city[0]?.name}{" "}
+                    on Google Map
                   </h3>
                   <p className="mt-2">
                     {data?.projectDetails[0]?.location?.address}
@@ -500,7 +525,10 @@ function Project() {
                 <hr className="divider_line" />
                 <div className="row">
                   <h3 className="mt30">
-                    {data?.projectDetails[0]?.name} Master Plan
+                    {data?.projectDetails[0]?.name +
+                      " " +
+                      data?.projectDetails[0]?.location?.city[0]?.name}{" "}
+                    Master Plan
                   </h3>
                   {data?.projectDetails[0]?.master_plan ? (
                     <div className="master_plan mt20">
@@ -537,7 +565,12 @@ function Project() {
                                 className="modal-title"
                                 id="exampleModalLabel"
                               >
-                                {`${data?.projectDetails[0]?.name} master plan`}
+                                {`${
+                                  data?.projectDetails[0]?.name +
+                                  " " +
+                                  data?.projectDetails[0]?.location?.city[0]
+                                    ?.name
+                                } master plan`}
                               </h5>
                               <button
                                 type="button"
@@ -622,7 +655,10 @@ function Project() {
                 <>
                   {" "}
                   <h3 className="mt30">
-                    Apartment for Sale in {data?.projectDetails[0]?.name}
+                    Apartment for Sale in{" "}
+                    {data?.projectDetails[0]?.name +
+                      " " +
+                      data?.projectDetails[0]?.location?.city[0]?.name}
                   </h3>
                   <div className="my_carousel projects_carousel mt20">
                     <ProjectCard
@@ -650,7 +686,12 @@ function Project() {
             <div className="row">
               {data?.projectDetails[0]?.for_rent && (
                 <>
-                  <h3>Apartment for Rent in {data?.projectDetails[0]?.name}</h3>
+                  <h3>
+                    Apartment for Rent in{" "}
+                    {data?.projectDetails[0]?.name +
+                      " " +
+                      data?.projectDetails[0]?.location?.city[0]?.name}
+                  </h3>
                   <div className="my_carousel projects_carousel mt20">
                     <ProjectCard
                       isRent={true}

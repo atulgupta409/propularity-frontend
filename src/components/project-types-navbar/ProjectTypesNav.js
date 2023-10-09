@@ -53,38 +53,44 @@ function ProjectTypesNav({
   ];
 
   return (
-    <div
-      className={isMobile ? "project_type_main" : "project_type_main mob_hide"}
-    >
-      <div className="container">
-        <div className="filter_nav_main">
-          {planTypes.map((planType, i) => {
-            return (
-              <div className="filter_nav_item" key={i}>
-                <Link
-                  to={`/${city}/filter/${planType?.name
-                    ?.split(" ")
-                    .join("-")
-                    .toLowerCase()}`}
-                >
-                  <img src={planType?.icon} alt="filter type" />
-                  <p>{planType?.name}</p>
-                </Link>
-              </div>
-            );
-          })}
-          {showFilter && (
-            <div className="filter_nav_item">
-              <FilterModal
-                city={city}
-                sendDataToParent={sendDataToParent}
-                projectsData={projectsData}
-              />
+    <>
+      {city === "gurugram" && (
+        <div
+          className={
+            isMobile ? "project_type_main" : "project_type_main mob_hide"
+          }
+        >
+          <div className="container">
+            <div className="filter_nav_main">
+              {planTypes.map((planType, i) => {
+                return (
+                  <div className="filter_nav_item" key={i}>
+                    <Link
+                      to={`/${city}/filter/${planType?.name
+                        ?.split(" ")
+                        .join("-")
+                        .toLowerCase()}`}
+                    >
+                      <img src={planType?.icon} alt="filter type" />
+                      <p>{planType?.name}</p>
+                    </Link>
+                  </div>
+                );
+              })}
+              {showFilter && (
+                <div className="filter_nav_item">
+                  <FilterModal
+                    city={city}
+                    sendDataToParent={sendDataToParent}
+                    projectsData={projectsData}
+                  />
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }
 
