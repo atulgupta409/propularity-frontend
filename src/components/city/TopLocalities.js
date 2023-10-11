@@ -16,6 +16,7 @@ function TopLocalities({ cityName, myCity }) {
       setMicrolocations(data.microlocations);
     }
   }, [data]);
+console.log(microlocations)
   return (
     <div className="mt100 localities_main">
       <div className="container">
@@ -38,7 +39,7 @@ function TopLocalities({ cityName, myCity }) {
                   <div className="localities_card">
                     <div className="img">
                       <img
-                        src={locationImg}
+                        src={microlocation.image || locationImg}
                         alt="location name"
                         className="img-fluid"
                       />

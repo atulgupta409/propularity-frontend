@@ -5,6 +5,7 @@ export const GET_MICROLOCATIONS = gql`
     microlocations(city: $city) {
       _id
       name
+      image
     }
   }
 `;
