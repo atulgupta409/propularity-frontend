@@ -44,7 +44,7 @@
     box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.07) !important;
     border: none;
     border-radius: 20px;
-    width: 18rem;
+    width: 11rem;
 }
 .builder_img {
     display: flex;
@@ -54,7 +54,7 @@
     width: 100%;
 }
 .builder_img img {
-    width: 130px;
+    width: 100px;
 }
 .builder_card_text {
     font-weight: 800;
@@ -82,5 +82,10 @@
     }
     .builder_logo_box {
         min-width: 78px;
+    }
+}
+@media only screen and (max-width: 1400px) {
+    .carousel-wrapper-home-builder .dYgkhw {
+        width: 97% !important;
     }
 }

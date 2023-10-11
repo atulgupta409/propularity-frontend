@@ -34,11 +34,9 @@
 .localities_card_overlay2 {
   background: linear-gradient(0deg, #FFE7CE 43.75%, rgba(238, 240, 245, 0.00) 100%);
 }
-.localities_card_overlay3 {
-  background: linear-gradient(0deg, #FFFBEB 43.75%, rgba(238, 240, 245, 0.00) 100%);
-}
-.localities_card_overlay4 {
-  background: linear-gradient(0deg, #F4F2FF 43.75%, rgba(238, 240, 245, 0.00) 100%);
+.localities_card_overlay3, .localities_card_overlay4 {
+  background:
+  linear-gradient(0deg, #cececd 43.75%, rgba(238, 240, 245, 0.00) 100%);
 }
 .overlay_text {
   text-align: center;
@@ -64,5 +62,10 @@
 }
 .localities_card_overlay {
   border-radius: 6px;
+}
+}
+@media only screen and (max-width: 1400px) {
+.localities_card {
+  width: 100%;
 }
 }

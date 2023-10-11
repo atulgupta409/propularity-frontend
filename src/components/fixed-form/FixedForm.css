@@ -1,0 +1,12 @@
+.fixed_bottom_home {
+    padding: 10px 0;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom));
+  }
+  .fixed_form_btn {
+    background: transparent !important;
+    border: 1px solid #eb4b71 !important;
+    padding: 7px 20px !important;
+  }
+  .fixed_form_btn a {
+    color: #eb4b71;
+  }

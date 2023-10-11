@@ -21,12 +21,12 @@ function RequestCallBtn({ button_name, downloadPdf, darkBtn }) {
         <p className={darkBtn ? "color_white card_p mb-0" : "card_p mb-0"}>
           <span>
             {button_name === "Enquire" ? (
-              <MdCall className="card_icon" />
+              ""
             ) : (
               <BiSolidDownload className="download_card_icon" />
             )}
           </span>
-          {button_name}
+          {button_name + " Now"}
         </p>
       </div>
       <Modal

@@ -20,7 +20,7 @@ function HomeCard({
 
   return (
     <div className="property_homecard">
-      <Carousel interval={null} controls={false}>
+      <Carousel interval={null} controls={true} className="carousel-container">
         {images?.map((image, i) => {
           return (
             <Carousel.Item key={i}>
