@@ -11,7 +11,12 @@ import { GET_PROJECTS_BY_CITY } from "../../service/ProjectsByCityService";
 import { GET_ALL_BUILDERS } from "../../service/ProjectDetailsservice";
 import { GET_MICROLOCATIONS } from "../../service/MicrolocationService";
 import Select from "react-select";
+import { Helmet } from "react-helmet-async";
+import { GET_SEO_BY_SLUG } from "../../service/CitySeoService";
+import TopFooter from "../footer/TopFooter";
+
 function City() {
+  const currentUrl = window.location.href;
   const { city } = useParams();
   const cityName = city.charAt(0).toUpperCase() + city.slice(1);
   const [projects, setProjects] = useState([]);
@@ -20,6 +25,22 @@ function City() {
   const { loading, error, data } = useQuery(GET_PROJECTS_BY_CITY, {
     variables: { city: city },
   });
+
+  const [seoContent, setSeoContent] = useState([]);
+  const slug = city;
+  const {
+    loading: seoLoading,
+    error: seoError,
+    data: seoData,
+  } = useQuery(GET_SEO_BY_SLUG, {
+    variables: { slug: slug },
+  });
+
+  useEffect(() => {
+    if (seoData) {
+      setSeoContent(seoData.citySeoContent);
+    }
+  }, [seoData]);
 
   const {
     loading: builderLoading,
@@ -63,6 +84,22 @@ function City() {
 
   return (
     <>
+      {/* <Helmet>
+        <title>{seoContent[0]?.title}</title>
+        <meta name="description" content={seoContent[0]?.description} />
+        <meta name="keywords" content={seoContent[0]?.keywords} />
+        <meta property="og:title" content={seoContent[0]?.open_graph?.title} />
+        <meta
+          property="og:description"
+          content={seoContent[0]?.open_graph?.description}
+        />
+        <meta name="twitter:title" content={seoContent[0]?.twitter?.title} />
+        <meta
+          name="twitter:description"
+          content={seoContent[0]?.twitter?.description}
+        />
+        <link rel="canonical" href={currentUrl} />
+      </Helmet> */}
       <div className="city_banner_main">
         <ProjectTypesNav city={city} showFilter={false} isMobile={false} />
         <h1 className="cityPage_heading">
@@ -120,6 +157,7 @@ function City() {
       <TopLocalities cityName={cityName} myCity={city} />
       <FeaturedCollection city={city} />
       <BuildersSlider builders={builderData?.builders} />
+      <TopFooter />
     </>
   );
 }

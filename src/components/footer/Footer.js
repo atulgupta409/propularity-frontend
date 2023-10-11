@@ -4,6 +4,7 @@ import logo from "../media/logo.png";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_ALL_MICROLOCATIONS } from "../../service/MicrolocationService";
+import TopFooter from "./TopFooter";
 
 function Footer() {
   const cities = ["Gurugram", "Mumbai"];
@@ -14,9 +15,9 @@ function Footer() {
       setMicrolocations(data.allmicrolocations);
     }
   }, [data]);
-  // console.log(microlocations);
   return (
     <>
+      {/* <TopFooter /> */}
       <div className="footer_main_box">
         <div className="container">
           <div className="row">

@@ -138,11 +138,11 @@ function ProjectTypePage() {
   ];
 
   const priceOptions = [
-    { value: "0 - 1.00Cr", label: "0 - 1.00Cr" },
-    { value: "1.00Cr - 2.00Cr", label: "1.00Cr - 2.00Cr" },
-    { value: "2.00Cr - 4.00Cr", label: "2.00Cr - 4.00Cr" },
-    { value: "4.00Cr - 6.00Cr", label: "4.00Cr - 6.00Cr" },
-    { value: "6.00Cr - 10.00Cr", label: "6.00Cr - 10.00Cr" },
+    { value: "0 - 1Cr", label: "0 - 1Cr" },
+    { value: "1Cr - 2Cr", label: "1Cr - 2Cr" },
+    { value: "2Cr - 4Cr", label: "2Cr - 4Cr" },
+    { value: "4Cr - 6Cr", label: "4Cr - 6Cr" },
+    { value: "6Cr - 10Cr", label: "6Cr - 10Cr" },
   ];
 
   const resetFilterHandler = () => {

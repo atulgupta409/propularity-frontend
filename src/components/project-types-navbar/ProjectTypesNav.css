@@ -113,6 +113,17 @@
   padding: 0 30px 30px;
   border-radius: 20px;
 }
+.filter_btn_grp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.clear_filter {
+  background: rgba(34, 34, 34, 0.1);
+}
+.clear_filter:hover {
+  background: rgba(34, 34, 34, 0.3) !important;
+}
 
 @media only screen and (max-width: 768px) {
   .project_type_main {
