@@ -149,7 +149,7 @@ function FeaturedCollection() {
           </h1>
         </div>
         <div className="col-md-6">
-          <div className="row justify-content-end">
+          <div className="row justify-content-md-end">
             <div className="col-3">
               <Select
                 value={selectedBuilder}
@@ -173,7 +173,7 @@ function FeaturedCollection() {
                 className="select_builder"
               />
             </div>
-            <div className="col-md-2">
+            <div className="col-3 col-md-2">
               <button
                 className="clear_filter_btn"
                 role="button"

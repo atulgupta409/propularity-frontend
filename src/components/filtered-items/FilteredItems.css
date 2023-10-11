@@ -1,3 +1,14 @@
 .filtered_items_main {
   margin-top: 225px;
 }
+@media only screen and (max-width: 768px) {
+  .filtered_items_nav_main {
+    position: sticky;
+    top: 58px;
+    z-index: 99;
+    background: #fff;
+  }
+  .filtered_items_main {
+    margin-top: 81px;
+  }
+}
