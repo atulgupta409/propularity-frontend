@@ -16,7 +16,7 @@ function TopLocalities({ cityName, myCity }) {
       setMicrolocations(data.microlocations);
     }
   }, [data]);
-console.log(microlocations)
+
   return (
     <div className="mt100 localities_main">
       <div className="container">
