@@ -61,6 +61,7 @@ function TopLocalities() {
                   src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695022538381.png"
                   alt="location name"
                   className="img-fluid"
+                  style={{ filter: "grayScale(100%)" }}
                 />
               </div>
               <div className="localities_card_overlay localities_card_overlay3">
@@ -79,6 +80,7 @@ function TopLocalities() {
                   src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695022628666.png"
                   alt="location name"
                   className="img-fluid"
+                  style={{ filter: "grayScale(100%)" }}
                 />
               </div>
               <div className="localities_card_overlay localities_card_overlay4">

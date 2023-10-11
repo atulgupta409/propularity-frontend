@@ -149,8 +149,14 @@
   z-index: 990;
 }
 .leaflet-bottom {
-  opacity: 0;
+  opacity: 1;
 }
+/* .leaflet-layer,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out,
+.leaflet-control-attribution {
+  filter: invert(100%) hue-rotate(60deg) brightness(95%) contrast(100%);
+} */
 .carousel_project .rec-carousel-item {
   width: 19rem;
 }
@@ -326,19 +332,13 @@
     color: #ff385c;
   }
   .fixed_bottom button {
-    width: 144px;
     border: none;
     border-radius: 10px;
-    padding: 6px 0;
+    padding: 9px 20px;
     background: #eb4b71;
     color: #fff;
     font-size: 14px;
     font-weight: 500;
+    width: 130px;
   }
 }
-
-/* @media (min-height: 812px) and (orientation: portrait), (min-width: 768px) and (orientation: landscape) {
-    .fixed_bottom {
-      
-    }
-  } */

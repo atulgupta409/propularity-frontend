@@ -1,215 +1,271 @@
 .home_banner_main {
-    background: rgba(255, 245, 246, 0.50);
-    padding-top: 82px;
-    margin-top: 87px;
+  background: rgba(255, 245, 246, 0.5);
+  padding-top: 82px;
+  margin-top: 57px;
 }
 .searchForm {
-    width: 566px;
-    margin: 30px auto 0;
-    position: relative;
+  width: 566px;
+  margin: 30px auto 0;
+  position: relative;
 }
 .search_img_box {
-    position: absolute;
-    right: 22px;
-    width: 38px;
-    height: 38px;
-    background-color: #fff5f6;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 8px;
+  position: absolute;
+  right: 22px;
+  width: 38px;
+  height: 38px;
+  background-color: #fff5f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 8px;
 }
 .searchForm input {
-    border-radius: 60px;
-    background: #FFF;
-    box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.07);
-    padding: 14px 16px;
+  border-radius: 60px;
+  background: #fff;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.07);
+  padding: 14px 16px;
 }
 .brand_logo {
-    text-align: center;
+  text-align: center;
 }
 .brand_logo img {
-    width: 279px;
+  width: 279px;
 }
 .mob_box {
-    width: 304px;
-    margin: 60px auto 0;
+  width: 304px;
+  margin: 60px auto 0;
+  position: relative;
 }
 .my_container {
-    position: relative;
+  position: relative;
 }
 .circle_box {
-    position: absolute;
-    overflow: hidden;
-    border-radius: 50%;
+  position: absolute;
+  overflow: hidden;
+  border-radius: 50%;
 }
 .circle_box1 {
-    width: 144px;
-    height: 144px;
-    top: 53px;
-    left: 344px;
+  width: 144px;
+  height: 144px;
+  top: 65px;
+  left: 344px;
 }
 .circle_box img {
-    height: 100% !important;
+  height: 100% !important;
 }
 .circle_box2 {
-    width: 100px;
-    height: 100px;
-    top: 59px;
-    left: 141px;
+  width: 100px;
+  height: 100px;
+  top: 68px;
+  left: 141px;
 }
 .circle_box3 {
-    width: 80px;
-    height: 80px;
-    top: 204px;
-    left: 0px;
+  width: 80px;
+  height: 80px;
+  top: 204px;
+  left: 0px;
 }
 .circle_box4 {
-    width: 40px;
-    height: 40px;
-    top: 208px;
-    left: 138px;
+  width: 40px;
+  height: 40px;
+  top: 208px;
+  left: 138px;
 }
 .circle_box5 {
-    width: 70px;
-    height: 70px;
-    left: 173px;
-    bottom: 21px;
+  width: 70px;
+  height: 70px;
+  left: 173px;
+  bottom: 49px;
 }
 .circle_box6 {
-    width: 124px;
-    height: 124px;
-    bottom: 15px;
-    left: 305px;
+  width: 124px;
+  height: 124px;
+  bottom: 15px;
+  left: 305px;
 }
 .circle_box7 {
-    width: 30px;
-    height: 30px;
-    top: 72px;
-    left: 275px;
-    background-color: #FFF0F1;
+  width: 30px;
+  height: 30px;
+  top: 72px;
+  left: 275px;
+  background-color: #fff0f1;
 }
 .circle_box8 {
-    width: 30px;
-    height: 30px;
-    top: 159px;
-    left: 85px;
-    background-color: #FFF0F1;
+  width: 30px;
+  height: 30px;
+  top: 159px;
+  left: 85px;
+  background-color: #fff0f1;
 }
 .circle_box9 {
-    width: 70px;
-    height: 70px;
-    top: 171px;
-    left: 236px;
-    background-color: #FFF0F1;
+  width: 70px;
+  height: 70px;
+  top: 171px;
+  left: 236px;
+  background-color: #fff0f1;
 }
 .circle_box10 {
-    width: 40px;
-    height: 40px;
-    left: 99px;
-    background-color: #FFF0F1;
-    bottom: 59px;
+  width: 40px;
+  height: 40px;
+  left: 99px;
+  background-color: #fff0f1;
+  bottom: 59px;
 }
 .circle_box11 {
-    width: 30px;
-    height: 30px;
-    left: 439px;
-    background-color: #FFF0F1;
-    bottom: 12px;
+  width: 30px;
+  height: 30px;
+  left: 439px;
+  background-color: #fff0f1;
+  bottom: 12px;
 }
 .circle_box12 {
-    width: 45px;
-    height: 45px;
-    left: 382px;
-    background-color: #FFF0F1;
-    bottom: 151px;
+  width: 45px;
+  height: 45px;
+  left: 382px;
+  background-color: #fff0f1;
+  bottom: 151px;
 }
 .circle_box13 {
-    width: 60px;
-    height: 60px;
-    left: 499px;
-    background-color: #FFF0F1;
-    bottom: 108px;
-    z-index: -1;
+  width: 60px;
+  height: 60px;
+  left: 499px;
+  background-color: #fff0f1;
+  bottom: 108px;
+  z-index: -1;
 }
 .circle_box14 {
-    width: 110px;
-    height: 110px;
-    top: 50px;
-    right: 367px;
+  width: 110px;
+  height: 110px;
+  top: 70px;
+  right: 367px;
 }
 .circle_box15 {
-    width: 40px;
-    height: 40px;
-    right: 240px;
-    top: 59px;
+  width: 40px;
+  height: 40px;
+  right: 240px;
+  top: 93px;
 }
 .circle_box16 {
-    width: 125px;
-    height: 125px;
-    right: 20px;
-    top: 81px;
+  width: 125px;
+  height: 125px;
+  right: 20px;
+  top: 107px;
 }
 .circle_box17 {
-    width: 85px;
-    height: 85px;
-    right: 233px;
-    bottom: 178px;
+  width: 85px;
+  height: 85px;
+  right: 233px;
+  bottom: 178px;
 }
 .circle_box18 {
-    width: 143px;
-    height: 143px;
-    right: 234px;
-    bottom: 0px;
+  width: 143px;
+  height: 143px;
+  right: 234px;
+  bottom: 0px;
 }
 .circle_box19 {
-    width: 70px;
-    height: 70px;
-    right: 99px;
-    bottom: 71px;
+  width: 70px;
+  height: 70px;
+  right: 99px;
+  bottom: 71px;
 }
 .circle_box20 {
-    width: 33px;
-    height: 33px;
-    background: #FFF0F1;
-    right: 191px;
-    top: 116px;
+  width: 33px;
+  height: 33px;
+  background: #fff0f1;
+  right: 191px;
+  top: 116px;
 }
 .circle_box21 {
-    width: 60px;
-    height: 60px;
-    background: #fff0f1;
-    right: 402px;
-    top: 200px;
+  width: 60px;
+  height: 60px;
+  background: #fff0f1;
+  right: 402px;
+  top: 200px;
 }
 .circle_box22 {
-    width: 100px;
-    height: 100px;
-    background: #fff0f1;
-    right: 486px;
-    z-index: -1;
-    bottom: 30px;
+  width: 100px;
+  height: 100px;
+  background: #fff0f1;
+  right: 486px;
+  z-index: -1;
+  bottom: 30px;
 }
 .circle_box23 {
-    width: 50px;
-    height: 50px;
-    background: #fff0f1;
-    bottom: 152px;
-    right: 163px;
+  width: 50px;
+  height: 50px;
+  background: #fff0f1;
+  bottom: 152px;
+  right: 163px;
 }
 .react-tooltip {
-    z-index: 99;
+  z-index: 99;
+}
+.time {
+  position: absolute;
+  top: 23px;
+  left: 45px;
+  font-size: 14px;
+  font-weight: 600;
+  z-index: 10;
+}
+.mob_box .carousel-container {
+  position: absolute;
+  top: 10px;
+  left: 13px;
+  width: 92%;
+}
+.mob_box .img_cards {
+  height: 330px;
+  border-radius: 0;
+  overflow: hidden;
+}
+.img_covers {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.mob_box .carousel-inner {
+  border-radius: 47px 47px 0 0;
+}
+.mob_box .carousel-indicators {
+    bottom: 45px;
+}
+.phone_camera {
+  position: absolute;
+  width: 73%;
+  top: 10px;
+  right: 18px;
+  z-index: 10;
+}
+.phone_text {
+  margin-left: 10px;
+  margin-top: 5px;
+}
+.phone_text p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+}
+.builder_tooltip {
+  background-color: #515050 !important;
+  padding: 4px 6px !important;
+  font-size: 14px !important;
 }
 
 @media only screen and (max-width: 600px) {
-    .home_banner_main {
-        margin-top: 0;
-        padding-top: 109px;
-        height: 392px;
+  .home_banner_main {
+    margin-top: 0;
+    padding-top: 109px;
+    height: 392px;
+  }
+  .brand_logo img {
+    width: 160px;
+  }
+}
+@media only screen and (max-width: 1400px) {
+    .my_container {
+        max-width: 100% !important;
     }
-    .brand_logo img {
-        width: 160px;
-    }
-
 }
