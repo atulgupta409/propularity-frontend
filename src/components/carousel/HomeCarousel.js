@@ -4,7 +4,7 @@ import Carousel from "react-elastic-carousel";
 import "./MyCarousel.css";
 import { useQuery } from "@apollo/client";
 import { GET_PROJECTS_BY_CITY } from "../../service/ProjectsByCityService";
-import ProjectSkeleton from "../loader/ProjectSkeleton";
+import ProjectSkeleton from "../loader/ProjectSkeleton"
 
 function HomeCarousel({ carouselClass, city }) {
   const { loading, error, data } = useQuery(GET_PROJECTS_BY_CITY, {
