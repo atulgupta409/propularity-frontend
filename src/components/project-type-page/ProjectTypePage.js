@@ -8,6 +8,8 @@ import { GET_PROJECTS_BY_BUILDER_AND_TYPE } from "../../service/DataByPlanTypeSe
 import ReactPaginate from "react-paginate";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import ProjectSkeleton from "../loader/ProjectSkeleton";
+
+
 function ProjectTypePage() {
   const params = useParams();
   const { projectType, builder } = params;

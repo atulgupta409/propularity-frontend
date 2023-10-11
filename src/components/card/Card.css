@@ -102,6 +102,30 @@
 .property_card:not(:last-child) {
   margin-right: 29px;
 }
+.property_homecard .carousel-control-next-icon,
+.property_homecard .carousel-control-prev-icon {
+  border-radius: 50% !important;
+  background-color: #fff !important;
+  background-size: 50% !important;
+  transition: 0.3s all ease-in-out !important;
+}
+.carousel-container:hover .carousel-control-prev,
+.carousel-container:hover .carousel-control-next {
+  display: flex;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  display: none;
+  transition: 0.3s all ease-in-out;
+}
+.carousel-control-next-icon {
+  background-image: url("https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1696935075543.png");
+}
+.carousel-control-prev-icon {
+  background-image: url("https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1696935075543.png");
+  rotate: 180deg;
+}
 
 @media only screen and (max-width: 768px) {
   .property_homecard {
@@ -118,5 +142,11 @@
   }
   .w96 {
     width: 96%;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .property_homecard {
+    width: 100%;
   }
 }

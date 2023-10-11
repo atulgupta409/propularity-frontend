@@ -5,6 +5,7 @@ import TopLocalities from "../top-localities/TopLocalities";
 import BuildersSlider from "../builders-slider/BuildersSlider";
 import Faq from "../faq/Faq";
 import TopProjectCity from "../top-projects-city/TopProjectCity";
+import FixedForm from "../../fixed-form/FixedForm";
 
 function Home() {
   return (
@@ -15,6 +16,7 @@ function Home() {
       <TopProjectCity />
       <BuildersSlider myClass={"home_top_builders"} />
       <Faq />
+      <FixedForm />
     </div>
   );
 }

@@ -10,8 +10,8 @@ function BuildersSlider({ myClass, name }) {
   const breakPoints = [
     { width: 1, itemsToShow: 3.2 },
     { width: 576, itemsToShow: 3.2 },
-    { width: 768, itemsToShow: 3.2 },
-    { width: 1200, itemsToShow: 4 },
+    { width: 768, itemsToShow: 4.4 },
+    { width: 1200, itemsToShow: 6 },
   ];
 
   const { loading, error, data } = useQuery(GET_ALL_BUILDERS);
@@ -38,7 +38,7 @@ function BuildersSlider({ myClass, name }) {
       )}
 
       <div className="carousel_container mt30">
-        <div className="carousel-wrapper">
+        <div className="carousel-wrapper carousel-wrapper-home-builder">
           {myClass === "other_builders" ? (
             <Carousel breakPoints={breakPoints}>
               {data?.builders
