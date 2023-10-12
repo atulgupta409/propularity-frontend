@@ -4,7 +4,7 @@ import faqSideImg from "../../media/faq-side-img.png";
 
 function Faq() {
   return (
-    <div className="container">
+    <div className="container mb60 mt100">
       <div className="row">
         <div className="col-12 col-md-6 mob_hide">
           <div className="faq_img">

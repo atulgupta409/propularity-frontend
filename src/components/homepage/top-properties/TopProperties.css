@@ -17,4 +17,7 @@
     flex-wrap: nowrap;
     overflow-x: scroll;
   }
+  .top_india .row::-webkit-scrollbar {
+    display: none;
+  }
 }

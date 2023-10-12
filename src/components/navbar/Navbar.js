@@ -41,8 +41,8 @@ function Navbar() {
               <ul className="navbar-nav mx-auto custom_ul">
                 <li className="nav-item dropdown has-megamenu">
                   <img
-                    src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1694599024516.png"
-                    alt="location icon"
+                    src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1697090517953.png"
+                    alt="mumbai icon"
                     className="nav_icon mob_hide"
                   />
 
@@ -90,8 +90,8 @@ function Navbar() {
                 <div className="vertical_line mob_hide"></div>
                 <li className="nav-item dropdown has-megamenu">
                   <img
-                    src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1694599024516.png"
-                    alt="location icon"
+                    src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1697090495218.png"
+                    alt="gurugram icon"
                     className="nav_icon mob_hide"
                   />
 

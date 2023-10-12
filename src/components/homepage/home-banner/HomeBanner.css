@@ -230,7 +230,7 @@
   border-radius: 47px 47px 0 0;
 }
 .mob_box .carousel-indicators {
-    bottom: 45px;
+  bottom: 52px;
 }
 .phone_camera {
   position: absolute;
@@ -243,10 +243,15 @@
   margin-left: 10px;
   margin-top: 5px;
 }
-.phone_text p {
-  font-size: 18px;
+.phone_text p:nth-child(1) {
+  font-size: 20px;
   font-weight: 600;
   color: #222;
+  margin-bottom: 0;
+}
+.phone_text p:nth-child(2) {
+  margin-bottom: 0;
+  font-size: 14px;
 }
 .builder_tooltip {
   background-color: #515050 !important;
@@ -265,7 +270,7 @@
   }
 }
 @media only screen and (max-width: 1400px) {
-    .my_container {
-        max-width: 100% !important;
-    }
+  .my_container {
+    max-width: 100% !important;
+  }
 }
