@@ -24,6 +24,7 @@ h1 {
   font-size: 13px;
   font-weight: 500;
   color: #ff385c;
+  margin-bottom: 0;
 }
 .hide-scrollbar::-webkit-scrollbar {
   display: none;

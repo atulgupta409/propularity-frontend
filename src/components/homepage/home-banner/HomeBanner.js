@@ -31,36 +31,34 @@ function HomeBanner() {
 
   const images = [
     {
-      img: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695107678478.jpeg",
-      name: "Ashiana",
+      img: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1697087952052.jpg",
+      name: "Lodha Woods",
+      location: "Kandivali, Mumbai",
     },
     {
-      img: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695107694674.jpg",
-      name: "BPTP",
+      img: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1697088357091.jpeg",
+      name: "Godrej Habitat",
+      location: "Dwarka Expressway, Gurugram",
     },
     {
-      img: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695107708820.jpg",
-      name: "DLF",
+      img: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1697088281781.jpg",
+      name: "The World Towers",
+      location: "Lower parel, Worli, Mumbai",
     },
     {
-      img: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695107786561.jpeg",
-      name: "Emaar",
+      img: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1697088689048.jpg",
+      name: "Tata La Vida",
+      location: "Sector 113, Gurugram",
     },
     {
       img: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695107805600.jpeg",
-      name: "Godrej Properties",
+      name: "Trump Towers",
+      location: "Worli, Mumbai",
     },
     {
-      img: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695107824170.jpg",
-      name: "Lodha",
-    },
-    {
-      img: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695107837214.jpeg",
-      name: "M3M-India",
-    },
-    {
-      img: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695107856945.png",
-      name: "Mahindra Lifespace",
+      img: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1697088899716.jpg",
+      name: "Elan The Presidensial",
+      location: "Sector 106, Gurugram",
     },
   ];
 
@@ -89,6 +87,7 @@ function HomeBanner() {
                   </div>
                   <div className="phone_text">
                     <p>{image.name}</p>
+                    <p>{image.location}</p>
                   </div>
                 </Carousel.Item>
               );

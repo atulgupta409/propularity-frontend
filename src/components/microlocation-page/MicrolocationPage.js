@@ -151,7 +151,7 @@ function MicrolocationPage() {
     <div className="container mt100 microlocation_container">
       <div className="row">
         <div className="col-md-6">
-          <h1>Projects in {microlocationName}</h1>
+          <h1>Buy Property in {microlocationName}</h1>
         </div>
         <div className="col-md-6">
           <div className="row .justify-content-md-end">
@@ -203,7 +203,7 @@ function MicrolocationPage() {
         </div>
       </div>
       <div className="row microlocation_projects">
-      {loading && <ProjectSkeleton cards={8}/>}
+        {loading && <ProjectSkeleton cards={8} />}
         {(isSearch ? searchedprojects?.length : projects?.length > 0) ? (
           (isSearch
             ? searchedprojects?.slice(

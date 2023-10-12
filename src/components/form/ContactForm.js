@@ -1,22 +1,20 @@
 import React, { useState } from "react";
 import axios from "axios"
 import { baseUrl } from "../../environment/apiconfig";
-import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function ContactForm({button_name, downloadPdf}) {
+function ContactForm({ button_name, downloadPdf }) {
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [phoneError, setPhoneError] = useState("");
   const [user, setUser] = useState({ name: "", email: "", phone: "" });
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
   const inputChangeHandler = (e) => {
     let { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
-  const location =  window.location.href 
+  const location = window.location.href;
   const notify = () =>
     toast.success("Thank You for submitting the query!", {
       position: "bottom-right",
@@ -113,31 +111,31 @@ function ContactForm({button_name, downloadPdf}) {
     }
   };
 
-    const handleSheet = async () => {
-      try {
-        const response = await fetch(
-          "https://v1.nocodeapi.com/propularity/google_sheets/tYUnsaSLwvJXDnpB?tabId=sheet1",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify([
-              [
-                user.name,
-                user.email,
-                user.phone,
-                location,
-                new Date().toLocaleString(),
-              ],
-            ]),
-          }
-        );
-        await response.json();
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  const handleSheet = async () => {
+    try {
+      const response = await fetch(
+        "https://v1.nocodeapi.com/propularity/google_sheets/tYUnsaSLwvJXDnpB?tabId=sheet1",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify([
+            [
+              user.name,
+              user.email,
+              user.phone,
+              location,
+              new Date().toLocaleString(),
+            ],
+          ]),
+        }
+      );
+      await response.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -197,7 +195,7 @@ function ContactForm({button_name, downloadPdf}) {
               id="flexCheckDefault"
             />
             <label className="form-check-label" htmlFor="flexCheckDefault">
-              Send me alerts for similar properties 
+              Send me alerts for similar properties
             </label>
           </div>
         </div>
