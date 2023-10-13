@@ -34,31 +34,37 @@ function HomeBanner() {
       img: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1697087952052.jpg",
       name: "Lodha Woods",
       location: "Kandivali, Mumbai",
+      apartment: "2BHK, 3BHK & 4BHK Luxary Apartments",
     },
     {
       img: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1697088357091.jpeg",
       name: "Godrej Habitat",
       location: "Dwarka Expressway, Gurugram",
+      apartment: "2BHK, 3BHK & 4BHK Luxary Apartments",
     },
     {
       img: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1697088281781.jpg",
       name: "The World Towers",
       location: "Lower parel, Worli, Mumbai",
+      apartment: "2BHK, 3BHK & 4BHK Luxary Apartments",
     },
     {
       img: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1697088689048.jpg",
       name: "Tata La Vida",
       location: "Sector 113, Gurugram",
+      apartment: "2 BHK & 3 BHK Luxary Apartments",
     },
     {
       img: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695107805600.jpeg",
       name: "Trump Towers",
       location: "Worli, Mumbai",
+      apartment: "2BHK, 3BHK & 4BHK Luxary Apartments",
     },
     {
       img: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1697088899716.jpg",
       name: "Elan The Presidensial",
       location: "Sector 106, Gurugram",
+      apartment: "3BHK, 4BHK & 5BHK Luxary Apartments",
     },
   ];
 
@@ -88,6 +94,7 @@ function HomeBanner() {
                   <div className="phone_text">
                     <p>{image.name}</p>
                     <p>{image.location}</p>
+                    <p>{image.apartment}</p>
                   </div>
                 </Carousel.Item>
               );

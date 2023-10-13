@@ -33,7 +33,7 @@ function Footer() {
                 meet the diverse needs of modern urban living and thriving
                 businesses.
               </p>
-              <a href="mailto: hello@propularity.in" className="footer_link">
+              <a href="mailto:hello@propularity.in" className="footer_link">
                 Email us: hello@propularity.in
               </a>
             </div>

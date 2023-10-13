@@ -8,7 +8,6 @@ function TopFooter() {
   const pageUrl = window.location.href;
   const slugArr = pageUrl?.split("/");
   const slug = slugArr[slugArr?.length - 1];
-  console.log(slug);
   const {
     loading: seoLoading,
     error: seoError,
@@ -22,7 +21,6 @@ function TopFooter() {
       setSeoContent(seoData.citySeoContent);
     }
   }, [seoData]);
-  console.log(seoContent);
   const decodedDescription = decode(seoContent[0]?.footer_description);
 
   return (

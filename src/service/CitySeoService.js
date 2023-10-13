@@ -6,6 +6,7 @@ export const GET_SEO_BY_SLUG = gql`
       page_title
       title
       description
+      robots
       keywords
       footer_title
       footer_description

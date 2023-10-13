@@ -5,6 +5,7 @@ import ProjectTypesNav from "../project-types-navbar/ProjectTypesNav";
 import { useQuery } from "@apollo/client";
 import { GET_PROJECTS_BY_PLAN_TYPE } from "../../service/DataByPlanTypeService";
 import { useParams } from "react-router-dom";
+import CommonHeader from "../common-header/CommonHeader";
 
 function FilteredItems() {
   const currentUrl = window.location.href;
@@ -36,6 +37,7 @@ function FilteredItems() {
 
   return (
     <>
+      <CommonHeader />
       <div className="filtered_items_nav_main">
         <ProjectTypesNav
           city={desiredPart}
