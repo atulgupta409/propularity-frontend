@@ -230,7 +230,7 @@
   border-radius: 47px 47px 0 0;
 }
 .mob_box .carousel-indicators {
-  bottom: 52px;
+  bottom: 77px;
 }
 .phone_camera {
   position: absolute;
@@ -252,6 +252,11 @@
 .phone_text p:nth-child(2) {
   margin-bottom: 0;
   font-size: 14px;
+}
+.phone_text p:nth-child(3) {
+  margin-bottom: 0;
+  margin-top: 5px;
+  font-size: 12px;
 }
 .builder_tooltip {
   background-color: #515050 !important;

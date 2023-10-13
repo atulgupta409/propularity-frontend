@@ -8,7 +8,7 @@ function TopLocalities() {
       <div className="container">
         <div className="row section_row">
           <h2 className="heading">
-            Top Cities In India For{" "}
+            Top Cities In India To Buy{" "}
             <span className="primary_color">Property</span>
           </h2>
           <p className="heading_text mob_hide">
