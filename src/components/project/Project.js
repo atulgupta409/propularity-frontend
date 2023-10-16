@@ -13,6 +13,7 @@ import ProjectCard from "./ProjectCard";
 import RequestCallBtn from "../request-call-button/RequestCallBtn";
 import LeafletMap from "./LeafletMap";
 import Carousel from "react-bootstrap/Carousel";
+import ProjectDetailSkeleton from "../loader/ProjectDetailSkeleton";
 
 function Project() {
   const { slug } = useParams();
@@ -82,7 +83,9 @@ function Project() {
   return (
     <>
       {loading ? (
-        "Loading"
+        <h1 className="mt100">
+          <ProjectDetailSkeleton />
+        </h1>
       ) : (
         <div className="container mt-5">
           <div className="row">

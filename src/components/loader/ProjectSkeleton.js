@@ -3,9 +3,9 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 function ProjectSkeleton({cards}) {
-  return (
-
-    Array(cards).fill(0).map((item) =>  
+  return Array(cards)
+    .fill(0)
+    .map((item) => (
       <div className="col-sm-8 col-md-3">
         <div className="carousel-items">
           <div className="row property_homecard property_card_mob">
@@ -30,9 +30,7 @@ function ProjectSkeleton({cards}) {
           </div>
         </div>
       </div>
-  )
-   
-  );
+    ));
 }
 
 export default ProjectSkeleton;
