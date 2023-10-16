@@ -13,6 +13,7 @@ import { GET_MICROLOCATIONS } from "../../service/MicrolocationService";
 import Select from "react-select";
 import TopFooter from "../footer/TopFooter";
 import CommonHeader from "../common-header/CommonHeader";
+import PageNotFound from "../page-not-found/PageNotFound";
 
 function City() {
   const { city } = useParams();
@@ -63,6 +64,11 @@ function City() {
       setProjects(data.projectsByCity);
     }
   }, [data]);
+  const validCities = ["gurugram", "mumbai"];
+
+  if (!validCities.includes(city)) {
+    return <PageNotFound />;
+  }
 
   return (
     <>

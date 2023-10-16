@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Builder from "./components/builder/Builder";
 import "./App.css";
@@ -14,8 +14,10 @@ import Contact from "./components/contact/Contact";
 import BuilderImageGallery from "./components/builder/BuilderImageGallery";
 import ProjectTypePage from "./components/project-type-page/ProjectTypePage";
 import FeaturedCollection from "./components/city/featured-collection/FeaturedCollection";
+import PageNotFound from "./components/page-not-found/PageNotFound";
 
 function App() {
+  const validCities = ["mumbai", "gurugram"];
   return (
     <>
       <ScrollToTop />
@@ -40,7 +42,6 @@ function App() {
             <Footer key={9} />,
           ]}
         />
-
         <Route
           path="/:city/:microlocation"
           element={[
@@ -65,6 +66,7 @@ function App() {
             <Footer key={28} />,
           ]}
         />
+
         <Route
           path="/:city"
           element={[
@@ -97,6 +99,7 @@ function App() {
             <Footer key={25} />,
           ]}
         />
+        <Route path="/*" element={<PageNotFound />} />
       </Routes>
     </>
   );
