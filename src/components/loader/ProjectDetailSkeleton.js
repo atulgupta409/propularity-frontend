@@ -4,6 +4,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 function ProjectDetailSkeleton() {
   return (
+    <>
     <div className="container mt-5 mob_hide">
       <div className="row">
         <div className="col-12 col-md-6 m60">
@@ -105,6 +106,10 @@ function ProjectDetailSkeleton() {
         </div>
       </div>
     </div>
+    <div className="container mt-5 desk_hide">
+        
+    </div>
+    </>
   );
 }
 
