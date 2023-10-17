@@ -32,7 +32,7 @@
   font-weight: 600;
   color: rgba(34, 34, 34, 0.5);
 }
-.css-b62m3t-container {
+.city_select_form .css-b62m3t-container {
   position: absolute !important;
   box-sizing: border-box;
   top: 267px;
@@ -60,7 +60,7 @@
 }
 .city_video_box {
   width: 100%;
-  height: 100vh;
+  height: 89vh;
   position: relative;
   top: 87px;
 }
@@ -72,13 +72,16 @@
 .city_container_main2 {
   padding-top: 50px;
 }
+.city_container_main {
+  padding-top: 50px;
+}
 @media only screen and (max-width: 768px) {
   .city_banner_main {
     margin-top: 50px;
     height: 50vh;
   }
   .city_video_box {
-    height: 75vh;
+    height: 54vh;
     top: 52px;
   }
   .city_container_main {
@@ -91,8 +94,9 @@
     box-sizing: border-box;
     top: 225px;
   }
-  .css-b62m3t-container {
+  .city_select_form .css-b62m3t-container {
     position: absolute !important;
+    top: 225px;
   }
   .search_location .css-13cymwt-control {
     border-radius: 21px !important;
