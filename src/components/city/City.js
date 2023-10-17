@@ -14,9 +14,15 @@ import Select from "react-select";
 import TopFooter from "../footer/TopFooter";
 import CommonHeader from "../common-header/CommonHeader";
 import PageNotFound from "../page-not-found/PageNotFound";
+import gurugramVideo from "../media/Gurugram(2).mp4";
+import gurugramVideoDesk from "../media/Gurugram.mp4";
+import mumbaiVideo from "../media/Mumbai(2).mp4";
+import mumbaiVideoDesk from "../media/Mumbai.mp4";
 
 function City() {
   const { city } = useParams();
+  const [cityVideo, setCityVideo] = useState("../media/Gurugram(2).mp4");
+  const [cityVideoDesk, setCityVideoDesk] = useState("../media/Gurugram.mp4");
   const cityName = city.charAt(0).toUpperCase() + city.slice(1);
   const [projects, setProjects] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState(null);
@@ -60,6 +66,17 @@ function City() {
   };
 
   useEffect(() => {
+    if (city === "gurugram") {
+      setCityVideo(gurugramVideo);
+      setCityVideoDesk(gurugramVideoDesk);
+    }
+    if (city === "mumbai") {
+      setCityVideo(mumbaiVideo);
+      setCityVideoDesk(mumbaiVideoDesk);
+    }
+  }, [city]);
+
+  useEffect(() => {
     if (data) {
       setProjects(data.projectsByCity);
     }
@@ -73,26 +90,69 @@ function City() {
   return (
     <>
       <CommonHeader />
-      <div className="city_banner_main">
+      {/* className="city_banner_main" */}
+      <div>
         <ProjectTypesNav city={city} showFilter={false} isMobile={false} />
-        <h1 className="cityPage_heading">
-          <span>{cityName}</span>
-          <br />
-          Where Property Comes To Life
-        </h1>
-        <Select
-          value={selectedLocation}
-          onChange={(selectedOption) =>
-            onChangeOptionHandler(selectedOption, "location")
-          }
-          isSearchable
-          options={locationOptions}
-          placeholder={"Search Location"}
-          className="search_location"
-        />
-        <ProjectTypesNav city={city} showFilter={false} isMobile={true} />
+        <div className="city_video_box desk_hide">
+          <div className="video_overlay"></div>
+          <video src={cityVideo} autoPlay="autoplay" loop="loop" muted="mute" />
+          <h1 className="cityPage_heading">
+            <span>{cityName}</span>
+            <br />
+            Where Property Comes To Life
+          </h1>
+          <div className="d-flex justify-content-center">
+            <Select
+              value={selectedLocation}
+              onChange={(selectedOption) =>
+                onChangeOptionHandler(selectedOption, "location")
+              }
+              isSearchable
+              options={locationOptions}
+              placeholder={"Search Location"}
+              className="search_location"
+            />
+          </div>
+          <ProjectTypesNav city={city} showFilter={false} isMobile={true} />
+        </div>
+        <div className="city_video_box mob_hide">
+          <div className="video_overlay"></div>
+          <video
+            src={cityVideoDesk}
+            autoPlay="autoplay"
+            loop="loop"
+            muted="mute"
+          />
+          <h1 className="cityPage_heading">
+            <span>{cityName}</span>
+            <br />
+            Where Property Comes To Life
+          </h1>
+          <div className="d-flex justify-content-center">
+            <Select
+              value={selectedLocation}
+              onChange={(selectedOption) =>
+                onChangeOptionHandler(selectedOption, "location")
+              }
+              isSearchable
+              options={locationOptions}
+              placeholder={"Search Location"}
+              className="search_location"
+            />
+          </div>
+          <ProjectTypesNav city={city} showFilter={false} isMobile={true} />
+        </div>
       </div>
-      <div className="container mt100">
+      <div
+        className={
+          city === "gurugram"
+            ? "container mt100 city_container_main"
+            : "container mt100 city_container_main2"
+        }
+      >
+        <h2 className="heading desk_hide">
+          Top Projects in <span className="primary_color">{cityName}</span>
+        </h2>
         <div className="row city_row">
           <h2 className="heading mob_hide">
             Top Projects in <span className="primary_color">{cityName}</span>
