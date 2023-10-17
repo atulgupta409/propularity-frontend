@@ -95,13 +95,13 @@ function City() {
         <ProjectTypesNav city={city} showFilter={false} isMobile={false} />
         <div className="city_video_box desk_hide">
           <div className="video_overlay"></div>
-          <video src={cityVideo} autoPlay="autoplay" loop="loop" muted="mute" />
+          <video src={cityVideo} autoPlay loop muted />
           <h1 className="cityPage_heading">
             <span>{cityName}</span>
             <br />
             Where Property Comes To Life
           </h1>
-          <div className="d-flex justify-content-center">
+          <div className="d-flex justify-content-center city_select_form">
             <Select
               value={selectedLocation}
               onChange={(selectedOption) =>
@@ -117,18 +117,13 @@ function City() {
         </div>
         <div className="city_video_box mob_hide">
           <div className="video_overlay"></div>
-          <video
-            src={cityVideoDesk}
-            autoPlay="autoplay"
-            loop="loop"
-            muted="mute"
-          />
+          <video src={cityVideoDesk} autoPlay loop muted />
           <h1 className="cityPage_heading">
             <span>{cityName}</span>
             <br />
             Where Property Comes To Life
           </h1>
-          <div className="d-flex justify-content-center">
+          <div className="d-flex justify-content-center city_select_form">
             <Select
               value={selectedLocation}
               onChange={(selectedOption) =>

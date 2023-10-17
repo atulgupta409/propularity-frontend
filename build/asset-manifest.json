@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.16d44d30.css",
-    "main.js": "/static/js/main.4b9fd1dc.js",
+    "main.css": "/static/css/main.138a1282.css",
+    "main.js": "/static/js/main.11299d60.js",
     "static/js/787.d72965a6.chunk.js": "/static/js/787.d72965a6.chunk.js",
     "static/media/Gurugram.mp4": "/static/media/Gurugram.bdf34215d1eec26371a9.mp4",
     "static/media/Mumbai(2).mp4": "/static/media/Mumbai(2).eb2b93c7c31261921ed2.mp4",
@@ -13,12 +13,12 @@
     "static/media/under-construction.png": "/static/media/under-construction.b4f3d995d9d2cc699712.png",
     "static/media/sumit-sir-contact-main.png": "/static/media/sumit-sir-contact-main.6a80238bc66799b9e9a3.png",
     "index.html": "/index.html",
-    "main.16d44d30.css.map": "/static/css/main.16d44d30.css.map",
-    "main.4b9fd1dc.js.map": "/static/js/main.4b9fd1dc.js.map",
+    "main.138a1282.css.map": "/static/css/main.138a1282.css.map",
+    "main.11299d60.js.map": "/static/js/main.11299d60.js.map",
     "787.d72965a6.chunk.js.map": "/static/js/787.d72965a6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.16d44d30.css",
-    "static/js/main.4b9fd1dc.js"
+    "static/css/main.138a1282.css",
+    "static/js/main.11299d60.js"
   ]
 }
