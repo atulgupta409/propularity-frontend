@@ -17,7 +17,6 @@ import FeaturedCollection from "./components/city/featured-collection/FeaturedCo
 import PageNotFound from "./components/page-not-found/PageNotFound";
 
 function App() {
-  const validCities = ["mumbai", "gurugram"];
   return (
     <>
       <ScrollToTop />
