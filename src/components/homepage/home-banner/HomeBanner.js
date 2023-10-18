@@ -132,7 +132,7 @@ function HomeBanner() {
         </div>
         <div className="home_btn_box">
           <button
-            className="btn modal_form_btn"
+            className="modal_form_btn"
             onClick={homeLocationSearchHandler}
           >
             Search
