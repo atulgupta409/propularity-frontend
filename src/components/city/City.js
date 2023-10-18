@@ -95,16 +95,16 @@ function City() {
         <ProjectTypesNav city={city} showFilter={false} isMobile={false} />
         <div className="city_video_box desk_hide">
           <div className="video_overlay"></div>
-          {/* <video src={cityVideo} autoPlay loop muted preload="metadata" /> */}
-          <div
+          <video src={cityVideo} autoPlay loop muted preload="metadata" />
+          {/* <div
             style={{ height: "100%" }}
             dangerouslySetInnerHTML={{
               __html: `<video className="app__backgroundVideo" autoplay loop muted playsinline>
-      <source src=${cityVideo} type="video/mp4" />
-      Your browser does not support the video tag.
-</video>`,
+                          <source src=${cityVideo} type="video/mp4" />
+                          Your browser does not support the video tag.
+                        </video>`,
             }}
-          />
+          /> */}
           <h1 className="cityPage_heading">
             <span>{cityName}</span>
             <br />

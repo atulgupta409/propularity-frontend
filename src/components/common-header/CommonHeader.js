@@ -8,7 +8,7 @@ function CommonHeader() {
   const urlArr = currentUrl.split("/");
   const slug = urlArr[urlArr.length - 1];
   const { data: seoData } = useQuery(GET_SEO_BY_SLUG, {
-    variables: { slug: slug },
+    variables: { slug: slug === "" ? "home" : slug },
   });
   const defaultTitle = "Buy residential, commercial and office spaces";
   const defaultDescription =
