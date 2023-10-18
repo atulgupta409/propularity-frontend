@@ -14,7 +14,7 @@ import RequestCallBtn from "../request-call-button/RequestCallBtn";
 import LeafletMap from "./LeafletMap";
 import Carousel from "react-bootstrap/Carousel";
 import ProjectDetailSkeleton from "../loader/ProjectDetailSkeleton";
-import { decode } from "html-entities";
+
 
 function Project() {
   const { slug } = useParams();
@@ -55,7 +55,6 @@ function Project() {
     setFloorPlan(planType.trim());
   };
 
-  const decodedDescription = decode(data?.projectDetails[0]?.description);
 
   const downloadPdf = async () => {
     try {
