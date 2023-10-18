@@ -26,14 +26,13 @@ function TopProperties() {
 
   return (
     <div className="container mt100 top_india">
+      <h2 className="heading">
+        Top Residential Projects in <span className="primary_color">India</span>
+      </h2>
+      <p className="heading_text mob_hide">
+        Explore prime properties based on your preference
+      </p>
       <div className="row">
-        <h2 className="heading mob_hide">
-          Top Residential Projects in{" "}
-          <span className="primary_color">India</span>
-        </h2>
-        <p className="heading_text mob_hide">
-          Explore prime properties based on your preference
-        </p>
         {loading && <ProjectSkeleton cards={8} />}
         {topProjects?.map((project, i) => {
           return (
