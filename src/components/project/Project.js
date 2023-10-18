@@ -15,6 +15,7 @@ import LeafletMap from "./LeafletMap";
 import Carousel from "react-bootstrap/Carousel";
 import ProjectDetailSkeleton from "../loader/ProjectDetailSkeleton";
 
+
 function Project() {
   const { slug } = useParams();
   const { loading, error, data } = useQuery(GET_PROJECT_DETAILS, {
@@ -22,22 +23,11 @@ function Project() {
       slug: slug,
     },
   });
+ const [showFullText, setShowFullText] = useState(false);
+  const text = data?.projectDetails[0]?.description;
 
-  function removeHtmlTags(html) {
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = html;
-    return tempDiv.textContent || tempDiv.innerText || "";
-  }
+  const isLongText = text && text.length > 500;
 
-  const [aboutText, setAboutText] = useState("");
-
-  useEffect(() => {
-    if (data?.projectDetails && data?.projectDetails?.length > 0) {
-      const description = data?.projectDetails[0]?.description;
-      const plainText = removeHtmlTags(description);
-      setAboutText(plainText);
-    }
-  }, [data]);
   const latitude = data?.projectDetails[0]?.location?.latitude;
   const longitude = data?.projectDetails[0]?.location?.longitude;
 
@@ -64,6 +54,7 @@ function Project() {
     const planType = innerValue.replace("floor plan", "");
     setFloorPlan(planType.trim());
   };
+
 
   const downloadPdf = async () => {
     try {
@@ -611,8 +602,24 @@ function Project() {
                       " " +
                       data?.projectDetails[0]?.location?.city[0]?.name}
                   </h3>
-                  {data?.projectDetails[0]?.description !== "<p></p>\n" ? (
-                    <p className="about_builder mt20">{aboutText}</p>
+                  {data?.projectDetails[0]?.description !== "<p></p>\n" ?(
+                 <div className="project-description">
+                 {text && (
+                   <div className={`about_builder mt20 ${isLongText && !showFullText ? 'short-text' : ''}`}>
+                     {showFullText ? (
+                       <div dangerouslySetInnerHTML={{ __html: text }}></div>
+                     ) : (
+                      <div dangerouslySetInnerHTML={{ __html: text.substr(0, 500) + "..." }}></div> // Display the first 500 characters
+                     )}
+                   </div>
+                 )}
+                 {isLongText ? (
+                   <p className="about_text_css" onClick={() => setShowFullText(!showFullText)}>
+                     {showFullText ? 'See Less »' : 'See More »'}
+                   </p>
+                 ) : null}
+               </div>
+                  
                   ) : (
                     <p className="no_data_p">Not Available</p>
                   )}

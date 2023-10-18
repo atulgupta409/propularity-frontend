@@ -16,6 +16,10 @@
   width: 30px;
   height: 30px;
 }
+.about_text_css{
+  font-weight: 600;
+  cursor: pointer;
+}
 .small_img_main {
   padding-left: 4px !important;
 }
