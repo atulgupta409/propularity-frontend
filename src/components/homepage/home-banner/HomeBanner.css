@@ -273,6 +273,26 @@
   .brand_logo img {
     width: 160px;
   }
+  .home_btn_box {
+    width: 100%;
+    position: absolute;
+    top: 218px;
+    text-align: center;
+  }
+  .home_btn_box .modal_form_btn {
+    width: 86%;
+    border-radius: 20px;
+    padding: 10px;
+  }
+  .brand_logo {
+    position: absolute;
+    width: 100%;
+    top: 60px;
+    z-index: 99;
+  }
+  .home_select_form .css-b62m3t-container {
+    top: 120px !important;
+  }
 }
 @media only screen and (max-width: 1400px) {
   .my_container {
