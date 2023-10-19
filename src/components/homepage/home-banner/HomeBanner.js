@@ -120,7 +120,7 @@ function HomeBanner() {
           }}
         /> */}
 
-        <ReactPlayer playing loop muted playsinline width="100%" height="100%">
+        {/* <ReactPlayer playing loop muted playsinline width="100%" height="100%">
           <source
             src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/video-1697716716490.mp4"
             type="video/mp4"
@@ -133,7 +133,20 @@ function HomeBanner() {
             src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/video-1697717032608.ogv"
             type="video/ogv"
           />
-        </ReactPlayer>
+        </ReactPlayer> */}
+        <ReactPlayer
+          url={[
+            "https://propularity-bucket.s3.ap-south-1.amazonaws.com/video-1697716716490.mp4",
+            "https://propularity-bucket.s3.ap-south-1.amazonaws.com/video-1697717049167.webm",
+            "https://propularity-bucket.s3.ap-south-1.amazonaws.com/video-1697717032608.ogv",
+          ]}
+          playing
+          loop
+          muted
+          playsinline
+          width="100%"
+          height="100%"
+        />
 
         <div className="d-flex justify-content-center city_select_form home_select_form">
           <Select
