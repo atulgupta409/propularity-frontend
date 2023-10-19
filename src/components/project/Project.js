@@ -14,7 +14,7 @@ import RequestCallBtn from "../request-call-button/RequestCallBtn";
 import LeafletMap from "./LeafletMap";
 import Carousel from "react-bootstrap/Carousel";
 import ProjectDetailSkeleton from "../loader/ProjectDetailSkeleton";
-
+import City from "../city/City";
 
 function Project() {
   const { slug } = useParams();
@@ -23,7 +23,7 @@ function Project() {
       slug: slug,
     },
   });
- const [showFullText, setShowFullText] = useState(false);
+  const [showFullText, setShowFullText] = useState(false);
   const text = data?.projectDetails[0]?.description;
 
   const isLongText = text && text.length > 500;
@@ -54,7 +54,6 @@ function Project() {
     const planType = innerValue.replace("floor plan", "");
     setFloorPlan(planType.trim());
   };
-
 
   const downloadPdf = async () => {
     try {
@@ -602,24 +601,36 @@ function Project() {
                       " " +
                       data?.projectDetails[0]?.location?.city[0]?.name}
                   </h3>
-                  {data?.projectDetails[0]?.description !== "<p></p>\n" ?(
-                 <div className="project-description">
-                 {text && (
-                   <div className={`about_builder mt20 ${isLongText && !showFullText ? 'short-text' : ''}`}>
-                     {showFullText ? (
-                       <div dangerouslySetInnerHTML={{ __html: text }}></div>
-                     ) : (
-                      <div dangerouslySetInnerHTML={{ __html: text.substr(0, 500) + "..." }}></div> // Display the first 500 characters
-                     )}
-                   </div>
-                 )}
-                 {isLongText ? (
-                   <p className="about_text_css" onClick={() => setShowFullText(!showFullText)}>
-                     {showFullText ? 'See Less »' : 'See More »'}
-                   </p>
-                 ) : null}
-               </div>
-                  
+                  {data?.projectDetails[0]?.description !== "<p></p>\n" ? (
+                    <div className="project-description">
+                      {text && (
+                        <div
+                          className={`about_builder mt20 ${
+                            isLongText && !showFullText ? "short-text" : ""
+                          }`}
+                        >
+                          {showFullText ? (
+                            <div
+                              dangerouslySetInnerHTML={{ __html: text }}
+                            ></div>
+                          ) : (
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: text.substr(0, 500) + "...",
+                              }}
+                            ></div> // Display the first 500 characters
+                          )}
+                        </div>
+                      )}
+                      {isLongText ? (
+                        <p
+                          className="about_text_css"
+                          onClick={() => setShowFullText(!showFullText)}
+                        >
+                          {showFullText ? "See Less »" : "See More »"}
+                        </p>
+                      ) : null}
+                    </div>
                   ) : (
                     <p className="no_data_p">Not Available</p>
                   )}
@@ -637,7 +648,12 @@ function Project() {
             <div className="col-lg-4 mob_hide p-0">
               <div className="sticky_form">
                 <div className="form_box">
-                  <ContactForm />
+                  <ContactForm
+                    city={data?.projectDetails[0]?.location?.city[0]?.name}
+                    location={
+                      data?.projectDetails[0]?.location?.micro_location[0]?.name
+                    }
+                  />
                 </div>
                 <div className="contact_form_footer">
                   <div className="img_box_form">

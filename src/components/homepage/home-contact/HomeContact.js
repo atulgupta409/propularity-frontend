@@ -12,6 +12,7 @@ function HomeContact() {
   const [phoneError, setPhoneError] = useState("");
   const [selectedLookingFor, setSelectedLookingFor] = useState(null);
   const [selectedCity, setSelectedCity] = useState(null);
+  const url = window.location.href;
 
   const optionsLookingFor = [
     { value: "Residential", label: "Residential" },
@@ -121,6 +122,7 @@ function HomeContact() {
             },
           }
         );
+        handleSheet();
         setLoading(false);
         setIsSending(false);
         notify();
@@ -135,136 +137,148 @@ function HomeContact() {
     }
   };
 
-  //   const handleSheet = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         "https://v1.nocodeapi.com/propularity/google_sheets/tYUnsaSLwvJXDnpB?tabId=sheet1",
-  //         {
-  //           method: "POST",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify([
-  //             [
-  //               user.name,
-  //               user.email,
-  //               user.phone,
-  //               location,
-  //               new Date().toLocaleString(),
-  //             ],
-  //           ]),
-  //         }
-  //       );
-  //       await response.json();
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
+  const dateTimeString = new Date().toLocaleString();
+  const [date, time] = dateTimeString.split(", ");
+  const handleSheet = async () => {
+    try {
+      const response = await fetch(
+        "https://v1.nocodeapi.com/propularity/google_sheets/tYUnsaSLwvJXDnpB?tabId=Sheet2",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify([
+            [
+              date,
+              time,
+              user.name,
+              user.email,
+              user.phone,
+              selectedCity,
+              selectedLookingFor,
+              url,
+            ],
+          ]),
+        }
+      );
+      await response.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <div className="container mob_hide">
-      <div className="row">
-        <div className="col-md-6">
-          <div className="home_contact_bg">
-            <img
-              src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1697091654423.jpg"
-              alt="homepage contact image"
-              className="img-fluid"
-            />
+    <>
+      <ToastContainer />
+      <div className="container mob_hide">
+        <div className="row">
+          <div className="col-md-6">
+            <div className="home_contact_bg">
+              <img
+                src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1697091654423.jpg"
+                alt="homepage contact image"
+                className="img-fluid"
+              />
+            </div>
           </div>
-        </div>
-        <div className="col-md-6">
-          <div className="home_contact_right">
-            <h2 className="heading text-start">
-              Connect With <span className="primary_color">Propularity</span>
-            </h2>
-            <p className="heading_text text-start">
-              Let our expert help you to find the best property
-            </p>
-            <form onSubmit={sendEmail}>
-              <div className="row">
-                <div className="col-md-12 mb-4">
-                  <input
-                    type="text"
-                    className="form-control modal_form_input home_input"
-                    id="exampleInputtext"
-                    aria-describedby="emailHelp"
-                    placeholder="Name*"
-                    value={user.name}
-                    name="name"
-                    onChange={inputChangeHandler}
-                    onBlur={validationName}
-                  />
-                  {nameError && <p className="error_validate">{nameError}</p>}
-                </div>
-                <div className="col-md-12 mb-4">
-                  <input
-                    type="email"
-                    placeholder="Email*"
-                    className="form-control modal_form_input home_input"
-                    id="exampleInputEmail1"
-                    aria-describedby="emailHelp"
-                    onChange={inputChangeHandler}
-                    onBlur={validationEmail}
-                    name="email"
-                    value={user.email}
-                  />
-                  {emailError && <p className="error_validate">{emailError}</p>}
-                </div>
-                <div className="col-md-12 mb-4">
-                  <input
-                    type="text"
-                    placeholder="Phone*"
-                    className="form-control modal_form_input home_input"
-                    id="exampleInputEmail1"
-                    name="phone"
-                    value={user.phone}
-                    aria-describedby="emailHelp"
-                    onChange={inputChangeHandler}
-                    onBlur={validationPhone}
-                  />
-                  {phoneError && <p className="error_validate">{phoneError}</p>}
-                </div>
-                <div className="col-md-6 mb-4">
-                  <Select
-                    value={optionsLookingFor.find(
-                      (option) => option.value === selectedLookingFor
+          <div className="col-md-6">
+            <div className="home_contact_right">
+              <h2 className="heading text-start">
+                Connect With <span className="primary_color">Propularity</span>
+              </h2>
+              <p className="heading_text text-start">
+                Let our expert help you to find the best property
+              </p>
+              <form onSubmit={sendEmail}>
+                <div className="row">
+                  <div className="col-md-12 mb-4">
+                    <input
+                      type="text"
+                      className="form-control modal_form_input home_input"
+                      id="exampleInputtext"
+                      aria-describedby="emailHelp"
+                      placeholder="Name*"
+                      value={user.name}
+                      name="name"
+                      onChange={inputChangeHandler}
+                      onBlur={validationName}
+                    />
+                    {nameError && <p className="error_validate">{nameError}</p>}
+                  </div>
+                  <div className="col-md-12 mb-4">
+                    <input
+                      type="email"
+                      placeholder="Email*"
+                      className="form-control modal_form_input home_input"
+                      id="exampleInputEmail1"
+                      aria-describedby="emailHelp"
+                      onChange={inputChangeHandler}
+                      onBlur={validationEmail}
+                      name="email"
+                      value={user.email}
+                    />
+                    {emailError && (
+                      <p className="error_validate">{emailError}</p>
                     )}
-                    onChange={selectChangeHandlerLooking}
-                    options={optionsLookingFor}
-                    placeholder="I am looking for"
-                    inputProps={{
-                      name: "looking for",
-                    }}
-                    className="home_select"
-                  />
-                </div>
-                <div className="col-md-6 mb-4">
-                  <Select
-                    value={optionsCity.find(
-                      (option) => option.value === selectedCity
+                  </div>
+                  <div className="col-md-12 mb-4">
+                    <input
+                      type="text"
+                      placeholder="Phone*"
+                      className="form-control modal_form_input home_input"
+                      id="exampleInputEmail1"
+                      name="phone"
+                      value={user.phone}
+                      aria-describedby="emailHelp"
+                      onChange={inputChangeHandler}
+                      onBlur={validationPhone}
+                    />
+                    {phoneError && (
+                      <p className="error_validate">{phoneError}</p>
                     )}
-                    onChange={selectChangeHandlerCity}
-                    options={optionsCity}
-                    placeholder="City"
-                    inputProps={{
-                      name: "city",
-                    }}
-                    className="home_select"
-                  />
+                  </div>
+                  <div className="col-md-6 mb-4">
+                    <Select
+                      value={optionsLookingFor.find(
+                        (option) => option.value === selectedLookingFor
+                      )}
+                      onChange={selectChangeHandlerLooking}
+                      options={optionsLookingFor}
+                      placeholder="I am looking for"
+                      inputProps={{
+                        name: "looking for",
+                      }}
+                      className="home_select"
+                    />
+                  </div>
+                  <div className="col-md-6 mb-4">
+                    <Select
+                      value={optionsCity.find(
+                        (option) => option.value === selectedCity
+                      )}
+                      onChange={selectChangeHandlerCity}
+                      options={optionsCity}
+                      placeholder="City"
+                      inputProps={{
+                        name: "city",
+                      }}
+                      className="home_select"
+                    />
+                  </div>
                 </div>
-              </div>
-              <button className="modal_form_btn home_btn mb-4" type="submit">
-                {isSending ? "Sending..." : "Submit"}
-              </button>
-            </form>
-            <a href="mailto:hello@propularity.in" className="footer_link">
-              Email us: hello@propularity.in
-            </a>
+                <button className="modal_form_btn home_btn mb-4" type="submit">
+                  {isSending ? "Sending..." : "Submit"}
+                </button>
+              </form>
+              <a href="mailto:hello@propularity.in" className="footer_link">
+                Email us: hello@propularity.in
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
