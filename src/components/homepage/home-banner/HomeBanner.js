@@ -4,9 +4,6 @@ import logo from "../../media/logo.png";
 import buildingImg from "../../media/sample-image.png";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import Carousel from "react-bootstrap/Carousel";
-import homeVideo from "../../media/homeVideo1.mp4";
-import homeVideo2 from "../../media/homeVideo2.ogg";
-import homeVideo3 from "../../media/homeVideo3.webm";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
 import ReactPlayer from "react-player";
@@ -97,7 +94,9 @@ function HomeBanner() {
   };
 
   const homeLocationSearchHandler = () => {
-    navigate(`/${selectedLocation.value}`);
+    if (selectedLocation?.value) {
+      navigate(`/${selectedLocation.value}`);
+    }
   };
 
   return (
@@ -108,32 +107,6 @@ function HomeBanner() {
           <h1 className="text-white">Where Property Comes To Life</h1>
         </div>
         <div className="video_overlay"></div>
-        {/* <div
-          style={{ height: "100%", width: "100%" }}
-          dangerouslySetInnerHTML={{
-            __html: `<video className="desk_hide" autoplay loop muted playsinline>
-                          <source src=${homeVideo3} type="video/webm" />
-                          <source src=${homeVideo} type="video/mp4" />
-                          <source src=${homeVideo2} type="video/ogv" />
-                          Your browser does not support the video tag.
-                    </video>`,
-          }}
-        /> */}
-
-        {/* <ReactPlayer playing loop muted playsinline width="100%" height="100%">
-          <source
-            src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/video-1697716716490.mp4"
-            type="video/mp4"
-          />
-          <source
-            src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/video-1697717049167.webm"
-            type="video/webm"
-          />
-          <source
-            src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/video-1697717032608.ogv"
-            type="video/ogv"
-          />
-        </ReactPlayer> */}
         <ReactPlayer
           url={[
             "https://propularity-bucket.s3.ap-south-1.amazonaws.com/video-1697716716490.mp4",
