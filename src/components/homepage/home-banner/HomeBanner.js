@@ -9,6 +9,7 @@ import homeVideo2 from "../../media/homeVideo2.ogg";
 import homeVideo3 from "../../media/homeVideo3.webm";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
+import ReactPlayer from "react-player";
 
 function HomeBanner() {
   const [time, setTime] = useState(getCurrentTime());
@@ -107,17 +108,28 @@ function HomeBanner() {
           <h1 className="text-white">Where Property Comes To Life</h1>
         </div>
         <div className="video_overlay"></div>
-        <div
+        {/* <div
           style={{ height: "100%", width: "100%" }}
           dangerouslySetInnerHTML={{
-            __html: `<video className="desk_hide" autoplay loop muted playsinline controls="true">
+            __html: `<video className="desk_hide" autoplay loop muted playsinline>
                           <source src=${homeVideo3} type="video/webm" />
                           <source src=${homeVideo} type="video/mp4" />
-                          <source src=${homeVideo2} type="video/ogg" />
+                          <source src=${homeVideo2} type="video/ogv" />
                           Your browser does not support the video tag.
                     </video>`,
           }}
+        /> */}
+
+        <ReactPlayer
+          url="https://propularity-bucket.s3.ap-south-1.amazonaws.com/video-1697707182295.mp4" // Replace with your video URL
+          playing
+          loop
+          muted
+          playsinline
+          width="100%"
+          height="100%"
         />
+
         <div className="d-flex justify-content-center city_select_form home_select_form">
           <Select
             value={selectedLocation}

@@ -22,6 +22,7 @@ import mumbaiVideo from "../media/Mumbai(2).mp4";
 import mumbaiVideo2 from "../media/Mumbai(2).webm";
 import mumbaiVideo3 from "../media/Mumbai_2_.ogv";
 import mumbaiVideoDesk from "../media/Mumbai.mp4";
+import ReactPlayer from "react-player";
 
 function City() {
   const { city } = useParams();
@@ -109,7 +110,7 @@ function City() {
           <div
             style={{ height: "100%", width: "100%" }}
             dangerouslySetInnerHTML={{
-              __html: `<video className="desk_hide" autoplay loop muted playsinline controls="true">
+              __html: `<video className="desk_hide" autoplay loop muted playsinline>
                           <source src=${cityVideo2} type="video/webm" />
                           <source src=${cityVideo} type="video/mp4" />
                           <source src=${cityVideo3} type="video/ogv" />
@@ -117,6 +118,15 @@ function City() {
                         </video>`,
             }}
           />
+          {/* <ReactPlayer
+            url={[cityVideo, cityVideo2, cityVideo3]}
+            autoPlay={true}
+            playsinline
+            muted
+            loop={true}
+            width="100%"
+            height="100%"
+          /> */}
           <h2 className="cityPage_heading desk_hide">
             <span>{cityName}</span>
             <br />
