@@ -14,26 +14,18 @@ import Select from "react-select";
 import TopFooter from "../footer/TopFooter";
 import CommonHeader from "../common-header/CommonHeader";
 import PageNotFound from "../page-not-found/PageNotFound";
-import gurugramVideo from "../media/Gurugram(2).mp4";
-import gurugramVideo2 from "../media/Gurugram(2).webm";
-import gurugramVideo3 from "../media/Gurugram_2_.ogv";
 import gurugramVideoDesk from "../media/Gurugram.mp4";
-import mumbaiVideo from "../media/Mumbai(2).mp4";
-import mumbaiVideo2 from "../media/Mumbai(2).webm";
-import mumbaiVideo3 from "../media/Mumbai_2_.ogv";
 import mumbaiVideoDesk from "../media/Mumbai.mp4";
 import ReactPlayer from "react-player";
 
 function City() {
   const { city } = useParams();
-  const [cityVideo, setCityVideo] = useState("a.mp4");
-  const [cityVideo2, setCityVideo2] = useState("b.webm");
-  const [cityVideo3, setCityVideo3] = useState("c.ogv");
   const [cityVideoDesk, setCityVideoDesk] = useState("../media/Gurugram.mp4");
   const cityName = city.charAt(0).toUpperCase() + city.slice(1);
   const [projects, setProjects] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState(null);
   const navigate = useNavigate();
+  const url = window.location.href;
   const { loading, error, data } = useQuery(GET_PROJECTS_BY_CITY, {
     variables: { city: city },
   });
@@ -75,18 +67,12 @@ function City() {
 
   useEffect(() => {
     if (city === "gurugram") {
-      setCityVideo(gurugramVideo);
-      setCityVideo2(gurugramVideo2);
-      setCityVideo3(gurugramVideo3);
       setCityVideoDesk(gurugramVideoDesk);
     }
     if (city === "mumbai") {
-      setCityVideo(mumbaiVideo);
-      setCityVideo2(mumbaiVideo2);
-      setCityVideo3(mumbaiVideo3);
       setCityVideoDesk(mumbaiVideoDesk);
     }
-  }, [city]);
+  }, [city, url]);
 
   useEffect(() => {
     if (data) {
@@ -107,26 +93,36 @@ function City() {
         <ProjectTypesNav city={city} showFilter={false} isMobile={false} />
         <div className="city_video_box desk_hide">
           <div className="video_overlay"></div>
-          <div
-            style={{ height: "100%", width: "100%" }}
-            dangerouslySetInnerHTML={{
-              __html: `<video className="desk_hide" autoplay loop muted playsinline>
-                          <source src=${cityVideo2} type="video/webm" />
-                          <source src=${cityVideo} type="video/mp4" />
-                          <source src=${cityVideo3} type="video/ogv" />
-                          Your browser does not support the video tag.
-                        </video>`,
-            }}
-          />
-          {/* <ReactPlayer
-            url={[cityVideo, cityVideo2, cityVideo3]}
-            autoPlay={true}
-            playsinline
-            muted
-            loop={true}
-            width="100%"
-            height="100%"
-          /> */}
+          {city === "gurugram" ? (
+            <ReactPlayer
+              url={[
+                "https://propularity-bucket.s3.ap-south-1.amazonaws.com/video-1697717081284.mp4",
+                "https://propularity-bucket.s3.ap-south-1.amazonaws.com/video-1697716702482.webm",
+                "https://propularity-bucket.s3.ap-south-1.amazonaws.com/video-1697716685715.ogv",
+              ]}
+              playing
+              loop
+              muted
+              playsinline
+              width="100%"
+              height="100%"
+            />
+          ) : (
+            <ReactPlayer
+              url={[
+                "https://propularity-bucket.s3.ap-south-1.amazonaws.com/video-1697717065926.mp4",
+                "https://propularity-bucket.s3.ap-south-1.amazonaws.com/video-1697716665043.webm",
+                "https://propularity-bucket.s3.ap-south-1.amazonaws.com/video-1697716628671.ogv",
+              ]}
+              playing
+              loop
+              muted
+              playsinline
+              width="100%"
+              height="100%"
+            />
+          )}
+
           <h2 className="cityPage_heading desk_hide">
             <span>{cityName}</span>
             <br />
