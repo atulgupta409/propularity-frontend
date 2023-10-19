@@ -80,6 +80,9 @@
     margin-top: 50px;
     height: 50vh;
   }
+  .search_location .css-t3ipsp-control {
+    padding: 3px 0 !important;
+  }
   .city_video_box {
     height: 54vh;
     top: 52px;

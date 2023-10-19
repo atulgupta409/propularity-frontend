@@ -4,7 +4,7 @@ import { baseUrl } from "../../environment/apiconfig";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function ContactForm({ button_name, downloadPdf }) {
+function ContactForm({ button_name, downloadPdf, city, location }) {
   const [nameError, setNameError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [phoneError, setPhoneError] = useState("");
@@ -14,7 +14,7 @@ function ContactForm({ button_name, downloadPdf }) {
     let { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
-  const location = window.location.href;
+  const url = window.location.href;
   const notify = () =>
     toast.success("Thank You for submitting the query!", {
       position: "bottom-right",
@@ -86,7 +86,9 @@ function ContactForm({ button_name, downloadPdf }) {
             name: user.name,
             email: user.email,
             phone: user.phone,
-            PageLocation: location,
+            city: city,
+            location: location,
+            PageLocation: url,
           },
           {
             headers: {
@@ -96,6 +98,7 @@ function ContactForm({ button_name, downloadPdf }) {
         );
         setLoading(false);
         setIsSending(false);
+        handleSheet();
         notify();
         if (button_name === "Download Brochure") {
           downloadPdf();
@@ -111,10 +114,12 @@ function ContactForm({ button_name, downloadPdf }) {
     }
   };
 
+  const dateTimeString = new Date().toLocaleString();
+  const [date, time] = dateTimeString.split(", ");
   const handleSheet = async () => {
     try {
       const response = await fetch(
-        "https://v1.nocodeapi.com/propularity/google_sheets/tYUnsaSLwvJXDnpB?tabId=sheet1",
+        "https://v1.nocodeapi.com/propularity/google_sheets/tYUnsaSLwvJXDnpB?tabId=Sheet1",
         {
           method: "POST",
           headers: {
@@ -122,11 +127,14 @@ function ContactForm({ button_name, downloadPdf }) {
           },
           body: JSON.stringify([
             [
+              date,
+              time,
               user.name,
               user.email,
               user.phone,
+              city,
               location,
-              new Date().toLocaleString(),
+              url,
             ],
           ]),
         }
