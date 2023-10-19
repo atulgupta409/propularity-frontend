@@ -8,7 +8,7 @@ function TopLocalities() {
       <div className="container">
         <div className="row section_row">
           <h2 className="heading">
-            Top Cities In India For{" "}
+            Top Cities In India To Buy{" "}
             <span className="primary_color">Property</span>
           </h2>
           <p className="heading_text mob_hide">
@@ -27,7 +27,7 @@ function TopLocalities() {
                 <div className="localities_card_overlay localities_card_overlay1">
                   <div className="overlay_text">
                     <h3>Gurugram</h3>
-                    <p>12000+ Properties</p>
+                    <p>1,200+ Properties</p>
                   </div>
                 </div>
                 <div className="overlay2"></div>
@@ -47,7 +47,7 @@ function TopLocalities() {
                 <div className="localities_card_overlay localities_card_overlay2">
                   <div className="overlay_text">
                     <h3>Mumbai</h3>
-                    <p>10000+ Properties</p>
+                    <p>1,000+ Properties</p>
                   </div>
                 </div>
                 <div className="overlay2"></div>

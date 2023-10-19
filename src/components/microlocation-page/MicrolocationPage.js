@@ -9,6 +9,7 @@ import { GET_ALL_BUILDERS } from "../../service/ProjectDetailsservice";
 import ReactPaginate from "react-paginate";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import ProjectSkeleton from "../loader/ProjectSkeleton";
+import CommonHeader from "../common-header/CommonHeader";
 
 function MicrolocationPage() {
   const [selectedStatus, setSelectedStatus] = useState(null);
@@ -43,7 +44,11 @@ function MicrolocationPage() {
   } = useQuery(GET_PROJECTS_BY_MICROLOCATIONS, {
     variables: { location: microlocationName, city: city },
   });
-  let totalPage = Math.ceil((isSearch ? searchedprojects?.length : projectsData?.builderProjectsByLocation?.length) / item_per_page);
+  let totalPage = Math.ceil(
+    (isSearch
+      ? searchedprojects?.length
+      : projectsData?.builderProjectsByLocation?.length) / item_per_page
+  );
   let current_page = 1;
   const handlePageClick = async (data_page) => {
     current_page += data_page.selected;
@@ -111,7 +116,7 @@ function MicrolocationPage() {
         break;
       case "price":
         setSelectedPrice(selectedOption);
-        setIsSearch(true) 
+        setIsSearch(true);
         break;
       case "builder":
         setSelectedBuilder(selectedOption);
@@ -128,11 +133,11 @@ function MicrolocationPage() {
   ];
 
   const priceOptions = [
-    { value: "0 - 1.00Cr", label: "0 - 1.00Cr" },
-    { value: "1.00Cr - 2.00Cr", label: "1.00Cr - 2.00Cr" },
-    { value: "2.00Cr - 4.00Cr", label: "2.00Cr - 4.00Cr" },
-    { value: "4.00Cr - 6.00Cr", label: "4.00Cr - 6.00Cr" },
-    { value: "6.00Cr - 10.00Cr", label: "6.00Cr - 10.00Cr" },
+    { value: "0 - 1Cr", label: "0 - 1Cr" },
+    { value: "1Cr - 2Cr", label: "1Cr - 2Cr" },
+    { value: "2Cr - 4Cr", label: "2Cr - 4Cr" },
+    { value: "4Cr - 6Cr", label: "4Cr - 6Cr" },
+    { value: "6Cr - 10Cr", label: "6Cr - 10Cr" },
   ];
 
   const builderOptions = builderData?.builders?.map((builder) => ({
@@ -148,118 +153,121 @@ function MicrolocationPage() {
   };
 
   return (
-    <div className="container mt100 microlocation_container">
-      <div className="row">
-        <div className="col-md-6">
-          <h1>Projects in {microlocationName}</h1>
-        </div>
-        <div className="col-md-6">
-          <div className="row .justify-content-md-end">
-            <div className="col-3 select_column">
-              <Select
-                value={selectedBuilder}
-                onChange={(selectedOption) =>
-                  onChangeOptionHandler(selectedOption, "builder")
-                }
-                isSearchable
-                options={builderOptions}
-                placeholder={"Builder"}
-                className="select_builder"
-              />
-            </div>
-            <div className="col-3 select_column">
-              <Select
-                value={selectedStatus}
-                onChange={(selectedOption) =>
-                  onChangeOptionHandler(selectedOption, "status")
-                }
-                isSearchable
-                options={statusOptions}
-                placeholder={"Status"}
-                className="select_builder"
-              />
-            </div>
-            <div className="col-3 select_column">
-              <Select
-                value={selectedPrice}
-                onChange={(selectedOption) =>
-                  onChangeOptionHandler(selectedOption, "price")
-                }
-                options={priceOptions}
-                placeholder={"Price"}
-                className="select_builder"
-              />
-            </div>
-            <div className="col-3 col-md-2 select_column">
-              <button
-                className="clear_filter_btn"
-                role="button"
-                onClick={resetFilterHandler}
-              >
-                Clear All
-              </button>
+    <>
+      <CommonHeader />
+      <div className="container mt100 microlocation_container">
+        <div className="row">
+          <div className="col-md-6">
+            <h1>Buy Property in {microlocationName}</h1>
+          </div>
+          <div className="col-md-6">
+            <div className="row .justify-content-md-end">
+              <div className="col-3 select_column">
+                <Select
+                  value={selectedBuilder}
+                  onChange={(selectedOption) =>
+                    onChangeOptionHandler(selectedOption, "builder")
+                  }
+                  isSearchable
+                  options={builderOptions}
+                  placeholder={"Builder"}
+                  className="select_builder"
+                />
+              </div>
+              <div className="col-3 select_column">
+                <Select
+                  value={selectedStatus}
+                  onChange={(selectedOption) =>
+                    onChangeOptionHandler(selectedOption, "status")
+                  }
+                  isSearchable
+                  options={statusOptions}
+                  placeholder={"Status"}
+                  className="select_builder"
+                />
+              </div>
+              <div className="col-3 select_column">
+                <Select
+                  value={selectedPrice}
+                  onChange={(selectedOption) =>
+                    onChangeOptionHandler(selectedOption, "price")
+                  }
+                  options={priceOptions}
+                  placeholder={"Price"}
+                  className="select_builder"
+                />
+              </div>
+              <div className="col-3 col-md-2 select_column">
+                <button
+                  className="clear_filter_btn"
+                  role="button"
+                  onClick={resetFilterHandler}
+                >
+                  Clear All
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="row microlocation_projects">
-      {loading && <ProjectSkeleton cards={8}/>}
-        {(isSearch ? searchedprojects?.length : projects?.length > 0) ? (
-          (isSearch
-            ? searchedprojects?.slice(
-                (curPage - 1) * item_per_page,
-                curPage * item_per_page
-              )
-            : projects?.slice(
-                (curPage - 1) * item_per_page,
-                curPage * item_per_page
-              )
-          )?.map((element, i) => {
-            return (
-              <div className="col-md-3" key={i}>
-                <HomeCard
-                  builder={element?.builder[0].name
-                    .split(" ")
-                    .join("-")
-                    .toLowerCase()}
-                  city={city}
-                  projectName={element?.name}
-                  startingPrice={element?.starting_price}
-                  microlocationName={microlocationName}
-                  slug={element?.slug}
-                  images={element?.images}
-                  ratings={element?.ratings}
-                />
-              </div>
-            );
-          })
-        ) : (
-          <p className="no_filter_match">
-            No projects match the selected filter criteria.
-          </p>
+        <div className="row microlocation_projects">
+          {loading && <ProjectSkeleton cards={8} />}
+          {(isSearch ? searchedprojects?.length : projects?.length > 0) ? (
+            (isSearch
+              ? searchedprojects?.slice(
+                  (curPage - 1) * item_per_page,
+                  curPage * item_per_page
+                )
+              : projects?.slice(
+                  (curPage - 1) * item_per_page,
+                  curPage * item_per_page
+                )
+            )?.map((element, i) => {
+              return (
+                <div className="col-md-3" key={i}>
+                  <HomeCard
+                    builder={element?.builder[0].name
+                      .split(" ")
+                      .join("-")
+                      .toLowerCase()}
+                    city={city}
+                    projectName={element?.name}
+                    startingPrice={element?.starting_price}
+                    microlocationName={microlocationName}
+                    slug={element?.slug}
+                    images={element?.images}
+                    ratings={element?.ratings}
+                  />
+                </div>
+              );
+            })
+          ) : (
+            <p className="no_filter_match">
+              No projects match the selected filter criteria.
+            </p>
+          )}
+        </div>
+        {projectsData?.length > 16 && (
+          <ReactPaginate
+            previousLabel={<MdKeyboardArrowLeft className="pagination_icon" />}
+            nextLabel={<MdKeyboardArrowRight className="pagination_icon" />}
+            breakLabel={"..."}
+            pageCount={totalPage}
+            marginPagesDisplayed={2}
+            onPageChange={handlePageClick}
+            containerClassName={
+              "pagination justify-content-center pagination_box mt20"
+            }
+            pageClassName={"page-item page_item"}
+            pageLinkClassName={"page-link page_link"}
+            previousClassName={"page-item page_item"}
+            previousLinkClassName={"page-link page_link"}
+            nextClassName={"page-item page_item"}
+            nextLinkClassName={"page-link page_link"}
+            activeClassName={"active"}
+          ></ReactPaginate>
         )}
       </div>
-      {projectsData?.length > 16 && (
-        <ReactPaginate
-          previousLabel={<MdKeyboardArrowLeft className="pagination_icon" />}
-          nextLabel={<MdKeyboardArrowRight className="pagination_icon" />}
-          breakLabel={"..."}
-          pageCount={totalPage}
-          marginPagesDisplayed={2}
-          onPageChange={handlePageClick}
-          containerClassName={
-            "pagination justify-content-center pagination_box mt20"
-          }
-          pageClassName={"page-item page_item"}
-          pageLinkClassName={"page-link page_link"}
-          previousClassName={"page-item page_item"}
-          previousLinkClassName={"page-link page_link"}
-          nextClassName={"page-item page_item"}
-          nextLinkClassName={"page-link page_link"}
-          activeClassName={"active"}
-        ></ReactPaginate>
-      )}
-    </div>
+    </>
   );
 }
 

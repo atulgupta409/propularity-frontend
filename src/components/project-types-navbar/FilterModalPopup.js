@@ -129,6 +129,10 @@ function FilterModalPopup({
     closeModal();
   };
 
+  const clearFilter = () => {
+    sendDataToParent(projects);
+  };
+
   return (
     <div className="modal_filter_main">
       <div className="cross_icon">
@@ -207,13 +211,23 @@ function FilterModalPopup({
             onChange={handleSliderChange}
           />
         </div>
-        <div className="col-12 mb-4">
-          <button
-            className="btn globalBtn filter_modal_btn"
-            onClick={handleClickFilter}
-          >
-            Search
-          </button>
+        <div className="filter_btn_grp">
+          <div className="mb-4">
+            <button
+              className="btn globalBtn clear_filter"
+              onClick={clearFilter}
+            >
+              Clear all
+            </button>
+          </div>
+          <div className="mb-4">
+            <button
+              className="btn globalBtn filter_modal_btn"
+              onClick={handleClickFilter}
+            >
+              Search
+            </button>
+          </div>
         </div>
       </div>
     </div>

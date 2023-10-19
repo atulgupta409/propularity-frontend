@@ -13,6 +13,8 @@ import ProjectCard from "./ProjectCard";
 import RequestCallBtn from "../request-call-button/RequestCallBtn";
 import LeafletMap from "./LeafletMap";
 import Carousel from "react-bootstrap/Carousel";
+import ProjectDetailSkeleton from "../loader/ProjectDetailSkeleton";
+import City from "../city/City";
 
 function Project() {
   const { slug } = useParams();
@@ -21,22 +23,11 @@ function Project() {
       slug: slug,
     },
   });
+  const [showFullText, setShowFullText] = useState(false);
+  const text = data?.projectDetails[0]?.description;
 
-  function removeHtmlTags(html) {
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = html;
-    return tempDiv.textContent || tempDiv.innerText || "";
-  }
+  const isLongText = text && text.length > 500;
 
-  const [aboutText, setAboutText] = useState("");
-
-  useEffect(() => {
-    if (data?.projectDetails && data?.projectDetails?.length > 0) {
-      const description = data?.projectDetails[0]?.description;
-      const plainText = removeHtmlTags(description);
-      setAboutText(plainText);
-    }
-  }, [data]);
   const latitude = data?.projectDetails[0]?.location?.latitude;
   const longitude = data?.projectDetails[0]?.location?.longitude;
 
@@ -82,7 +73,9 @@ function Project() {
   return (
     <>
       {loading ? (
-        "Loading"
+        <h1 className="mt100">
+          <ProjectDetailSkeleton />
+        </h1>
       ) : (
         <div className="container mt-5">
           <div className="row">
@@ -609,7 +602,35 @@ function Project() {
                       data?.projectDetails[0]?.location?.city[0]?.name}
                   </h3>
                   {data?.projectDetails[0]?.description !== "<p></p>\n" ? (
-                    <p className="about_builder mt20">{aboutText}</p>
+                    <div className="project-description">
+                      {text && (
+                        <div
+                          className={`about_builder mt20 ${
+                            isLongText && !showFullText ? "short-text" : ""
+                          }`}
+                        >
+                          {showFullText ? (
+                            <div
+                              dangerouslySetInnerHTML={{ __html: text }}
+                            ></div>
+                          ) : (
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: text.substr(0, 500) + "...",
+                              }}
+                            ></div> // Display the first 500 characters
+                          )}
+                        </div>
+                      )}
+                      {isLongText ? (
+                        <p
+                          className="about_text_css"
+                          onClick={() => setShowFullText(!showFullText)}
+                        >
+                          {showFullText ? "See Less »" : "See More »"}
+                        </p>
+                      ) : null}
+                    </div>
                   ) : (
                     <p className="no_data_p">Not Available</p>
                   )}
@@ -627,7 +648,12 @@ function Project() {
             <div className="col-lg-4 mob_hide p-0">
               <div className="sticky_form">
                 <div className="form_box">
-                  <ContactForm />
+                  <ContactForm
+                    city={data?.projectDetails[0]?.location?.city[0]?.name}
+                    location={
+                      data?.projectDetails[0]?.location?.micro_location[0]?.name
+                    }
+                  />
                 </div>
                 <div className="contact_form_footer">
                   <div className="img_box_form">

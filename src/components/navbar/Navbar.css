@@ -90,7 +90,7 @@
     display: inline-block;
 }
 .nav_icon {
-    width: 18px;
+    width: 22px;
 }
 
 .nav-link:hover {
@@ -211,7 +211,6 @@
         margin-top: 10px;
     }
 }
-
 @media (max-width: 476px) {
     .megamenu-row div {
         width: 100%;
@@ -238,7 +237,7 @@
     }
     .nav-main #main_nav ul.navbar-nav li .dropdown-menu {
         margin: 0px;
-        padding: 5px 7px;
+        padding: 5px 7px 0px;
         width: 100%;
         box-shadow: none;
     }

@@ -14,6 +14,7 @@ import Contact from "./components/contact/Contact";
 import BuilderImageGallery from "./components/builder/BuilderImageGallery";
 import ProjectTypePage from "./components/project-type-page/ProjectTypePage";
 import FeaturedCollection from "./components/city/featured-collection/FeaturedCollection";
+import PageNotFound from "./components/page-not-found/PageNotFound";
 
 function App() {
   return (
@@ -40,7 +41,6 @@ function App() {
             <Footer key={9} />,
           ]}
         />
-
         <Route
           path="/:city/:microlocation"
           element={[
@@ -65,6 +65,7 @@ function App() {
             <Footer key={28} />,
           ]}
         />
+
         <Route
           path="/:city"
           element={[
@@ -97,6 +98,7 @@ function App() {
             <Footer key={25} />,
           ]}
         />
+        <Route path="/*" element={<PageNotFound />} />
       </Routes>
     </>
   );

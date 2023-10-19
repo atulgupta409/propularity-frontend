@@ -34,6 +34,9 @@
   top: 0px;
   z-index: 999;
 }
+.other_builders_top {
+  margin-bottom: 60px;
+}
 .gallery_arrow_btn {
   border-radius: 50%;
   width: 50px;
@@ -239,6 +242,9 @@
 @media only screen and (max-width: 768px) {
   .builder_h1 {
     margin-bottom: 0;
+  }
+  .other_builders_top {
+    margin-bottom: 30px;
   }
   .detail_p {
     font-size: 12px;
