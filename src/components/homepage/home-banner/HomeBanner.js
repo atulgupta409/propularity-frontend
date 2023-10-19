@@ -120,15 +120,20 @@ function HomeBanner() {
           }}
         /> */}
 
-        <ReactPlayer
-          url="https://propularity-bucket.s3.ap-south-1.amazonaws.com/video-1697707182295.mp4" // Replace with your video URL
-          playing
-          loop
-          muted
-          playsinline
-          width="100%"
-          height="100%"
-        />
+        <ReactPlayer playing loop muted playsinline width="100%" height="100%">
+          <source
+            src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/video-1697716716490.mp4"
+            type="video/mp4"
+          />
+          <source
+            src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/video-1697717049167.webm"
+            type="video/webm"
+          />
+          <source
+            src="https://propularity-bucket.s3.ap-south-1.amazonaws.com/video-1697717032608.ogv"
+            type="video/ogv"
+          />
+        </ReactPlayer>
 
         <div className="d-flex justify-content-center city_select_form home_select_form">
           <Select
