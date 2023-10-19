@@ -109,7 +109,7 @@ function City() {
           <div
             style={{ height: "100%", width: "100%" }}
             dangerouslySetInnerHTML={{
-              __html: `<video className="desk_hide" autoplay loop muted playsinline>
+              __html: `<video className="desk_hide" autoplay loop muted playsinline controls="true">
                           <source src=${cityVideo2} type="video/webm" />
                           <source src=${cityVideo} type="video/mp4" />
                           <source src=${cityVideo3} type="video/ogv" />
