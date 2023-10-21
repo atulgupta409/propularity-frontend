@@ -122,7 +122,6 @@ function City() {
               height="100%"
             />
           )}
-
           <h2 className="cityPage_heading desk_hide">
             <span>{cityName}</span>
             <br />

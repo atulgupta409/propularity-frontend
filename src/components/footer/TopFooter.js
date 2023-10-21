@@ -13,7 +13,7 @@ function TopFooter() {
     error: seoError,
     data: seoData,
   } = useQuery(GET_SEO_BY_SLUG, {
-    variables: { slug: slug },
+    variables: { slug: slug === "" ? "home" : slug },
   });
 
   useEffect(() => {
@@ -21,11 +21,11 @@ function TopFooter() {
       setSeoContent(seoData.citySeoContent);
     }
   }, [seoData]);
-  const decodedDescription = decode(seoContent[0]?.footer_description);
+  // const decodedDescription = decode(seoContent[0]?.footer_description);
 
   return (
     <>
-      {decodedDescription.trim() === "<p></p>/n" ||
+      {/* {decodedDescription.trim() === "<p></p>/n" ||
       seoContent[0]?.footer_title ? (
         <div className="footer_content_main">
           <div className="container">
@@ -40,7 +40,18 @@ function TopFooter() {
         </div>
       ) : (
         ""
-      )}
+      )} */}
+      <div className="footer_content_main">
+        <div className="container">
+          <h2 className="footer_title">{seoContent[0]?.footer_title}</h2>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: seoContent[0]?.footer_description,
+            }}
+            className="footer_content"
+          />
+        </div>
+      </div>
     </>
   );
 }

@@ -15,6 +15,7 @@ import BuilderImageGallery from "./components/builder/BuilderImageGallery";
 import ProjectTypePage from "./components/project-type-page/ProjectTypePage";
 import FeaturedCollection from "./components/city/featured-collection/FeaturedCollection";
 import PageNotFound from "./components/page-not-found/PageNotFound";
+import ErrorBoundary from "./components/error-boundry/ErrorBoundries";
 
 function App() {
   return (
@@ -29,7 +30,9 @@ function App() {
           path="builder/:builder"
           element={[
             <Navbar key={4} />,
-            <Builder key={5} />,
+            <ErrorBoundary>
+              <Builder key={5} />
+            </ErrorBoundary>,
             <Footer key={6} />,
           ]}
         />
@@ -37,7 +40,9 @@ function App() {
           path="/:builder/:city/:slug"
           element={[
             <Navbar key={7} />,
-            <Project key={8} />,
+            <ErrorBoundary>
+              <Project key={8} />
+            </ErrorBoundary>,
             <Footer key={9} />,
           ]}
         />
@@ -45,7 +50,9 @@ function App() {
           path="/:city/:microlocation"
           element={[
             <Navbar key={13} />,
-            <MicrolocationPage key={14} />,
+            <ErrorBoundary>
+              <MicrolocationPage key={14} />
+            </ErrorBoundary>,
             <Footer key={15} />,
           ]}
         />
@@ -53,7 +60,9 @@ function App() {
           path="/:city/filter/:filteredValue"
           element={[
             <Navbar key={10} />,
-            <FilteredItems key={11} />,
+            <ErrorBoundary>
+              <FilteredItems key={11} />
+            </ErrorBoundary>,
             <Footer key={12} />,
           ]}
         />
@@ -61,7 +70,10 @@ function App() {
           path="/:city/projects/:featured"
           element={[
             <Navbar key={26} />,
-            <FeaturedCollection key={27} />,
+            <ErrorBoundary>
+              {" "}
+              <FeaturedCollection key={27} />
+            </ErrorBoundary>,
             <Footer key={28} />,
           ]}
         />
@@ -70,31 +82,45 @@ function App() {
           path="/:city"
           element={[
             <Navbar key={16} />,
-            <City key={17} />,
+            <ErrorBoundary>
+              <City key={17} />
+            </ErrorBoundary>,
             <Footer key={18} />,
           ]}
         />
         <Route
           path="/:builder/:city/:slug/image-gallery"
-          element={<ProjectImageGallery key={19} />}
+          element={
+            <ErrorBoundary>
+              <ProjectImageGallery key={19} />
+            </ErrorBoundary>
+          }
         />
         <Route
           path="/contact"
           element={[
             <Navbar key={20} />,
-            <Contact key={21} />,
+            <ErrorBoundary>
+              <Contact key={21} />
+            </ErrorBoundary>,
             <Footer key={22} />,
           ]}
         />
         <Route
           path="/builder/:builder/image-gallery"
-          element={<BuilderImageGallery key={23} />}
+          element={
+            <ErrorBoundary>
+              <BuilderImageGallery key={23} />
+            </ErrorBoundary>
+          }
         />
         <Route
           path="/builder/:builder/projects/:projectType"
           element={[
             <Navbar key={23} />,
-            <ProjectTypePage key={24} />,
+            <ErrorBoundary>
+              <ProjectTypePage key={24} />
+            </ErrorBoundary>,
             <Footer key={25} />,
           ]}
         />

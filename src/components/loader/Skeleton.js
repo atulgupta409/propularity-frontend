@@ -41,4 +41,4 @@ const SkeletonBox = () => {
   )
 }
 
-export default SkeletonBox
+export default SkeletonBox;
