@@ -13,7 +13,7 @@
 }
 .calculator_top_row {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
 }
 .calculator_middle_row {
   margin-top: 60px;

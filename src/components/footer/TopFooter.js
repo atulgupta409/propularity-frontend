@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_SEO_BY_SLUG } from "../../service/CitySeoService";
-import { decode } from "html-entities";
+// import { decode } from "html-entities";
 
 function TopFooter() {
   const [seoContent, setSeoContent] = useState([]);
