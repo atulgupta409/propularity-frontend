@@ -14,7 +14,7 @@ import RequestCallBtn from "../request-call-button/RequestCallBtn";
 import LeafletMap from "./LeafletMap";
 import Carousel from "react-bootstrap/Carousel";
 import ProjectDetailSkeleton from "../loader/ProjectDetailSkeleton";
-import City from "../city/City";
+import { Helmet } from "react-helmet-async";
 
 function Project() {
   const { slug } = useParams();
@@ -46,6 +46,8 @@ function Project() {
     setFloorPlan(data?.projectDetails[0]?.plans[0]?.category[0]?.name);
   }, [data]);
 
+  // console.log(data?.projectDetails[0])
+
   const noImage =
     "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1694841091626.jpg";
 
@@ -72,6 +74,45 @@ function Project() {
 
   return (
     <>
+      {/* <Helmet>
+        <title>{seoData?.citySeoContent[0]?.title || defaultTitle}</title>
+        <meta
+          name="description"
+          content={
+            seoData?.citySeoContent[0]?.description || defaultDescription
+          }
+        />
+        <meta name="keywords" content={seoData?.citySeoContent[0]?.keywords} />
+        <meta
+          property="og:title"
+          content={
+            seoData?.citySeoContent[0]?.open_graph?.title || defaultTitle
+          }
+        />
+        <meta
+          property="og:description"
+          content={
+            seoData?.citySeoContent[0]?.open_graph?.description ||
+            defaultDescription
+          }
+        />
+        <meta
+          name="twitter:title"
+          content={seoData?.citySeoContent[0]?.twitter?.title || defaultTitle}
+        />
+        <meta
+          name="twitter:description"
+          content={
+            seoData?.citySeoContent[0]?.twitter?.description ||
+            defaultDescription
+          }
+        />
+        <link rel="canonical" href={currentUrl} />
+        <meta name="robots" content={seoData?.citySeoContent[0]?.robots} />
+        <script type="application/ld+json">
+          {seoData?.citySeoContent[0]?.script}
+        </script>
+      </Helmet> */}
       {loading ? (
         <h1 className="mt100">
           <ProjectDetailSkeleton />
