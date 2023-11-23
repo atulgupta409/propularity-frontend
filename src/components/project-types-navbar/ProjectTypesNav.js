@@ -17,7 +17,7 @@ function ProjectTypesNav({
     },
 
     {
-      name: "Service Apartment",
+      name: "SCO",
       icon: "https://propularity-bucket.s3.ap-south-1.amazonaws.com/image-1695976931764.png",
     },
     {
