@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.6fb5bd7c.css",
+    "main.css": "/static/css/main.9afde3c3.css",
     "main.js": "/static/js/main.fb0e2647.js",
     "static/js/787.d72965a6.chunk.js": "/static/js/787.d72965a6.chunk.js",
     "static/media/Gurugram.mp4": "/static/media/Gurugram.bdf34215d1eec26371a9.mp4",
@@ -11,12 +11,12 @@
     "static/media/under-construction.png": "/static/media/under-construction.b4f3d995d9d2cc699712.png",
     "static/media/sumit-sir-contact-main.png": "/static/media/sumit-sir-contact-main.6a80238bc66799b9e9a3.png",
     "index.html": "/index.html",
-    "main.6fb5bd7c.css.map": "/static/css/main.6fb5bd7c.css.map",
+    "main.9afde3c3.css.map": "/static/css/main.9afde3c3.css.map",
     "main.fb0e2647.js.map": "/static/js/main.fb0e2647.js.map",
     "787.d72965a6.chunk.js.map": "/static/js/787.d72965a6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6fb5bd7c.css",
+    "static/css/main.9afde3c3.css",
     "static/js/main.fb0e2647.js"
   ]
 }
